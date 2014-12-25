@@ -1,7 +1,7 @@
-Motivation
+Mortality
 ========
 
-Your age.
+You'll never get more time
 
 
 ![](screenshot.png)

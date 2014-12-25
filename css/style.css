@@ -20,6 +20,8 @@ body {
   -webkit-align-items: center;
   -webkit-font-smoothing: antialiased;
   -webkit-justify-content: center;
+  background-color: #1d1d1d;
+  color: #eff4ff;
 }
 
 body, input {
@@ -88,12 +90,10 @@ footer {
 }
 
 #reset{
-  position: fixed !important;
-  bottom: 0;
+  position: fixed;
+  bottom: 0px;
+  right: 15px;
   font-size: 12px;
   cursor: pointer;
   opacity:  0;
-}
-#reset:hover{
-  text-decoration: underline;
 }

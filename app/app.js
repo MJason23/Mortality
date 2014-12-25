@@ -11,7 +11,7 @@ var App = function($el){
     'submit', this.submit.bind(this)
   );
 
-  if (this.dob) {
+  if (this.dobSet) {
     this.renderAgeLoop();
   } else {
     this.renderChoose();
@@ -21,19 +21,21 @@ var App = function($el){
 App.fn = App.prototype;
 
 App.fn.load = function(){
-  var val = localStorage.dob;
-  if (val != 'null'){
-    this.dob = new Date(parseInt(val));
+  var tempDoB = localStorage.dob;
+  if( tempDoB != 'null') {
+    this.dob = new Date(parseInt(tempDoB));
+  }
+
+  var tempDoBSet = localStorage.dobSet;
+  if( tempDoBSet != 'null') {
+    this.dobSet = "YES";
   }
 };
 
 App.fn.save = function(){
   if (this.dob)
     localStorage.dob = this.dob.getTime();
-  if(this.textColor)
-    localStorage.textColor = this.textColor;
-  if(this.backgroundColor)
-    localStorage.backgroundColor = this.backgroundColor;
+    localStorage.dobSet = this.dobSet;
 };
 
 App.fn.submit = function(e){
@@ -43,25 +45,29 @@ App.fn.submit = function(e){
   if ( !input.valueAsDate ) return;
 
   this.dob = input.valueAsDate;
-  this.backgroundColor = $('backgroundPicker').value;
-  this.textColor = $('textPicker').value;
+  this.dobSet = "YES";
   this.save();
 
-  document.body.style.backgroundColor = this.backgroundColor;
-  document.body.style.color = this.textColor;
-
-  this.renderAgeLoop();
   location.reload();
 };
 
+Date.prototype.yyyymmdd = function() {
+   var yyyy = this.getFullYear().toString();
+   var mm = (this.getMonth()+1).toString(); // getMonth() is zero-based
+   var dd  = (this.getDate()+1).toString();
+   return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
+  };
+
 App.fn.renderChoose = function(){
   this.html(this.view('dob')());
+  if( this.dob != 'null' ) {
+    var test = this.dob.yyyymmdd();
+    document.getElementById('dobField').value = this.dob.yyyymmdd();
+  }
 };
 
 App.fn.renderAgeLoop = function(){
   this.interval = setInterval(this.renderAge.bind(this), 100);
-  document.body.style.backgroundColor = localStorage.backgroundColor;
-  document.body.style.color = localStorage.textColor;
 };
 
 App.fn.renderAge = function(){
@@ -77,12 +83,8 @@ App.fn.renderAge = function(){
       milliseconds: majorMinor[1]
     }));
     document.getElementById('reset').onclick = function(){
-      this.dob = null;
-      this.textColor = null;
-      this.backgroundColor = null;
-      localStorage.backgroundColor = null;
-      localStorage.textColor = null;
-      localStorage.dob = null;
+      this.dobSet = null;
+      localStorage.dobSet = null;
       location.reload();
     };
     document.getElementById('reset').style.opacity = '1';

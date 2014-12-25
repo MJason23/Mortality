@@ -7,7 +7,7 @@
       "newtab": "dashboard.html"
    },
    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
-   "description": "Motivate yourself",
+   "description": "Time is irreplaceable",
    "icons": {
       "128": "icon-128.png",
       "16": "icon-16.png",
