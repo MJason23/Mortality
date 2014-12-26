@@ -107,3 +107,44 @@ App.fn.view = function(name){
 window.app = new App($('app'))
 
 })();
+
+function makeCircles() {
+  var x, y,
+      circle,
+      div = document.querySelector('#circles');
+
+  for(x = 1 ; x <= 31 ; x++) {
+    for(y = 1 ; y <= 31 ; y++) {
+      circle= document.createElement('div');
+      circle.className = 'circle';
+      div.appendChild(circle);
+    }
+  }
+} //makeCircles
+
+
+(function() {
+  window.onresize= function() {
+    var div = document.querySelector('#circles');
+    circle.style.height= div.childNodes[0].offsetWidth+'px';
+  }
+
+  var styleSheets = document.styleSheets,
+      circle,
+      i, j;
+
+  for(i = 0 ; i < styleSheets.length ; i++) {
+    rules= styleSheets[i].rules ||
+           styleSheets[i].cssRules;
+    for(j = 0 ; j < rules.length ; j++) {
+      if(rules[j].selectorText==='.circle') {
+        circle= rules[j];
+        break;
+      }
+    }
+  }
+})();
+
+makeCircles();
+
+window.onresize();
