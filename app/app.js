@@ -119,11 +119,17 @@ App.fn.load = function(){
       this.createCircle('#1B5E20', '1.00');
     }
   }
-  else {
-    for(x = 253 ; x <= numberMonths ; x++) {
+  else if( numberMonths > 252 && numberMonths <= 792 ){
+    for(x = 253 ; x < numberMonths ; x++) {
       this.createCircle('#1B5E20', '1.00');
     }
-    for(x = 253 ; x <= (792-numberMonths) ; x++) {
+    for(x = numberMonths ; x <= 792 ; x++) {
+      this.createCircle('#1B5E20', '0.15');
+    }
+  }
+  else
+  {
+    for(x = 253 ; x <= 792 ; x++) {
       this.createCircle('#1B5E20', '0.15');
     }
   }
@@ -135,11 +141,17 @@ App.fn.load = function(){
       this.createCircle('#33691E', '1.00');
     }
   }
-  else {
-    for(x = 793 ; x <= numberMonths ; x++) {
+  else if( numberMonths > 792 && numberMonths <= 945 ){
+    for(x = 793 ; x < numberMonths ; x++) {
       this.createCircle('#33691E', '1.00');
     }
-    for(x = 793 ; x <= (945-numberMonths) ; x++) {
+    for(x = numberMonths ; x <= (945-numberMonths) ; x++) {
+      this.createCircle('#33691E', '0.15');
+    }
+  }
+  else
+  {
+    for(x = 793 ; x <= 945 ; x++) {
       this.createCircle('#33691E', '0.15');
     }
   }
