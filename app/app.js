@@ -44,67 +44,105 @@ App.fn.load = function(){
 
   if( numberMonths > 60 ) {
     for(x = 1 ; x <= 60 ; x++) {
+      this.createCircle('#311B92', '1.00');
+    }
+  }
+  else {
+    for(x = 1 ; x <= numberMonths ; x++) {
+      this.createCircle('#311B92', '1.00');
+    }
+    for(x = 1 ; x <= (60-numberMonths) ; x++) {
       this.createCircle('#311B92', '0.15');
     }
   }
-  // else {
-  //   for(x = 1 ; x <= numberMonths ; x++) {
-  //     circle= document.createElement('div');
-  //     circle.className = 'circle';
-  //     circle.style.backgroundColor = '#311B92';
-  //     div.appendChild(circle);
-  //   }
-  //   for(x = 1 ; x <= (60-numberMonths) ; x++) {
-  //     circle= document.createElement('div');
-  //     circle.className = 'circle';
-  //     circle.style.backgroundColor = '#311B92';
-  //     circle.style.opacity = 0.15;
-  //     div.appendChild(circle);
-  //   }
-  // }
-  for(x = 1 ; x <= 60 ; x++) {
-    circle= document.createElement('div');
-    circle.className = 'circle';
-    circle.style.backgroundColor = '#1A237E';
-    this.documentCircle.appendChild(circle);
+
+  if( numberMonths > 120) {
+    for(x = 61 ; x <= 120 ; x++) {
+      this.createCircle('#1A237E', '1.00');
+    }
   }
-  for(x = 1 ; x <= 36 ; x++) {
-    circle= document.createElement('div');
-    circle.className = 'circle';
-    circle.style.backgroundColor = '#0D47A1';
-    this.documentCircle.appendChild(circle);
+  else {
+    for(x = 61 ; x <= numberMonths ; x++) {
+      this.createCircle('#1A237E', '1.00');
+    }
+    for(x = 61 ; x <= (120-numberMonths) ; x++) {
+      this.createCircle('#1A237E', '0.15');
+    }
   }
 
-  for(x = 1 ; x <= 48 ; x++) {
-    circle= document.createElement('div');
-    circle.className = 'circle';
-    circle.style.backgroundColor = '#006064';
-    this.documentCircle.appendChild(circle);
+  if( numberMonths > 156 ) {
+    for(x = 121 ; x <= 156 ; x++) {
+      this.createCircle('#0D47A1', '1.00');
+    }
+  }
+  else {
+    for(x = 121 ; x <= numberMonths ; x++) {
+      this.createCircle('#0D47A1', '1.00');
+    }
+    for(x = 121 ; x <= (156-numberMonths) ; x++) {
+      this.createCircle('#0D47A1', '0.15');
+    }
   }
 
-  for(x = 1 ; x <= 48 ; x++) {
-    circle= document.createElement('div');
-    circle.className = 'circle';
-    circle.style.backgroundColor = '#004D40';
-    circle.style.opacity = '0.15';
-    this.documentCircle.appendChild(circle);
+
+  if( numberMonths > 204 ) {
+    for(x = 157 ; x <= 204 ; x++) {
+      this.createCircle('#006064', '1.00');
+    }
+  }
+  else {
+    for(x = 157 ; x <= numberMonths ; x++) {
+      this.createCircle('#006064', '1.00');
+    }
+    for(x = 157 ; x <= (204-numberMonths) ; x++) {
+      this.createCircle('#006064', '0.15');
+    }
   }
 
-  for(x = 1 ; x <= 540 ; x++) {
-    circle= document.createElement('div');
-    circle.className = 'circle';
-    circle.style.backgroundColor = '#1B5E20';
-    circle.style.opacity = '0.15';
-    this.documentCircle.appendChild(circle);
+  if( numberMonths > 252 ) {
+    for(x = 205 ; x <= 252 ; x++) {
+      this.createCircle('#004D40', '1.00');
+    }
   }
-  for(x = 1 ; x <= 153 ; x++) {
-    circle= document.createElement('div');
-    circle.className = 'circle';
-    circle.style.backgroundColor = '#33691E';
-    circle.style.opacity = '0.15';
-    this.documentCircle.appendChild(circle);
+  else {
+    for(x = 205 ; x <= numberMonths ; x++) {
+      this.createCircle('#004D40', '1.00');
+    }
+    for(x = 205 ; x <= (252-numberMonths) ; x++) {
+      this.createCircle('#004D40', '0.15');
+    }
   }
 
+
+  if( numberMonths > 792 ) {
+    for(x = 253 ; x <= 792 ; x++) {
+      this.createCircle('#1B5E20', '1.00');
+    }
+  }
+  else {
+    for(x = 253 ; x <= numberMonths ; x++) {
+      this.createCircle('#1B5E20', '1.00');
+    }
+    for(x = 253 ; x <= (792-numberMonths) ; x++) {
+      this.createCircle('#1B5E20', '0.15');
+    }
+  }
+
+
+
+  if( numberMonths > 945 ) {
+    for(x = 793 ; x <= 945 ; x++) {
+      this.createCircle('#33691E', '1.00');
+    }
+  }
+  else {
+    for(x = 793 ; x <= numberMonths ; x++) {
+      this.createCircle('#33691E', '1.00');
+    }
+    for(x = 793 ; x <= (945-numberMonths) ; x++) {
+      this.createCircle('#33691E', '0.15');
+    }
+  }
 
 };
 
