@@ -21,15 +21,99 @@ var App = function($el){
 App.fn = App.prototype;
 
 App.fn.load = function(){
+  var x;
+
+  this.documentCircle = document.querySelector('#circles');
+
   var tempDoB = localStorage.dob;
   if( tempDoB != 'null') {
     this.dob = new Date(parseInt(tempDoB));
   }
 
+  var currentDate = new Date;
+  var oneDay = 24*60*60*1000;
+
+  var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime())/(oneDay)));
+  var numberMonths = Math.floor(diffDays/30);
+  var fractionOfMonth = (diffDays%30)/30.0;
+
   var tempDoBSet = localStorage.dobSet;
   if( tempDoBSet != 'null') {
     this.dobSet = "YES";
   }
+
+  if( numberMonths > 60 ) {
+    for(x = 1 ; x <= 60 ; x++) {
+      this.createCircle('#311B92', '0.15');
+    }
+  }
+  // else {
+  //   for(x = 1 ; x <= numberMonths ; x++) {
+  //     circle= document.createElement('div');
+  //     circle.className = 'circle';
+  //     circle.style.backgroundColor = '#311B92';
+  //     div.appendChild(circle);
+  //   }
+  //   for(x = 1 ; x <= (60-numberMonths) ; x++) {
+  //     circle= document.createElement('div');
+  //     circle.className = 'circle';
+  //     circle.style.backgroundColor = '#311B92';
+  //     circle.style.opacity = 0.15;
+  //     div.appendChild(circle);
+  //   }
+  // }
+  for(x = 1 ; x <= 60 ; x++) {
+    circle= document.createElement('div');
+    circle.className = 'circle';
+    circle.style.backgroundColor = '#1A237E';
+    this.documentCircle.appendChild(circle);
+  }
+  for(x = 1 ; x <= 36 ; x++) {
+    circle= document.createElement('div');
+    circle.className = 'circle';
+    circle.style.backgroundColor = '#0D47A1';
+    this.documentCircle.appendChild(circle);
+  }
+
+  for(x = 1 ; x <= 48 ; x++) {
+    circle= document.createElement('div');
+    circle.className = 'circle';
+    circle.style.backgroundColor = '#006064';
+    this.documentCircle.appendChild(circle);
+  }
+
+  for(x = 1 ; x <= 48 ; x++) {
+    circle= document.createElement('div');
+    circle.className = 'circle';
+    circle.style.backgroundColor = '#004D40';
+    circle.style.opacity = '0.15';
+    this.documentCircle.appendChild(circle);
+  }
+
+  for(x = 1 ; x <= 540 ; x++) {
+    circle= document.createElement('div');
+    circle.className = 'circle';
+    circle.style.backgroundColor = '#1B5E20';
+    circle.style.opacity = '0.15';
+    this.documentCircle.appendChild(circle);
+  }
+  for(x = 1 ; x <= 153 ; x++) {
+    circle= document.createElement('div');
+    circle.className = 'circle';
+    circle.style.backgroundColor = '#33691E';
+    circle.style.opacity = '0.15';
+    this.documentCircle.appendChild(circle);
+  }
+
+
+};
+
+App.fn.createCircle = function(bkgdColor, opacity) {
+  var circle = document.createElement('div');
+  circle.className = 'circle';
+  circle.style.backgroundColor = bkgdColor;
+  circle.style.opacity = opacity;
+  this.documentCircle.appendChild(circle);
 };
 
 App.fn.save = function(){
@@ -108,20 +192,6 @@ window.app = new App($('app'))
 
 })();
 
-function makeCircles() {
-  var x, y,
-      circle,
-      div = document.querySelector('#circles');
-
-  for(x = 1 ; x <= 31 ; x++) {
-    for(y = 1 ; y <= 31 ; y++) {
-      circle= document.createElement('div');
-      circle.className = 'circle';
-      div.appendChild(circle);
-    }
-  }
-} //makeCircles
-
 
 (function() {
   window.onresize= function() {
@@ -144,7 +214,5 @@ function makeCircles() {
     }
   }
 })();
-
-makeCircles();
 
 window.onresize();

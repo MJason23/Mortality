@@ -6,12 +6,11 @@
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
+  -webkit-user-select: none;
 }
 
 @media only screen and (min-width:960px){
     /* styles for browsers larger than 960px; */
-    .x1 {width:200px}
-    .x2 {padding: 12.5%;}
 }
 @media only screen and (min-width:1440px){
     /* styles for browsers larger than 1440px; */
@@ -21,11 +20,9 @@
 }
 @media only screen and (max-device-width:480px){
    /* styles for mobile browsers smaller than 480px; (iPhone) */
-   .x2 {padding: 50%;}
 }
 @media only screen and (device-width:768px){
    /* default iPad screens */
-   .x2 {padding: 25%;}
 }
 /* different techniques for iPad screening */
 @media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
@@ -59,9 +56,12 @@ body, input {
 
 .circle {
   box-sizing: border-box;
-  border: 10px solid #aaa;
-  border-radius: 100%;
+  width: 1.9%;
+  margin: 0.16%;
+  border: solid transparent;
+  border-radius: 50%;
   float: left;
+  background-color: #424242;
 }
 
 .age-label {
@@ -74,9 +74,14 @@ body, input {
 
 .count {
   margin: 0;
+  left: 28%;
+  top: 39%;
   font-size: 12rem;
   line-height: 1;
   font-weight: 600;
+  position: absolute;
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  cursor: default;
 }
 
 .count sup {
@@ -118,36 +123,6 @@ button {
   border: none;
   border-radius: 0.25rem;
   background-color: #0BE;
-}
-
-.x0 {
-    float:left;
-}
-.x1 {
-    margin:0px auto;
-}
-.x2 {
-    overflow:hidden;
-    display:block;
-    float:left;
-    width:auto;
-    height:auto;
-    position: relative;
-    border-radius:50%;
-    -moz-border-radius:50%;
-    -webkit-border-radius:50%;
-    -khtml-border-radius: 50%;
-    background:#eee;
-}
-.x3 {
-    position: absolute;
-    width: 100%;
-    left: 0;
-    top:0;
-    font-size: 100%;
-    float:left;
-    height:100%;
-    background-color:red;
 }
 
 footer {
