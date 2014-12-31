@@ -42,17 +42,44 @@ App.fn.load = function(){
     this.dobSet = "YES";
   }
 
-  this.generateCircleLoop(numberMonths, 1, 60, '#311B92');
-  this.generateCircleLoop(numberMonths, 61, 120, '#1A237E');
-  this.generateCircleLoop(numberMonths, 121, 156, '#0D47A1');
-  this.generateCircleLoop(numberMonths, 157, 204, '#006064');
-  this.generateCircleLoop(numberMonths, 205, 252, '#004D40');
-  this.generateCircleLoop(numberMonths, 253, 792, '#1B5E20');
-  this.generateCircleLoop(numberMonths, 793, 945, '#33691E');
+  this.generateCircleLoop(numberMonths, 1, 60, '#311B92', fractionOfMonth);
+  this.generateCircleLoop(numberMonths, 61, 120, '#1A237E', fractionOfMonth);
+  this.generateCircleLoop(numberMonths, 121, 156, '#0D47A1', fractionOfMonth);
+
+
+  this.path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  this.path.setAttribute("fill","#ffffff");
+  this.path.setAttribute('float', 'left');
+
+  var pie = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  pie.className = "pie";
+
+  //UNCOMMENT THIS TO SEE PIE
+  // var width = 40;
+  // pie.setAttribute('width', width);
+  // pie.setAttribute('height', width);
+  // pie.setAttribute('float', 'left');
+
+  pie.appendChild(this.path);
+
+
+  this.theta = 60;
+  this.radius = pie.getAttribute('width') / 2;
+  this.path.setAttribute('transform', 'translate(' + this.radius + ',' + this.radius + ')');
+
+  this.documentCircle.appendChild(pie);
+
+  this.animate();
+
+
+  this.generateCircleLoop(numberMonths, 157, 204, '#006064', fractionOfMonth);
+  this.generateCircleLoop(numberMonths, 205, 252, '#004D40', fractionOfMonth);
+  this.generateCircleLoop(numberMonths, 253, 792, '#1B5E20', fractionOfMonth);
+  this.generateCircleLoop(numberMonths, 793, 945, '#33691E', fractionOfMonth);
 
 };
 
-App.fn.generateCircleLoop = function(numberMonths, firstCount, secondCount, bkgdColor) {
+App.fn.generateCircleLoop = function(numberMonths, firstCount, secondCount, bkgdColor, fractionOfMonth) {
   var x;
   if( numberMonths > secondCount ) {
     for(x = firstCount ; x <= secondCount ; x++) {
@@ -63,7 +90,8 @@ App.fn.generateCircleLoop = function(numberMonths, firstCount, secondCount, bkgd
     for(x = firstCount ; x < numberMonths ; x++) {
       this.createCircle(bkgdColor, '1.00');
     }
-    for(x = numberMonths ; x <= secondCount ; x++) {
+
+    for(x = (numberMonths+1) ; x <= secondCount ; x++) {
       this.createCircle(bkgdColor, '0.15');
     }
   }
@@ -155,28 +183,52 @@ App.fn.view = function(name){
   return Handlebars.compile($el.innerHTML);
 };
 
+App.fn.animate = function() {
+  this.theta += 0.5;
+  this.theta %= 360;
+  var x = Math.sin(this.theta * Math.PI / 180) * this.radius;
+  var y = Math.cos(this.theta * Math.PI / 180) * -this.radius;
+  var d = 'M0,0 v' + -this.radius + 'A' + this.radius + ',' + this.radius + ' 1 ' + ((this.theta > 180) ? 1 : 0) + ',1 ' + x + ',' + y + 'z';
+  this.path.setAttribute('d', d);
+  setTimeout(this.animate, 7200000); // 1/360 of a month in ms
+};
+
 window.app = new App($('app'))
 
 })();
+
 
 
 (function() {
   window.onresize= function() {
     var div = document.querySelector('#circles');
     circle.style.height= div.childNodes[0].offsetWidth+'px';
+    pie.style.width = circle.style.height;
+    pie.style.height= circle.style.height;
   }
 
   var styleSheets = document.styleSheets,
       circle,
-      i, j;
-
+      pie,
+      i, j, k;
+  k = 0;
   for(i = 0 ; i < styleSheets.length ; i++) {
     rules= styleSheets[i].rules ||
            styleSheets[i].cssRules;
     for(j = 0 ; j < rules.length ; j++) {
       if(rules[j].selectorText==='.circle') {
         circle= rules[j];
-        break;
+        k++;
+        if(k>1) {
+          break;
+        }
+      }
+      else if(rules[j].selectorText==='.pie') {
+        pie = rules[j];
+        k++;
+        if(k>1) {
+          break;
+        }
       }
     }
   }

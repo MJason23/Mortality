@@ -54,6 +54,12 @@ body, input {
   font-family: 'Avenir', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
+.pie {
+  float: left;
+  width: 1.9%;
+  margin: 0.16%;
+}
+
 .circle {
   float: left;
 
