@@ -70,18 +70,29 @@ App.fn.generateCircleLoop = function(numberMonths, firstCount, secondCount, bkgd
 
     var pie = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     pie.setAttribute("class","pie");
+    pie.setAttribute("opacity",1.0)
 
+
+
+    var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.id = 'piecircle';
+    circle.setAttribute("cx","10");
+    circle.setAttribute("cy","10");
+    circle.setAttribute("r","10");
+    circle.setAttribute("fill", bkgdColor);
+    circle.setAttribute("fill-opacity","0.25");
+    pie.appendChild(circle);
     pie.appendChild(path);
     this.documentCircle.appendChild(pie);
 
     for(x = (numberMonths+1) ; x <= secondCount ; x++) {
-      this.createCircle(bkgdColor, '0.15');
+      this.createCircle(bkgdColor, '0.25');
     }
   }
   else
   {
     for(x = firstCount ; x <= secondCount ; x++) {
-      this.createCircle(bkgdColor, '0.15');
+      this.createCircle(bkgdColor, '0.25');
     }
   }
 };
@@ -122,6 +133,7 @@ Date.prototype.yyyymmdd = function() {
 
 App.fn.renderChoose = function(){
   this.html(this.view('dob')());
+  this.documentCircle.style.display = "none";
   if( this.dob != 'null' ) {
     var test = this.dob.yyyymmdd();
     document.getElementById('dobField').value = this.dob.yyyymmdd();
@@ -175,6 +187,10 @@ window.app = new App($('app'))
 
 function animate(theta, radius) {
   var path = document.getElementById('path');
+  var piecircle = document.getElementById('piecircle');
+  piecircle.setAttribute("cx",radius);
+  piecircle.setAttribute("cy",radius);
+  piecircle.setAttribute("r",radius);
   theta += 0.5;
   theta %= 360;
   var x = Math.sin(theta * Math.PI / 180) * radius;
@@ -193,7 +209,20 @@ function animate(theta, radius) {
     circle.style.height= circleWidth +'px';
     pie.style.width = circle.style.height;
     pie.style.height= circle.style.height;
-    animate(60, circleWidth/2);
+
+    var tempDoB = localStorage.dob;
+    var tempDateDoB;
+    if( tempDoB != 'null') {
+      tempDateDoB = new Date(parseInt(tempDoB));
+    }
+
+    var currentDate = new Date;
+    var oneDay = 24*60*60*1000;
+
+    var diffDays = Math.round(Math.abs((tempDateDoB.getTime() - currentDate.getTime())/(oneDay)));
+    var fractionOfMonth = 360-(((diffDays%30)/30.0)*360);
+
+    animate(fractionOfMonth, circleWidth/2);
   }
 
   var styleSheets = document.styleSheets,

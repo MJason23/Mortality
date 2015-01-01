@@ -58,6 +58,7 @@ body, input {
   float: left;
   width: 1.9%;
   margin: 0.16%;
+  border-radius: 50%;
 }
 
 .circle {
