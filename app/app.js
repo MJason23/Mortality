@@ -11,10 +11,11 @@ var App = function($el){
     'submit', this.submit.bind(this)
   );
 
-  if (this.dobSet) {
-    this.renderAgeLoop();
-  } else {
+  if (localStorage.getItem("dobSet") === null) {
     this.renderChoose();
+  } else {
+    this.renderAgeLoop();
+
   }
 };
 
@@ -36,11 +37,6 @@ App.fn.load = function(){
   var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime())/(oneDay)));
   var numberMonths = Math.floor(diffDays/30);
   var fractionOfMonth = (diffDays%30)/30.0;
-
-  var tempDoBSet = localStorage.dobSet;
-  if( tempDoBSet != 'null') {
-    this.dobSet = "YES";
-  }
 
   this.generateCircleLoop(numberMonths, 1, 60, '#311B92', fractionOfMonth);
   this.generateCircleLoop(numberMonths, 61, 120, '#1A237E', fractionOfMonth);
@@ -108,7 +104,7 @@ App.fn.createCircle = function(bkgdColor, opacity) {
 App.fn.save = function(){
   if (this.dob)
     localStorage.dob = this.dob.getTime();
-    localStorage.dobSet = this.dobSet;
+    localStorage.dobSet = "YES";
 };
 
 App.fn.submit = function(e){
@@ -118,7 +114,6 @@ App.fn.submit = function(e){
   if ( !input.valueAsDate ) return;
 
   this.dob = input.valueAsDate;
-  this.dobSet = "YES";
   this.save();
 
   location.reload();
@@ -157,8 +152,7 @@ App.fn.renderAge = function(){
       milliseconds: majorMinor[1]
     }));
     document.getElementById('reset').onclick = function(){
-      this.dobSet = null;
-      localStorage.dobSet = null;
+      localStorage.removeItem("dobSet");
       location.reload();
     };
     document.getElementById('reset').style.opacity = '1';
@@ -188,16 +182,19 @@ window.app = new App($('app'))
 function animate(theta, radius) {
   var path = document.getElementById('path');
   var piecircle = document.getElementById('piecircle');
-  piecircle.setAttribute("cx",radius);
-  piecircle.setAttribute("cy",radius);
-  piecircle.setAttribute("r",radius);
-  theta += 0.5;
-  theta %= 360;
-  var x = Math.sin(theta * Math.PI / 180) * radius;
-  var y = Math.cos(theta * Math.PI / 180) * -radius;
-  var d = 'M0,0 v' + -radius + 'A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 1 : 0) + ',1 ' + x + ',' + y + 'z';
-  path.setAttribute('d', d);
-  path.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
+  if(path && piecircle) {
+    piecircle.setAttribute("cx",radius);
+    piecircle.setAttribute("cy",radius);
+    piecircle.setAttribute("r",radius);
+
+    theta += 0.5;
+    theta %= 360;
+    var x = Math.sin(theta * Math.PI / 180) * radius;
+    var y = Math.cos(theta * Math.PI / 180) * -radius;
+    var d = 'M0,0 v' + -radius + 'A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 1 : 0) + ',1 ' + x + ',' + y + 'z';
+    path.setAttribute('d', d);
+    path.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
+  }
   setTimeout(animate, 7200000); // 1/360 of a month in ms
 };
 
