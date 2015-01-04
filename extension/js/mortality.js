@@ -45,13 +45,32 @@ App.fn.load = function(){
   var numberMonths = Math.floor(diffDays/30);
   var fractionOfMonth = (diffDays%30)/30.0;
 
-  this.generateCircleLoop(numberMonths, 1, 60, '#311B92', fractionOfMonth);
-  this.generateCircleLoop(numberMonths, 61, 120, '#1A237E', fractionOfMonth);
-  this.generateCircleLoop(numberMonths, 121, 156, '#0D47A1', fractionOfMonth);
-  this.generateCircleLoop(numberMonths, 157, 204, '#006064', fractionOfMonth);
-  this.generateCircleLoop(numberMonths, 205, 252, '#004D40', fractionOfMonth);
-  this.generateCircleLoop(numberMonths, 253, 792, '#1B5E20', fractionOfMonth);
-  this.generateCircleLoop(numberMonths, 793, 945, '#33691E', fractionOfMonth);
+  var firstChapter = 1;
+  var secondChapter = 60;
+
+  var monthBorn = this.dob.getMonth();
+  var educationStartOffset = 0;
+  if(monthBorn == 11) {
+  	educationStartOffset = 8; 
+  }
+  else {
+  	educationStartOffset = (7-monthBorn);
+  }
+  secondChapter += educationStartOffset;
+  var thirdChapter = secondChapter + 84;
+  var fourthChapter = thirdChapter + 24;
+  var fifthChapter = fourthChapter + 48;
+  var sixthChapter = fifthChapter + 48;
+  var seventhChapter = sixthChapter + 540;
+  var eighthChapter = seventhChapter + 141 - educationStartOffset;
+
+  this.generateCircleLoop(numberMonths, firstChapter, secondChapter, '#311B92', fractionOfMonth); //First Chapter: Toddler, 5 years
+  this.generateCircleLoop(numberMonths, secondChapter+1, thirdChapter, '#1A237E', fractionOfMonth); //Second Chapter: Kindergarden-6th, 7 years
+  this.generateCircleLoop(numberMonths, thirdChapter+1, fourthChapter, '#0D47A1', fractionOfMonth); //Third Chapter: Middle, 2 years
+  this.generateCircleLoop(numberMonths, fourthChapter+1, fifthChapter, '#006064', fractionOfMonth); //Fourth Chapter: High, 4 years
+  this.generateCircleLoop(numberMonths, fifthChapter+1, sixthChapter, '#004D40', fractionOfMonth); //Fifth Chapter: College, 4 years
+  this.generateCircleLoop(numberMonths, sixthChapter+1, seventhChapter, '#1B5E20', fractionOfMonth); //Sixth Chapter: Work, ???
+  this.generateCircleLoop(numberMonths, seventhChapter+1, eighthChapter, '#33691E', fractionOfMonth); //Seventh Chapter: Retire, ???
 
 };
 
@@ -143,7 +162,7 @@ App.fn.renderChoose = function(){
 };
 
 App.fn.renderAgeLoop = function(){
-  this.interval = setInterval(this.renderAge.bind(this), 100);
+  this.interval = setInterval(this.renderAge.bind(this), 110);
 };
 
 App.fn.zeroFill = function( number, width )
@@ -157,7 +176,7 @@ App.fn.zeroFill = function( number, width )
 };
 
 App.fn.renderAge = function(){
-  var now       = new Date();
+  var now = new Date();
   var timezoneOffset = now.getTimezoneOffset() * minuteMS;
   var duration  = now - timezoneOffset - this.dob;
 
