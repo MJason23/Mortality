@@ -204,7 +204,7 @@ App.fn.getColorTheme = function() {
   var themes = {
     "aqua" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E'],
     "dark" : ['#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242'],
-    "dusk" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E']
+    "dusk" : ['#FFEB3B', '#FFB300', '#F57C00', '#BF360C', '#8D6E63', '#4E342E', '#757575']
   }
 
   var savedTheme = localStorage.getItem("colorTheme");
@@ -213,7 +213,6 @@ App.fn.getColorTheme = function() {
     return themes.aqua;
   }
   else {
-    var colorTheme;
     switch (savedTheme) {
       case "aqua":
         return themes.aqua;
