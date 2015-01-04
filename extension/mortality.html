@@ -16,12 +16,21 @@
 
 <script id="dob-template" type="text/x-handlebars-template">
   <form>
-    <h1 id="dob" class="age-label">When were you born?</h1>
-
-    <footer>
+    <div id="theme_container">
+      <div>
+        Theme
+      </div>
+      <select id="theme_dropdown">
+        <option value="aqua">Aqua</option>
+        <option value="dark">Dark</option>
+        <option value="dusk">Dusk</option>
+      </select>
+    </div>
+    <div id="age_container">
+      <h1 id="dob" class="age-label">When were you born?</h1>
       <input type="date" name="dob" id="dobField">
-      <button type="submit" style = 'margin-left: 28%;'>Submit</button>
-    </footer>
+    </div>
+    <button type="submit" style = 'margin-left: 28%;'>Submit</button>
   <form>
 </script>
 

@@ -22,7 +22,6 @@ var App = function($el){
     this.renderChoose();
   } else {
     this.renderAgeLoop();
-
   }
 };
 
@@ -31,90 +30,68 @@ App.fn = App.prototype;
 App.fn.load = function(){
   var x;
 
-  this.documentCircle = document.querySelector('#circles');
+  this.dob = this.getDob();
+  this.colorTheme = this.getColorTheme();
+  this.chapters = this.getChapters();
 
-  var tempDoB = localStorage.dob;
-  if( tempDoB != 'null') {
-    this.dob = new Date(parseInt(tempDoB));
-  }
+  this.documentCircle = document.querySelector('#circles');
 
   var currentDate = new Date;
   var oneDay = 24*60*60*1000;
 
   var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime())/(oneDay)));
   var numberMonths = Math.floor(diffDays/30);
-  var fractionOfMonth = (diffDays%30)/30.0;
 
-  var firstChapter = 1;
-  var secondChapter = 60;
-
-  var monthBorn = this.dob.getMonth();
-  var educationStartOffset = 0;
-  if(monthBorn == 11) {
-  	educationStartOffset = 8; 
-  }
-  else {
-  	educationStartOffset = (7-monthBorn);
-  }
-  secondChapter += educationStartOffset;
-  var thirdChapter = secondChapter + 84;
-  var fourthChapter = thirdChapter + 24;
-  var fifthChapter = fourthChapter + 48;
-  var sixthChapter = fifthChapter + 48;
-  var seventhChapter = sixthChapter + 540;
-  var eighthChapter = seventhChapter + 141 - educationStartOffset;
-
-  this.generateCircleLoop(numberMonths, firstChapter, secondChapter, '#311B92', fractionOfMonth); //First Chapter: Toddler, 5 years
-  this.generateCircleLoop(numberMonths, secondChapter+1, thirdChapter, '#1A237E', fractionOfMonth); //Second Chapter: Kindergarden-6th, 7 years
-  this.generateCircleLoop(numberMonths, thirdChapter+1, fourthChapter, '#0D47A1', fractionOfMonth); //Third Chapter: Middle, 2 years
-  this.generateCircleLoop(numberMonths, fourthChapter+1, fifthChapter, '#006064', fractionOfMonth); //Fourth Chapter: High, 4 years
-  this.generateCircleLoop(numberMonths, fifthChapter+1, sixthChapter, '#004D40', fractionOfMonth); //Fifth Chapter: College, 4 years
-  this.generateCircleLoop(numberMonths, sixthChapter+1, seventhChapter, '#1B5E20', fractionOfMonth); //Sixth Chapter: Work, ???
-  this.generateCircleLoop(numberMonths, seventhChapter+1, eighthChapter, '#33691E', fractionOfMonth); //Seventh Chapter: Retire, ???
-
+  this.generateCircleLoops(numberMonths);
 };
 
-App.fn.generateCircleLoop = function(numberMonths, firstCount, secondCount, bkgdColor, fractionOfMonth) {
-  var x;
-  if( numberMonths > secondCount ) {
-    for(x = firstCount ; x <= secondCount ; x++) {
-      this.createCircle( bkgdColor, '1.00');
+App.fn.generateCircleLoops = function(numberMonths) {
+  for (var chapter = 0; chapter < this.chapters.length; chapter++) {
+    var startMonth = this.chapters[chapter][0] + 1;
+    var endMonth = this.chapters[chapter][1];
+    var bkgdColor = this.colorTheme[chapter];
+
+    var x;
+    if( numberMonths > endMonth ) {
+      for(x = startMonth ; x <= endMonth ; x++) {
+        this.createCircle(bkgdColor, '1.00');
+      }
     }
-  }
-  else if( numberMonths > (firstCount-1) && numberMonths <= secondCount ){
-    for(x = firstCount ; x < numberMonths ; x++) {
-      this.createCircle(bkgdColor, '1.00');
+    else if( numberMonths > (startMonth-1) && numberMonths <= endMonth ){
+      for(x = startMonth ; x < numberMonths ; x++) {
+        this.createCircle(bkgdColor, '1.00');
+      }
+
+      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute("fill",bkgdColor);
+      path.id = 'path';
+
+      var pie = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      pie.setAttribute("class","pie");
+      pie.setAttribute("opacity",1.0)
+
+
+
+      var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.id = 'piecircle';
+      circle.setAttribute("cx","10");
+      circle.setAttribute("cy","10");
+      circle.setAttribute("r","10");
+      circle.setAttribute("fill", bkgdColor);
+      circle.setAttribute("fill-opacity","0.25");
+      pie.appendChild(circle);
+      pie.appendChild(path);
+      this.documentCircle.appendChild(pie);
+
+      for(x = (numberMonths+1) ; x <= endMonth ; x++) {
+        this.createCircle(bkgdColor, '0.25');
+      }
     }
-
-    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-    path.setAttribute("fill",bkgdColor);
-    path.id = 'path';
-
-    var pie = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-    pie.setAttribute("class","pie");
-    pie.setAttribute("opacity",1.0)
-
-
-
-    var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-    circle.id = 'piecircle';
-    circle.setAttribute("cx","10");
-    circle.setAttribute("cy","10");
-    circle.setAttribute("r","10");
-    circle.setAttribute("fill", bkgdColor);
-    circle.setAttribute("fill-opacity","0.25");
-    pie.appendChild(circle);
-    pie.appendChild(path);
-    this.documentCircle.appendChild(pie);
-
-    for(x = (numberMonths+1) ; x <= secondCount ; x++) {
-      this.createCircle(bkgdColor, '0.25');
-    }
-  }
-  else
-  {
-    for(x = firstCount ; x <= secondCount ; x++) {
-      this.createCircle(bkgdColor, '0.25');
+    else
+    {
+      for(x = startMonth ; x <= endMonth ; x++) {
+        this.createCircle(bkgdColor, '0.25');
+      }
     }
   }
 };
@@ -127,10 +104,19 @@ App.fn.createCircle = function(bkgdColor, opacity) {
   this.documentCircle.appendChild(circle);
 };
 
-App.fn.save = function(){
+App.fn.saveDob = function(){
   if (this.dob)
     localStorage.dob = this.dob.getTime();
     localStorage.dobSet = "YES";
+};
+
+App.fn.saveTheme = function(){
+  var savedTheme = localStorage.getItem("colorTheme");
+  var selectedTheme = document.getElementById("theme_dropdown").value;
+
+  if (savedTheme != selectedTheme) {
+    localStorage.setItem("colorTheme", selectedTheme);
+  }
 };
 
 App.fn.submit = function(e){
@@ -140,8 +126,10 @@ App.fn.submit = function(e){
   if ( !input.valueAsDate ) return;
 
   this.dob = input.valueAsDate;
-  this.save();
+  this.saveDob();
 
+  this.saveTheme();
+  
   location.reload();
 };
 
@@ -159,10 +147,86 @@ App.fn.renderChoose = function(){
     var test = this.dob.yyyymmdd();
     document.getElementById('dobField').value = this.dob.yyyymmdd();
   }
+
+  this.setSelectedTheme();
+};
+
+App.fn.setSelectedTheme = function(){
+  var theme = localStorage.getItem("colorTheme");
+  if (theme != null) {
+    document.getElementById("theme_dropdown").value = theme;
+  }
 };
 
 App.fn.renderAgeLoop = function(){
   this.interval = setInterval(this.renderAge.bind(this), 110);
+};
+
+App.fn.getChapters = function() {
+
+  // Default chapter periods
+  var chapters = localStorage.getItem("chapters");
+  if (chapters == null) {
+    var firstChapter = 0;
+    var secondChapter = 60
+
+    var monthBorn = this.dob.getMonth();
+    var educationStartOffset = 0;
+    if(monthBorn == 11) {
+     educationStartOffset = 8; 
+    }
+    else {
+     educationStartOffset = (7-monthBorn);
+    }
+    secondChapter += educationStartOffset;
+    var thirdChapter = secondChapter + 84;
+    var fourthChapter = thirdChapter + 24;
+    var fifthChapter = fourthChapter + 48;
+    var sixthChapter = fifthChapter + 48;
+    var seventhChapter = sixthChapter + 540;
+    var eighthChapter = seventhChapter + 141 - educationStartOffset;
+    return [[firstChapter, secondChapter], [secondChapter, thirdChapter]
+      ,[thirdChapter, fourthChapter], [fourthChapter, fifthChapter]
+      ,[fifthChapter, sixthChapter], [sixthChapter, seventhChapter] 
+      ,[seventhChapter, eighthChapter]];
+  }
+};
+
+App.fn.getDob = function() {
+  var savedDoB = localStorage.dob;
+  if(savedDoB != 'null') {
+    return new Date(parseInt(savedDoB));
+  }
+};
+
+App.fn.getColorTheme = function() {
+  var themes = {
+    "aqua" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E'],
+    "dark" : ['#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242'],
+    "dusk" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E']
+  }
+
+  var savedTheme = localStorage.getItem("colorTheme");
+  
+  if (savedTheme == null) {
+    return themes.aqua;
+  }
+  else {
+    var colorTheme;
+    switch (savedTheme) {
+      case "aqua":
+        return themes.aqua;
+
+      case "dark":
+        return themes.dark;
+
+      case "dusk":
+        return themes.dark;
+
+      default:
+        return themes.aqua;
+    }
+  }
 };
 
 App.fn.zeroFill = function( number, width )
