@@ -82,25 +82,27 @@ body, input {
   line-height: 1;
 }
 
-.count {
+.age-container {
   position: absolute;
+  left: 50%;
+  top: 42%;
+}
+
+.count {
+  position: relative;
   top: 39%;
-  left: 28%;
+  left: -50%;
+  top: -50%;
+
 
   margin: 0;
 
-  font-size: 12rem;
+  font-size: 8rem;
   font-weight: 600;
   text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
   line-height: 1;
 
   cursor: default;
-}
-
-.count sup {
-  margin-left: 7px;
-
-  font-size: 4.8rem;
 }
 
 label {

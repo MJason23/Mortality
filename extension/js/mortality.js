@@ -3,6 +3,13 @@
 var $  = document.getElementById.bind(document);
 var $$ = document.querySelectorAll.bind(document);
 
+var yearMS = 31556952000;
+var monthMS = 2628000000;
+var dayMS = 86400000;
+var hourMS = 3600000;
+var minuteMS = 60000;
+var secondMS = 1000;
+
 var App = function($el){
   this.$el = $el;
   this.load();
@@ -139,17 +146,49 @@ App.fn.renderAgeLoop = function(){
   this.interval = setInterval(this.renderAge.bind(this), 100);
 };
 
-App.fn.renderAge = function(){
-  var now       = new Date
-  var duration  = now - this.dob;
-  var years     = duration / 31556900000;
+App.fn.zeroFill = function( number, width )
+{
+  width -= number.toString().length;
+  if ( width > 0 )
+  {
+    return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
+  }
+  return number + "";
+};
 
-  var majorMinor = years.toFixed(9).toString().split('.');
+App.fn.renderAge = function(){
+  var now       = new Date();
+  var timezoneOffset = now.getTimezoneOffset() * minuteMS;
+  var duration  = now - timezoneOffset - this.dob;
+
+  var years = Math.floor(duration / yearMS);
+  var months = Math.floor((duration % yearMS) / monthMS);
+	var days = Math.floor((duration % monthMS) / dayMS);
+	var hours = Math.floor((duration % dayMS) / hourMS);
+	var minutes = Math.floor((duration % hourMS) / minuteMS);
+	var seconds = Math.floor((duration % minuteMS) / secondMS);
+	var milliseconds = Math.floor((duration % secondMS) / 10);
+
+	var leapDays = Math.floor(years/4);
+	days = days - leapDays;
+
+	var yearString = this.zeroFill(years.toString(),2);
+	var monthString =this.zeroFill(months.toString(),2);
+	var dayString = this.zeroFill(days.toString(),2);
+	var hourString = this.zeroFill(hours.toString(),2);
+	var minuteString = this.zeroFill(minutes.toString(),2);
+	var secondString = this.zeroFill(seconds.toString(),2);
+	var msString = this.zeroFill(milliseconds.toString(),2);
 
   requestAnimationFrame(function(){
     this.html(this.view('age')({
-      year:         majorMinor[0],
-      milliseconds: majorMinor[1]
+      year: yearString,
+      month: monthString,
+      day: dayString,
+      hour: hourString,
+      minute: minuteString,
+      second: secondString,
+      ms: msString
     }));
     document.getElementById('reset').onclick = function(){
       localStorage.removeItem("dobSet");
