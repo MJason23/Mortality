@@ -110,9 +110,10 @@ App.fn.saveDob = function(){
 
   this.dob = input.valueAsDate;
 
-  if (this.dob)
+  if (this.dob) {
     localStorage.dob = this.dob.getTime();
     localStorage.dobSet = "YES";
+  }
 };
 
 App.fn.saveTheme = function(){
