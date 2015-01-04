@@ -105,6 +105,11 @@ App.fn.createCircle = function(bkgdColor, opacity) {
 };
 
 App.fn.saveDob = function(){
+  var input = this.$$('input')[0];
+  if ( !input.valueAsDate ) return;
+
+  this.dob = input.valueAsDate;
+
   if (this.dob)
     localStorage.dob = this.dob.getTime();
     localStorage.dobSet = "YES";
@@ -122,12 +127,7 @@ App.fn.saveTheme = function(){
 App.fn.submit = function(e){
   e.preventDefault();
 
-  var input = this.$$('input')[0];
-  if ( !input.valueAsDate ) return;
-
-  this.dob = input.valueAsDate;
   this.saveDob();
-
   this.saveTheme();
   
   location.reload();
