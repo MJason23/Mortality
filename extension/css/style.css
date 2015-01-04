@@ -22,12 +22,7 @@
 }
 
 *,*:before,*:after {
-  box-sizing: border-box;
-
   -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  -o-box-sizing: border-box;
   -webkit-user-select: none;
 }
 
@@ -42,7 +37,6 @@ body {
 
   color: #eff4ff;
 
-  -moz-osx-font-smoothing: grayscale;
   -webkit-align-items: center;
   -webkit-font-smoothing: antialiased;
   -webkit-justify-content: center;
