@@ -79,22 +79,42 @@ body, input {
 .age-container {
   position: absolute;
   left: 50%;
-  top: 45%;
+  top: 42%;
 }
 
 .count {
   position: relative;
-  top: 39%;
   left: -50%;
   top: -50%;
 
-  margin: 0;
-  font-size: 6vw;
-  font-weight: 600;
+  margin-left: .7vw;
+  margin-right: .7vw;
+  margin-bottom: .4vw;
+  font-size: 5vw;
+  font-weight: 500;
   text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
   line-height: 1;
 
   cursor: default;
+}
+
+.count-labels {
+  display:flex;
+  position: relative;
+  left: -50%;
+  margin: 0;
+  font-size: 1vw;
+  font-weight: 400;
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  line-height: 1;
+
+  cursor: default;
+}
+
+.count-label {
+  text-align: center;
+  flex-basis: 20px;
+  flex-grow: 1;
 }
 
 button {
