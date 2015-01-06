@@ -146,7 +146,7 @@ App.fn.renderChoose = function(){
   this.documentCircle.style.display = "none";
   if( this.dob != 'null' ) {
     var test = this.dob.yyyymmdd();
-    document.getElementById('dobField').value = this.dob.yyyymmdd();
+    document.getElementById('dob_selector').value = this.dob.yyyymmdd();
   }
 
   this.setSelectedTheme();

@@ -15,22 +15,28 @@
 <div id="app"></div>
 
 <script id="dob-template" type="text/x-handlebars-template">
-  <form>
-    <div id="theme_container">
-      <div>
-        Theme
+  <form id="options_form">
+    <div id="age_option_container">
+      <div id="dob" class="label_text">
+        When were you born?
       </div>
-      <select id="theme_dropdown">
-        <option value="aqua">Aqua</option>
-        <option value="dark">Dark</option>
-        <option value="dusk">Dusk</option>
-      </select>
+      <input type="date" name="dob" id="dob_selector" class="input_field">
     </div>
-    <div id="age_container">
-      <h1 id="dob" class="age-label">When were you born?</h1>
-      <input type="date" name="dob" id="dobField">
+    <div id="theme_container">
+      <div class="label_text">
+        Select Theme
+      </div>
+      <div>
+        <select id="theme_dropdown" class="input_field">
+          <option value="aqua">Aqua</option>
+          <option value="dark">Dark</option>
+          <option value="dusk">Dusk</option>
+        </select>
+      </div>
     </div>
-    <button type="submit" style = 'margin-left: 28%;'>Submit</button>
+    <button type="submit" id="submit_options_button" style = 'margin-left: 28%;'>
+      Submit
+    </button>
   <form>
 </script>
 
