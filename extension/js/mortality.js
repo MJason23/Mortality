@@ -277,7 +277,7 @@ App.fn.renderAge = function(){
       localStorage.removeItem("dobSet");
       location.reload();
     };
-    document.getElementById('reset').style.opacity = '1';
+    document.getElementById('reset').style.display = 'block';
   }.bind(this));
 };
 

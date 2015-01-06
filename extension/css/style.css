@@ -145,10 +145,10 @@ input[type='color'] {
 }
 
 #reset {
+  display:none;
   position: fixed;
   right: 15px;
   bottom: 0px;
-  opacity: 0;
   font-size: 12px;
   cursor: pointer;
 }
