@@ -19,10 +19,19 @@ var App = function($el){
   );
 
   if (localStorage.getItem("dobSet") === null) {
-    this.renderChoose();
+    this.renderSettings();
   } else {
-    this.renderAgeLoop();
+    this.renderAge();
+    this.loadDarkOrLightTheme();
+    document.getElementById('reset').onclick = function(){
+      localStorage.removeItem("dobSet");
+      location.reload();
+    };
+    document.getElementById('reset').style.display = 'block';
+    this.interval = setInterval(this.renderAge.bind(this), 110);
   }
+
+
 };
 
 App.fn = App.prototype;
@@ -130,7 +139,7 @@ App.fn.submit = function(e){
 
   this.saveDob();
   this.saveTheme();
-  
+
   location.reload();
 };
 
@@ -141,8 +150,10 @@ Date.prototype.yyyymmdd = function() {
    return yyyy + "-" + (mm[1]?mm:"0"+mm[0]) + "-" + (dd[1]?dd:"0"+dd[0]); // padding
 };
 
-App.fn.renderChoose = function(){
+App.fn.renderSettings = function(){
   this.html(this.view('dob')());
+  document.body.style.backgroundColor = "#1d1d1d";
+  document.body.style.color = "#eff4ff";
   this.documentCircle.style.display = "none";
   if( this.dob != 'null' ) {
     var test = this.dob.yyyymmdd();
@@ -159,10 +170,6 @@ App.fn.setSelectedTheme = function(){
   }
 };
 
-App.fn.renderAgeLoop = function(){
-  this.interval = setInterval(this.renderAge.bind(this), 110);
-};
-
 App.fn.getChapters = function() {
 
   // Default chapter periods
@@ -174,7 +181,7 @@ App.fn.getChapters = function() {
     var monthBorn = this.dob.getMonth();
     var educationStartOffset = 0;
     if(monthBorn == 11) {
-     educationStartOffset = 8; 
+     educationStartOffset = 8;
     }
     else {
      educationStartOffset = (7-monthBorn);
@@ -188,7 +195,7 @@ App.fn.getChapters = function() {
     var eighthChapter = seventhChapter + 141 - educationStartOffset;
     return [[firstChapter, secondChapter], [secondChapter, thirdChapter]
       ,[thirdChapter, fourthChapter], [fourthChapter, fifthChapter]
-      ,[fifthChapter, sixthChapter], [sixthChapter, seventhChapter] 
+      ,[fifthChapter, sixthChapter], [sixthChapter, seventhChapter]
       ,[seventhChapter, eighthChapter]];
   }
 };
@@ -202,33 +209,57 @@ App.fn.getDob = function() {
 
 App.fn.getColorTheme = function() {
   var themes = {
-    "aqua" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E'],
+    "def" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E'],
     "dark" : ['#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242'],
-    "dusk" : ['#FFEB3B', '#FFB300', '#F57C00', '#BF360C', '#8D6E63', '#4E342E', '#757575']
+    "light" : ['#212121', '#424242', '#616161', '#757575', '#9E9E9E', '#BDBDBD', '#E0E0E0'],
+    "dawn" : ['#FFEB3B', '#FBC02D', '#F9A825', '#FF9800', '#F57C00', '#E65100', '#795548'],
+    "dusk" : ['#391003', '#5D1A25', '#722007','#ab300a', '#bf360c', '#cb5e3c', '#df9a85'],
+    "twilight" : ['#4527A0', '#283593', '#3F51B5', '#5C6BC0', '#78909C', '#B0BEC5', '#ECEFF1'],
+    "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#00E8BB', '#00a282']
   }
 
-  var savedTheme = localStorage.getItem("colorTheme");
-  
-  if (savedTheme == null) {
-    return themes.aqua;
+  this.savedTheme = localStorage.getItem("colorTheme");
+
+  if (this.savedTheme == null) {
+    return themes.def;
   }
   else {
-    switch (savedTheme) {
-      case "aqua":
-        return themes.aqua;
-
+    switch (this.savedTheme) {
+      case "default":
+        return themes.def;
       case "dark":
         return themes.dark;
-
+      case "light":
+        return themes.light;
+      case "dawn":
+        return themes.dawn;
       case "dusk":
         return themes.dusk;
-
+      case "twilight":
+        return themes.twilight;
+      case "retro":
+        return themes.retro;
       default:
-        return themes.aqua;
+        return themes.def;
     }
   }
 };
 
+App.fn.loadDarkOrLightTheme = function()
+{
+    if(this.savedTheme == "light")
+    {
+      document.body.style.backgroundColor = "#F5F5F5";
+      document.body.style.color = "#424242";
+      document.getElementById('reset-img').src = "assets/settingsBlack.png"
+    }
+    else
+    {
+      document.body.style.backgroundColor = "#1d1d1d";
+      document.body.style.color = "#eff4ff";
+      document.getElementById('reset-img').src = "assets/settings.png"
+    }
+}
 App.fn.zeroFill = function( number, width )
 {
   width -= number.toString().length;
@@ -272,11 +303,30 @@ App.fn.renderAge = function(){
       second: secondString,
       ms: msString
     }));
-    document.getElementById('reset').onclick = function(){
-      localStorage.removeItem("dobSet");
-      location.reload();
-    };
-    document.getElementById('reset').style.display = 'block';
+    if(this.savedTheme == "light")
+    {
+      var counts = document.getElementsByClassName('count');
+      for( i=0; i<counts.length; i++ ) {
+        counts[i].style.textShadow = "-3px 0 white, 0 3px white, 3px 0 white, 0 -3px white";
+      }
+      var countLabels = document.getElementsByClassName('count-labels');
+      for( i=0; i<countLabels.length; i++ ) {
+        countLabels[i].style.textShadow = "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white";
+        countLabels[i].style.fontWeight = "500";
+      }
+    }
+    else
+    {
+      var counts = document.getElementsByClassName('count');
+      for( i=0; i<counts.length; i++ ) {
+        counts[i].style.textShadow = "-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black";
+      }
+      var countLabels = document.getElementsByClassName('count-labels');
+      for( i=0; i<countLabels.length; i++ ) {
+        countLabels[i].style.textShadow = "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black";
+        countLabels[i].style.fontWeight = "400";
+      }
+    }
   }.bind(this));
 };
 

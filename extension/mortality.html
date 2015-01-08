@@ -11,7 +11,9 @@
 <body>
 
 
+
 <div id="circles"></div>
+<p id = "reset"><img id="reset-img" src="assets/settingsBlack.png" /></p>
 <div id="app"></div>
 
 <script id="dob-template" type="text/x-handlebars-template">
@@ -28,9 +30,13 @@
       </div>
       <div>
         <select id="theme_dropdown" class="input_field">
-          <option value="aqua">Aqua</option>
+          <option value="default">Default</option>
           <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="dawn">Dawn</option>
           <option value="dusk">Dusk</option>
+          <option value="twilight">Twilight</option>
+          <option value="retro">Retro</option>
         </select>
       </div>
     </div>
@@ -59,7 +65,6 @@
 
 <script src="js/handlebars.js"></script>
 <script src="js/mortality.js"></script>
-<p id = "reset"><img src="assets/settings.png" /></p>
 
 </body>
 </html>

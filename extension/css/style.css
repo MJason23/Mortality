@@ -33,9 +33,9 @@ body,html {
 }
 
 body {
-  background-color: #1d1d1d;
+  background-color: #F5F5F5;
 
-  color: #eff4ff;
+  color: #424242;
 
   -webkit-align-items: center;
   -webkit-font-smoothing: antialiased;
@@ -92,7 +92,7 @@ body, input {
   margin-bottom: .4vw;
   font-size: 5vw;
   font-weight: 500;
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
   line-height: 1;
 
   cursor: default;
@@ -103,9 +103,9 @@ body, input {
   position: relative;
   left: -50%;
   margin: 0;
-  font-size: 1vw;
+  font-size: 1.0vw;
   font-weight: 400;
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
   line-height: 1;
 
   cursor: default;
