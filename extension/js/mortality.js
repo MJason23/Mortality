@@ -215,7 +215,9 @@ App.fn.getColorTheme = function() {
     "dawn" : ['#FFEB3B', '#FBC02D', '#F9A825', '#FF9800', '#F57C00', '#E65100', '#795548'],
     "dusk" : ['#391003', '#5D1A25', '#722007','#ab300a', '#bf360c', '#cb5e3c', '#df9a85'],
     "twilight" : ['#4527A0', '#283593', '#3F51B5', '#5C6BC0', '#78909C', '#B0BEC5', '#ECEFF1'],
-    "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#00E8BB', '#00a282']
+    "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#00E8BB', '#00a282'],
+    "rainbowl" : ['#ee4035', '#f37736', '#fcec4d', '#FDF498', '#7bc043', '#0392cf', '#644ca2'],
+    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#FDF498', '#7bc043', '#0392cf', '#644ca2']
   }
 
   this.savedTheme = localStorage.getItem("colorTheme");
@@ -239,6 +241,10 @@ App.fn.getColorTheme = function() {
         return themes.twilight;
       case "retro":
         return themes.retro;
+      case "rainbowd":
+        return themes.rainbowd;
+      case "rainbowl":
+        return themes.rainbowl;
       default:
         return themes.def;
     }
@@ -247,7 +253,7 @@ App.fn.getColorTheme = function() {
 
 App.fn.loadDarkOrLightTheme = function()
 {
-    if(this.savedTheme == "light")
+    if(this.savedTheme == "light" || this.savedTheme == "rainbowl")
     {
       document.body.style.backgroundColor = "#F5F5F5";
       document.body.style.color = "#424242";
@@ -304,7 +310,7 @@ App.fn.renderAge = function(){
       second: secondString,
       ms: msString
     }));
-    if(this.savedTheme == "light")
+    if(this.savedTheme == "light" || this.savedTheme == "rainbowl")
     {
       var counts = document.getElementsByClassName('count');
       for( i=0; i<counts.length; i++ ) {
