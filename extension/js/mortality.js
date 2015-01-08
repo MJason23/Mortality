@@ -245,15 +245,14 @@ App.fn.renderAge = function(){
   var duration  = now - timezoneOffset - this.dob;
 
   var years = Math.floor(duration / yearMS);
+  var leapDays = Math.floor(years/4)*dayMS;
+  duration = duration - leapDays;
   var months = Math.floor((duration % yearMS) / monthMS);
-	var days = Math.floor((duration % monthMS) / dayMS);
+	var days = Math.floor((duration % monthMS) / dayMS)
 	var hours = Math.floor((duration % dayMS) / hourMS);
 	var minutes = Math.floor((duration % hourMS) / minuteMS);
 	var seconds = Math.floor((duration % minuteMS) / secondMS);
 	var milliseconds = Math.floor((duration % secondMS) / 10);
-
-	var leapDays = Math.floor(years/4);
-	days = days - leapDays;
 
 	var yearString = this.zeroFill(years.toString(),2);
 	var monthString =this.zeroFill(months.toString(),2);
