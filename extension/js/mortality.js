@@ -216,8 +216,8 @@ App.fn.getColorTheme = function() {
     "dusk" : ['#391003', '#5D1A25', '#722007','#ab300a', '#bf360c', '#cb5e3c', '#df9a85'],
     "twilight" : ['#4527A0', '#283593', '#3F51B5', '#5C6BC0', '#78909C', '#B0BEC5', '#ECEFF1'],
     "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#00E8BB', '#00a282'],
-    "rainbowl" : ['#ee4035', '#f37736', '#fcec4d', '#FDF498', '#7bc043', '#0392cf', '#644ca2'],
-    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#FDF498', '#7bc043', '#0392cf', '#644ca2']
+    "rainbowl" : ['#B71C1C', '#E65100', '#FFD600', '#1B5E20', '#004D40', '#01579B', '#673AB7'],
+    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#7bc043', '#009688', '#0392cf', '#644ca2']
   }
 
   this.savedTheme = localStorage.getItem("colorTheme");
