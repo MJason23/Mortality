@@ -48,6 +48,53 @@ body, input {
   font-family: 'Avenir', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
+input[type=checkbox] {  
+    display: none;  
+}  
+
+input[type=checkbox]:checked + label:before {  
+    content: "\2713";  
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+    color: #000000;  
+    text-align: center;
+    line-height: 20px;
+}  
+
+input[type='color'] {
+  height: 50px;
+  width: 100%;
+  border-width: 0px;
+}
+
+button {
+  font-size: 1.5rem;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+label {    
+  color: #B0B5B9;
+  font-size: 1.1rem;
+
+  cursor: pointer;  
+  position: relative;  
+  margin-left: 4.5vw;
+}  
+
+.checkbox label:before {  
+  border-radius: 3px; 
+  left:-1.3vw;
+  content: ""; 
+
+  width: 1vw;  
+  height: 1vw;  
+
+  position: absolute;  
+  background-color: #ffffff;  
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
+}  
+
 .pie {
   float: left;
   width: 1.9%;
@@ -72,6 +119,7 @@ body, input {
   font-size: 1.3rem;
   text-align: center;
   line-height: 1;
+  padding-top: 1vw;
   padding-bottom: 10px;
 }
 
@@ -115,19 +163,6 @@ body, input {
   text-align: center;
   flex-basis: 20px;
   flex-grow: 1;
-}
-
-button {
-  font-size: 1.5rem;
-
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-input[type='color'] {
-  height: 50px;
-  width: 100%;
-  border-width: 0px;
 }
 
 #submit_options_button {
