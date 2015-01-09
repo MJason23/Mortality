@@ -57,7 +57,7 @@ input[type=checkbox]:checked + label:before {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
     color: #000000;  
     text-align: center;
-    line-height: 20px;
+    line-height: 22px;
 }  
 
 input[type='color'] {
@@ -83,12 +83,13 @@ label {
 }  
 
 .checkbox label:before {  
-  border-radius: 3px; 
-  left:-1.3vw;
+  border-radius: 3px;
+  top:2px; 
+  left:-25px;
   content: ""; 
 
-  width: 1vw;  
-  height: 1vw;  
+  width: 18px;  
+  height: 18px;  
 
   position: absolute;  
   background-color: #ffffff;  
