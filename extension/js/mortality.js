@@ -57,16 +57,22 @@ App.fn.load = function(){
 };
 
 App.fn.listenForCheck = function() {
+  this.timeCheckbox = document.querySelector('input[name=check]');
+  this.showHideTimeSelector(this.timeCheckbox);
   document.addEventListener("DOMContentLoaded", function (event) {
-      var _selector = document.querySelector('input[name=check]');
-      _selector.addEventListener('change', function (event) {
-          if (_selector.checked) {
-              document.getElementById("time_selector").style.display = "block";
-          } else {
-              document.getElementById("time_selector").style.display = "none";
-          }
-      });
+    var tempTimeCheckbox = document.querySelector('input[name=check]');
+    tempTimeCheckbox.addEventListener('change', function (event) {
+        App.fn.showHideTimeSelector(tempTimeCheckbox);
+    });
   });
+}
+
+App.fn.showHideTimeSelector = function(checkbox) {
+  if (checkbox.checked) {
+      document.getElementById("time_selector").style.display = "block";
+  } else {
+      document.getElementById("time_selector").style.display = "none";
+  }  
 }
 
 App.fn.generateCircleLoops = function(numberMonths) {
