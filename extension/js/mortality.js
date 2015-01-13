@@ -61,9 +61,9 @@ App.fn.listenForCheck = function() {
       var _selector = document.querySelector('input[name=check]');
       _selector.addEventListener('change', function (event) {
           if (_selector.checked) {
-              console.log("CH");
+              document.getElementById("time_selector").style.display = "block";
           } else {
-              console.log("SD");
+              document.getElementById("time_selector").style.display = "none";
           }
       });
   });
