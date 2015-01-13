@@ -58,6 +58,9 @@ App.fn.load = function(){
 
 App.fn.listenForCheck = function() {
   this.timeCheckbox = document.querySelector('input[name=check]');
+  if (localStorage.getItem("dobTimeSet") == "YES") {
+    this.timeCheckbox.checked = true;
+  }
   this.showHideTimeSelector(this.timeCheckbox);
   document.addEventListener("DOMContentLoaded", function (event) {
     var tempTimeCheckbox = document.querySelector('input[name=check]');
@@ -136,14 +139,22 @@ App.fn.createCircle = function(bkgdColor, opacity) {
 
 App.fn.saveDob = function(){
   var input = this.$$('input')[0];
-  if ( !input.valueAsDate ) return;
+  if( !input.valueAsDate ) return;
 
   this.dob = input.valueAsDate;
 
-  if (this.dob) {
+  if( this.dob ) {
     localStorage.dob = this.dob.getTime();
     localStorage.dobSet = "YES";
   }
+
+  if( this.timeCheckbox.checked ) {
+    localStorage.dobTimeSet = "YES";
+  }
+  else {
+    localStorage.removeItem("dobTimeSet");
+  }
+
 };
 
 App.fn.saveTheme = function(){
