@@ -20,7 +20,9 @@ var App = function($el){
 
   if (localStorage.getItem("dobSet") === null) {
     this.renderSettings();
-  } else {
+    this.listenForCheck();
+  }
+  else {
     this.renderAge();
     this.loadDarkOrLightTheme();
     document.getElementById('reset').onclick = function(){
@@ -53,6 +55,19 @@ App.fn.load = function(){
 
   this.generateCircleLoops(numberMonths);
 };
+
+App.fn.listenForCheck = function() {
+  document.addEventListener("DOMContentLoaded", function (event) {
+      var _selector = document.querySelector('input[name=check]');
+      _selector.addEventListener('change', function (event) {
+          if (_selector.checked) {
+              console.log("CH");
+          } else {
+              console.log("SD");
+          }
+      });
+  });
+}
 
 App.fn.generateCircleLoops = function(numberMonths) {
   for (var chapter = 0; chapter < this.chapters.length; chapter++) {
