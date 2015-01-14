@@ -131,6 +131,10 @@ label {
   top: 42%;
 }
 
+.button-container {
+  margin-left:5vw;
+}
+
 .count {
   position: relative;
   left: -50%;
@@ -177,6 +181,9 @@ label {
 }
 
 #cancel_options_button {
+  position:relative;
+  bottom:5px;
+  margin-left:1vw;
   display: inline;
   color: #FFF;
   cursor: pointer;
