@@ -167,11 +167,17 @@ label {
 }
 
 #submit_options_button {
-  display: block;
+  display: inline;
   border: none;
   border-radius: 0.25rem;
   outline: none;
   background-color: #0BE;
+  color: #FFF;
+  cursor: pointer;
+}
+
+#cancel_options_button {
+  display: inline;
   color: #FFF;
   cursor: pointer;
 }
