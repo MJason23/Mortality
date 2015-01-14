@@ -314,8 +314,6 @@ App.fn.renderAge = function(){
   var duration  = now - timezoneOffset - this.dob;
 
   var years = Math.floor(duration / yearMS);
-  var leapDays = Math.floor(years/4)*dayMS;
-  duration = duration - leapDays;
   years = Math.floor(duration / yearMS);
   var months = Math.floor((duration % yearMS) / monthMS);
 	var days = Math.floor(((duration % yearMS) % monthMS) / dayMS)
