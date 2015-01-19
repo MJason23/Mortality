@@ -1,7 +1,6 @@
 (function(){
 
 var $  = document.getElementById.bind(document);
-var $$ = document.querySelectorAll.bind(document);
 
 var yearMS = 31556952000;
 var monthMS = 2628000000;
@@ -15,8 +14,10 @@ var App = function($el){
   this.load();
 
   this.$el.addEventListener(
-    'submit', this.submit.bind(this)
+    'cancel_form', this.cancel.bind(this)
   );
+
+  document.getElementById
 
   if (localStorage.getItem("dobSet") === null) {
     this.renderSettings();
@@ -138,7 +139,7 @@ App.fn.createCircle = function(bkgdColor, opacity) {
 };
 
 App.fn.saveDob = function(){
-  var input = this.$$('input')[0];
+  var input = $('#dob_selector');
   if( !input.valueAsDate ) return;
 
   this.dob = input.valueAsDate;
@@ -167,6 +168,15 @@ App.fn.saveTheme = function(){
 };
 
 App.fn.submit = function(e){
+  e.preventDefault();
+
+  this.saveDob();
+  this.saveTheme();
+
+  location.reload();
+};
+
+App.fn.cancel = function(e){
   e.preventDefault();
 
   this.saveDob();
@@ -367,10 +377,6 @@ App.fn.renderAge = function(){
   }.bind(this));
 };
 
-App.fn.$$ = function(sel){
-  return this.$el.querySelectorAll(sel);
-};
-
 App.fn.html = function(html){
   this.$el.innerHTML = html;
 };
@@ -385,6 +391,11 @@ App.fn.view = function(name){
 window.app = new App($('app'))
 
 })();
+
+
+$("#submit_options_button").click(function(){
+  window.app.submit();
+});
 
 
 function animate(theta, radius) {
