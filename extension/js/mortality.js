@@ -13,12 +13,6 @@ var App = function($el){
   this.$el = $el;
   this.load();
 
-  this.$el.addEventListener(
-    'cancel_form', this.cancel.bind(this)
-  );
-
-  document.getElementById
-
   if (localStorage.getItem("dobSet") === null) {
     this.renderSettings();
     this.listenForCheck();
@@ -170,11 +164,6 @@ App.fn.saveTheme = function(){
 App.fn.submit = function(){
   this.saveDob();
   this.saveTheme();
-  location.reload();
-};
-
-App.fn.cancel = function(){
-  localStorage.dobSet = "YES";
   location.reload();
 };
 
@@ -392,7 +381,8 @@ $("#submit_button").click(function(){
 });
 
 $("#cancel_button").click(function(){
-  window.app.cancel();
+  localStorage.dobSet = "YES";
+  location.reload();
   return false;
 });
 
