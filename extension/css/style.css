@@ -170,7 +170,7 @@ label {
   flex-grow: 1;
 }
 
-#submit_options_button {
+#submit_button {
   display: inline;
   border: none;
   border-radius: 0.25rem;
@@ -180,7 +180,7 @@ label {
   cursor: pointer;
 }
 
-#cancel_options_button {
+#cancel_button {
   position:relative;
   bottom:5px;
   margin-left:1vw;

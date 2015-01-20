@@ -170,16 +170,11 @@ App.fn.saveTheme = function(){
 App.fn.submit = function(){
   this.saveDob();
   this.saveTheme();
-
   location.reload();
 };
 
-App.fn.cancel = function(e){
-  e.preventDefault();
-
-  this.saveDob();
-  this.saveTheme();
-
+App.fn.cancel = function(){
+  localStorage.dobSet = "YES";
   location.reload();
 };
 
@@ -391,10 +386,15 @@ window.app = new App($('app'))
 })();
 
 
-$("#submit_options_button").click(function(){
+$("#submit_button").click(function(){
   window.app.submit();
+  return false;
 });
 
+$("#cancel_button").click(function(){
+  window.app.cancel();
+  return false;
+});
 
 function animate(theta, radius) {
   var path = document.getElementById('path');
