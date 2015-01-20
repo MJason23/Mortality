@@ -139,7 +139,7 @@ App.fn.createCircle = function(bkgdColor, opacity) {
 };
 
 App.fn.saveDob = function(){
-  var input = $('#dob_selector');
+  var input = $('dob_selector');
   if( !input.valueAsDate ) return;
 
   this.dob = input.valueAsDate;
@@ -167,9 +167,7 @@ App.fn.saveTheme = function(){
   }
 };
 
-App.fn.submit = function(e){
-  e.preventDefault();
-
+App.fn.submit = function(){
   this.saveDob();
   this.saveTheme();
 
