@@ -23,8 +23,12 @@
 
 *,*:before,*:after {
   -webkit-box-sizing: border-box;
-  -webkit-user-select: none;
+  
 }
+
+/****************/
+/*   Elements   */
+/****************/
 
 body,html {
   height: 100%;
@@ -82,6 +86,18 @@ label {
   margin-left: 4.5vw;
 }  
 
+/************************/
+/*   Settings Classes   */
+/************************/
+
+.input_field {
+  width: 15rem;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  border-radius: .25rem;
+  height: 2.4rem;
+}
+
 .checkbox label:before {  
   border-radius: 3px;
   top:2px; 
@@ -95,6 +111,30 @@ label {
   background-color: #ffffff;  
   box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
 }  
+
+.label_text {
+  -webkit-user-select: none;
+  color: #B0B5B9;
+  font-size: 1.3rem;
+  text-align: center;
+  line-height: 1;
+  padding-top: 1vw;
+  padding-bottom: 10px;
+}
+
+.age-container {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+}
+
+.button-container {
+  margin-left:5vw;
+}
+
+/*******************/
+/* Counter Classes */
+/*******************/
 
 .pie {
   float: left;
@@ -115,27 +155,8 @@ label {
   background-color: #424242;
 }
 
-.label_text {
-  color: #B0B5B9;
-  font-size: 1.3rem;
-  text-align: center;
-  line-height: 1;
-  padding-top: 1vw;
-  padding-bottom: 10px;
-}
-
-
-.age-container {
-  position: absolute;
-  left: 50%;
-  top: 42%;
-}
-
-.button-container {
-  margin-left:5vw;
-}
-
 .count {
+  -webkit-user-select: none;
   position: relative;
   left: -50%;
   top: -50%;
@@ -152,6 +173,7 @@ label {
 }
 
 .count-labels {
+  -webkit-user-select: none;
   display:flex;
   position: relative;
   left: -50%;
@@ -165,9 +187,18 @@ label {
 }
 
 .count-label {
+  -webkit-user-select: none;
   text-align: center;
   flex-basis: 20px;
   flex-grow: 1;
+}
+
+/************************/
+/* Settings Identifiers */
+/************************/
+
+#age_option_container {
+  padding-top: 0.5rem;
 }
 
 #submit_button {
@@ -189,9 +220,9 @@ label {
   cursor: pointer;
 }
 
-#age_option_container {
-  padding-top: 0.5rem;
-}
+/***********************/
+/* Counter Identifiers */
+/***********************/
 
 #reset {
   display:none;
@@ -201,12 +232,3 @@ label {
   font-size: 12px;
   cursor: pointer;
 }
-
-.input_field {
-  width: 15rem;
-  font-size: 1.5rem;
-  margin-bottom: 25px;
-  border-radius: .25rem;
-  height: 2.4rem;
-}
-
