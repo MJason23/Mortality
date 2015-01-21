@@ -41,7 +41,7 @@ Date.prototype.yyyymmdd = function() {
     this.dob = getDob();
 
     var monthBorn = this.dob.getMonth();
-    this.chapters = getChapters(monthBorn);
+    var chaptersArray = getChapters(monthBorn);
 
     this.documentCircle = document.querySelector('#circles');
 
@@ -51,13 +51,13 @@ Date.prototype.yyyymmdd = function() {
     var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime())/(oneDay)));
     var numberMonths = Math.floor(diffDays/30);
 
-    this.generateCircleLoops(numberMonths);
+    this.generateCircleLoops(numberMonths, chaptersArray);
   };
 
-  App.fn.generateCircleLoops = function(numberMonths) {
-    for (var chapter = 0; chapter < this.chapters.length; chapter++) {
-      var startMonth = this.chapters[chapter][0] + 1;
-      var endMonth = this.chapters[chapter][1];
+  App.fn.generateCircleLoops = function(numberMonths, chaptersArray) {
+    for (var chapter = 0; chapter < chaptersArray.length; chapter++) {
+      var startMonth = chaptersArray[chapter][0] + 1;
+      var endMonth = chaptersArray[chapter][1];
       var bkgdColor = getColorTheme()[chapter];
 
       var x;
@@ -133,21 +133,6 @@ Date.prototype.yyyymmdd = function() {
 
   };
 
-  App.fn.saveTheme = function(){
-    var savedTheme = localStorage.getItem("colorTheme");
-    var selectedTheme = document.getElementById("theme_dropdown").value;
-
-    if (savedTheme != selectedTheme) {
-      localStorage.setItem("colorTheme", selectedTheme);
-    }
-  };
-
-  App.fn.submit = function(){
-    this.saveDob();
-    this.saveTheme();
-    location.reload();
-  };
-
   App.fn.renderSettings = function(){
     this.setAppElementHTML(this.getTemplateScript('dob')());
     document.body.style.backgroundColor = "#1d1d1d";
@@ -158,15 +143,10 @@ Date.prototype.yyyymmdd = function() {
       document.getElementById('dob_selector').value = this.dob.yyyymmdd();
     }
 
-    this.setSelectedTheme();
+    setDropdownWithCurrentTheme();
   };
 
-  App.fn.setSelectedTheme = function(){
-    var theme = localStorage.getItem("colorTheme");
-    if (theme != null) {
-      document.getElementById("theme_dropdown").value = theme;
-    }
-  };
+
 
   App.fn.renderAge = function(){
     var now = new Date();
@@ -237,15 +217,15 @@ Date.prototype.yyyymmdd = function() {
     return Handlebars.compile(templateElement.innerHTML);
   };
 
-
-
   window.app = new App($('app'))
 
 })();
 
 
 $("#submit_button").click(function(){
-  window.app.submit();
+  window.app.saveDob();
+  saveTheme();
+  location.reload();
   return false;
 });
 
@@ -259,6 +239,15 @@ $('#reset').click(function(){
   localStorage.removeItem("dobSet");
   location.reload();
 });
+
+function saveTheme(){
+  var savedTheme = localStorage.getItem("colorTheme");
+  var selectedTheme = document.getElementById("theme_dropdown").value;
+
+  if (savedTheme != selectedTheme) {
+    localStorage.setItem("colorTheme", selectedTheme);
+  }
+};
 
 function listenForCheck() {
   var timeCheckbox = document.querySelector('input[name=check]');
@@ -332,6 +321,13 @@ function getColorTheme() {
       default:
         return themes.def;
     }
+  }
+};
+
+function setDropdownWithCurrentTheme(){
+  var theme = localStorage.getItem("colorTheme");
+  if (theme != null) {
+    document.getElementById("theme_dropdown").value = theme;
   }
 };
 
