@@ -9,8 +9,8 @@ var hourMS = 3600000;
 var minuteMS = 60000;
 var secondMS = 1000;
 
-var App = function($el){
-  this.$el = $el;
+var App = function(appElement){
+  this.appElement = appElement;
   this.load();
 
   if (localStorage.getItem("dobSet") === null) {
@@ -175,7 +175,7 @@ Date.prototype.yyyymmdd = function() {
 };
 
 App.fn.renderSettings = function(){
-  this.html(this.view('dob')());
+  this.setAppElementHTML(this.getTemplateScript('dob')());
   document.body.style.backgroundColor = "#1d1d1d";
   document.body.style.color = "#eff4ff";
   this.documentCircle.style.display = "none";
@@ -323,7 +323,7 @@ App.fn.renderAge = function(){
 	var msString = this.zeroFill(milliseconds.toString(),2);
 
   requestAnimationFrame(function(){
-    this.html(this.view('age')({
+    this.setAppElementHTML(this.getTemplateScript('age')({
       year: yearString,
       month: monthString,
       day: dayString,
@@ -359,13 +359,13 @@ App.fn.renderAge = function(){
   }.bind(this));
 };
 
-App.fn.html = function(html){
-  this.$el.innerHTML = html;
+App.fn.setAppElementHTML = function(html){
+  this.appElement.innerHTML = html;
 };
 
-App.fn.view = function(name){
-  var $el = $(name + '-template');
-  return Handlebars.compile($el.innerHTML);
+App.fn.getTemplateScript = function(name){
+  var templateElement = $(name + '-template');
+  return Handlebars.compile(templateElement.innerHTML);
 };
 
 
