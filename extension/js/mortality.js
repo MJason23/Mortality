@@ -39,7 +39,7 @@ Date.prototype.yyyymmdd = function() {
     var x;
 
     this.dob = getDOB();
-    this.dobMinutes = getDOBMinutes();
+    this.dobMinutes = localStorage.dobMinutes || 0;
 
     var monthBorn = this.dob.getMonth();
     var chaptersArray = getChapters(monthBorn);
@@ -114,30 +114,33 @@ Date.prototype.yyyymmdd = function() {
     this.documentCircle.appendChild(circle);
   };
 
-  App.fn.saveDob = function(){
+  App.fn.saveDob = function()
+  {
     var dateInput = $('dob_input');
-    var timeInput = $('time_input');
     //TODO: Show ERROR
     if( !dateInput.valueAsDate ) return;
-    if( !timeInput.valueAsDate ) return;
 
     this.dob = dateInput.valueAsDate;
-    var timeArray = timeInput.value.split(":");
-    this.dobMinutes = timeArray[0]*60 + timeArray[1]*1;
+    localStorage.dob = this.dob.getTime();
+    localStorage.dobSet = "YES";
 
-    if( this.dob ) {
-      localStorage.dob = this.dob.getTime();
-      localStorage.dobMinutes = this.dobMinutes;
-      localStorage.dobSet = "YES";
-    }
-
-    if( document.querySelector('input[id=timeCheckbox]').checked ) {
+    var timeChecked = document.querySelector('input[id=timeCheckbox]').checked;
+    if( timeChecked )
+    {
+      var timeInput = $('time_input');
+      //TODO: Show ERROR
+      if( !timeInput.valueAsDate ) return;
+      var timeArray = timeInput.value.split(":");
+      this.dobMinutes = timeArray[0]*60 + timeArray[1]*1;
       localStorage.dobTimeSet = "YES";
+      localStorage.dobMinutes = this.dobMinutes;
     }
-    else {
+    else
+    {
+      this.dobMinutes = 0;
       localStorage.removeItem("dobTimeSet");
+      localStorage.removeItem("dobMinutes")
     }
-
   };
 
   App.fn.renderSettings = function(){
@@ -157,10 +160,12 @@ Date.prototype.yyyymmdd = function() {
 
 
 
-  App.fn.renderAge = function(){
+  App.fn.renderAge = function()
+  {
     var now = new Date();
     var timezoneOffset = now.getTimezoneOffset() * minuteMS;
-    var duration  = now - this.dob - timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
+    var randomOffset = 144000;
+    var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS) + randomOffset;
 
     var years = Math.floor(duration / yearMS);
     duration -= (years*yearMS);
@@ -386,13 +391,6 @@ function getDOB() {
     return new Date(parseInt(savedDoB));
   }
 };
-
-function getDOBMinutes() {
-  var savedDOBMinutes = localStorage.dobMinutes;
-  if(savedDOBMinutes != 'null') {
-    return savedDOBMinutes;
-  }
-}
 
 function zeroFill(number, width)
 {
