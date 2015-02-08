@@ -38,7 +38,8 @@ Date.prototype.yyyymmdd = function() {
   App.fn.load = function(){
     var x;
 
-    this.dob = getDob();
+    this.dob = getDOB();
+    this.dobMinutes = getDOBMinutes();
 
     var monthBorn = this.dob.getMonth();
     var chaptersArray = getChapters(monthBorn);
@@ -114,17 +115,23 @@ Date.prototype.yyyymmdd = function() {
   };
 
   App.fn.saveDob = function(){
-    var input = $('dob_selector');
-    if( !input.valueAsDate ) return;
+    var dateInput = $('dob_input');
+    var timeInput = $('time_input');
+    //TODO: Show ERROR
+    if( !dateInput.valueAsDate ) return;
+    if( !timeInput.valueAsDate ) return;
 
-    this.dob = input.valueAsDate;
+    this.dob = dateInput.valueAsDate;
+    var timeArray = timeInput.value.split(":");
+    this.dobMinutes = timeArray[0]*60 + timeArray[1]*1;
 
     if( this.dob ) {
       localStorage.dob = this.dob.getTime();
+      localStorage.dobMinutes = this.dobMinutes;
       localStorage.dobSet = "YES";
     }
 
-    if( document.querySelector('input[name=check]').checked ) {
+    if( document.querySelector('input[id=timeCheckbox]').checked ) {
       localStorage.dobTimeSet = "YES";
     }
     else {
@@ -139,10 +146,12 @@ Date.prototype.yyyymmdd = function() {
     document.body.style.color = "#eff4ff";
     this.documentCircle.style.display = "none";
     if( this.dob != 'null' ) {
-      var test = this.dob.yyyymmdd();
-      document.getElementById('dob_selector').value = this.dob.yyyymmdd();
+      document.getElementById('dob_input').value = this.dob.yyyymmdd();
     }
-
+    if( this.dobMinutes != 'null' ) {
+      var temp = getTimeStringFromMinutes(this.dobMinutes);
+      document.getElementById('time_input').value = temp;
+    }
     setDropdownWithCurrentTheme();
   };
 
@@ -151,16 +160,21 @@ Date.prototype.yyyymmdd = function() {
   App.fn.renderAge = function(){
     var now = new Date();
     var timezoneOffset = now.getTimezoneOffset() * minuteMS;
-    var duration  = now - timezoneOffset - this.dob;
+    var duration  = now - this.dob - timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
 
     var years = Math.floor(duration / yearMS);
-    years = Math.floor(duration / yearMS);
-    var months = Math.floor((duration % yearMS) / monthMS);
-  	var days = Math.floor(((duration % yearMS) % monthMS) / dayMS)
-  	var hours = Math.floor((duration % dayMS) / hourMS);
-  	var minutes = Math.floor((duration % hourMS) / minuteMS);
-  	var seconds = Math.floor((duration % minuteMS) / secondMS);
-  	var milliseconds = Math.floor((duration % secondMS) / 10);
+    duration -= (years*yearMS);
+    var months = Math.floor(duration / monthMS);
+    duration -= (months*monthMS);
+  	var days = Math.floor(duration / dayMS);
+    duration -= (days*dayMS);
+  	var hours = Math.floor(duration / hourMS);
+    duration -= (hours*hourMS);
+  	var minutes = Math.floor(duration / minuteMS);
+    duration -= (minutes*minuteMS);
+  	var seconds = Math.floor(duration / secondMS);
+    duration -= (seconds*secondMS);
+  	var milliseconds = Math.floor(duration / 10);
 
   	var yearString = zeroFill(years.toString(),2);
   	var monthString = zeroFill(months.toString(),2);
@@ -250,14 +264,14 @@ function saveTheme(){
 };
 
 function listenForCheck() {
-  var timeCheckbox = document.querySelector('input[name=check]');
+  var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
   if (localStorage.getItem("dobTimeSet") == "YES") {
     timeCheckbox.checked = true;
   }
   showHideTimeSelector(timeCheckbox);
 
   document.addEventListener("DOMContentLoaded", function (event) {
-    var tempTimeCheckbox = document.querySelector('input[name=check]');
+    var tempTimeCheckbox = document.querySelector('input[id=timeCheckbox]');
     tempTimeCheckbox.addEventListener('change', function (event) {
         showHideTimeSelector(tempTimeCheckbox);
     });
@@ -360,18 +374,25 @@ function getChapters(monthBorn) {
 
 function showHideTimeSelector(checkbox) {
   if (checkbox.checked) {
-      document.getElementById("time_selector").style.display = "block";
+      document.getElementById("time_input").style.display = "block";
   } else {
-      document.getElementById("time_selector").style.display = "none";
-  }  
+      document.getElementById("time_input").style.display = "none";
+  }
 }
 
-function getDob() {
+function getDOB() {
   var savedDoB = localStorage.dob;
   if(savedDoB != 'null') {
     return new Date(parseInt(savedDoB));
   }
 };
+
+function getDOBMinutes() {
+  var savedDOBMinutes = localStorage.dobMinutes;
+  if(savedDOBMinutes != 'null') {
+    return savedDOBMinutes;
+  }
+}
 
 function zeroFill(number, width)
 {
@@ -402,6 +423,11 @@ function animate(theta, radius) {
   setTimeout(animate, 7200000); // 1/360 of a month in ms
 };
 
+function getTimeStringFromMinutes(totalMinutes) {
+  var hours = Math.floor(totalMinutes/60);
+  var minutes = totalMinutes%60;
+  return zeroFill(hours,2)+":"+zeroFill(minutes,2)+":00";
+}
 
 (function() {
   window.onresize= function() {
