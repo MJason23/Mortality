@@ -290,12 +290,14 @@ function loadDarkOrLightTheme(savedTheme)
       document.body.style.backgroundColor = "#F5F5F5";
       document.body.style.color = "#424242";
       document.getElementById('reset-img').src = "assets/settingsBlack.png"
+      document.getElementById('info-img').src = "assets/infoBlack.png"
     }
     else
     {
       document.body.style.backgroundColor = "#1d1d1d";
       document.body.style.color = "#eff4ff";
       document.getElementById('reset-img').src = "assets/settings.png"
+      document.getElementById('info-img').src = "assets/infoWhite.png"
     }
 }
 

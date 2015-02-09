@@ -23,7 +23,7 @@
 
 *,*:before,*:after {
   -webkit-box-sizing: border-box;
-  
+
 }
 
 /****************/
@@ -52,17 +52,17 @@ body, input {
   font-family: 'Avenir', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
-input[type=checkbox] {  
-    display: none;  
-}  
+input[type=checkbox] {
+    display: none;
+}
 
-input[type=checkbox]:checked + label:before {  
-    content: "\2713";  
+input[type=checkbox]:checked + label:before {
+    content: "\2713";
     text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-    color: #000000;  
+    color: #000000;
     text-align: center;
     line-height: 22px;
-}  
+}
 
 input[type='color'] {
   height: 50px;
@@ -77,14 +77,14 @@ button {
   -webkit-appearance: none;
 }
 
-label {    
+label {
   color: #B0B5B9;
   font-size: 1.1rem;
 
-  cursor: pointer;  
-  position: relative;  
+  cursor: pointer;
+  position: relative;
   margin-left: 4.5vw;
-}  
+}
 
 /************************/
 /*   Settings Classes   */
@@ -93,24 +93,24 @@ label {
 .input_field {
   width: 15rem;
   font-size: 1.5rem;
-  margin-bottom: 25px;
+  margin-bottom: 1vw;
   border-radius: .25rem;
   height: 2.4rem;
 }
 
-.checkbox label:before {  
+.checkbox label:before {
   border-radius: 3px;
-  top:2px; 
+  top:2px;
   left:-25px;
-  content: ""; 
+  content: "";
 
-  width: 18px;  
-  height: 18px;  
+  width: 18px;
+  height: 18px;
 
-  position: absolute;  
-  background-color: #ffffff;  
-  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);  
-}  
+  position: absolute;
+  background-color: #ffffff;
+  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
+}
 
 .label_text {
   -webkit-user-select: none;
@@ -201,6 +201,9 @@ label {
   padding-top: 0.5rem;
 }
 
+#time_input {
+  margin-top:1vw;
+}
 #submit_button {
   display: inline;
   border: none;
@@ -227,6 +230,14 @@ label {
 #reset {
   position: fixed;
   right: 15px;
+  bottom: 0px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+#info {
+  position: fixed;
+  left: 15px;
   bottom: 0px;
   font-size: 12px;
   cursor: pointer;
