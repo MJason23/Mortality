@@ -164,8 +164,7 @@ Date.prototype.yyyymmdd = function() {
   {
     var now = new Date();
     var timezoneOffset = now.getTimezoneOffset() * minuteMS;
-    var randomOffset = 144000;
-    var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS) + randomOffset;
+    var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
 
     var years = Math.floor(duration / yearMS);
     duration -= (years*yearMS);
