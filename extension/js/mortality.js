@@ -24,6 +24,7 @@ Date.prototype.yyyymmdd = function() {
       this.renderSettings();
       listenForCheck();
       $("reset").style.display = 'none';
+      $("info").style.display = 'none';
     }
     else {
       this.renderAge();
