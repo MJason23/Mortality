@@ -1,6 +1,6 @@
 // Inline popups
 $('#inline-popup').magnificPopup({
-  removalDelay: 500, //delay removal by X to allow out-animation
+  removalDelay: 300, //delay removal by X to allow out-animation
   callbacks: {
     beforeOpen: function() {
        this.st.mainClass = this.st.el.attr('data-effect');

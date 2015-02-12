@@ -44,6 +44,7 @@ body {
   -webkit-align-items: center;
   -webkit-font-smoothing: antialiased;
   -webkit-justify-content: center;
+  -webkit-user-select: none;
 }
 
 body, input {
@@ -54,6 +55,10 @@ body, input {
 
 input[type=checkbox] {
     display: none;
+}
+
+a {
+outline: none;
 }
 
 input[type=checkbox]:checked + label:before {
