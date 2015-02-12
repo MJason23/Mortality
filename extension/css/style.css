@@ -235,7 +235,7 @@ label {
 #reset {
   position: fixed;
   right: 15px;
-  bottom: 0px;
+  bottom: 10px;
   font-size: 12px;
   cursor: pointer;
 }
@@ -243,7 +243,7 @@ label {
 #info {
   position: fixed;
   left: 15px;
-  bottom: 0px;
+  bottom: 7px;
   font-size: 12px;
   cursor: pointer;
 }
