@@ -24,7 +24,7 @@ Date.prototype.yyyymmdd = function() {
       this.renderSettings();
       listenForCheck();
       $("reset").style.display = 'none';
-      $("info").style.display = 'none';
+      $('info-img').src = "assets/infoWhite.png"
     }
     else {
       this.renderAge();

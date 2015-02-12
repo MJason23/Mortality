@@ -1,13 +1,26 @@
 /* text-based popup styling */
 .white-popup {
   position: relative;
-  background: #FFF;
+  background: #F5F5F5;
+  color:black;
   padding: 25px;
   width: auto;
-  max-width: 400px;
+  height: 30vw;
+  width: 40vw;
   margin: 0 auto;
 }
 
+a:visited {
+  color:blue;
+}
+
+#title {
+  font-size: 2vw;
+}
+
+#chromelink {
+  font-size: 1vw;
+}
 /* 
 
 ====== Zoom effect ======

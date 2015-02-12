@@ -53,12 +53,12 @@ body, input {
   font-family: 'Avenir', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
-input[type=checkbox] {
-    display: none;
-}
-
 a {
 outline: none;
+}
+
+input[type=checkbox] {
+    display: none;
 }
 
 input[type=checkbox]:checked + label:before {
