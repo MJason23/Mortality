@@ -3,7 +3,7 @@
   position: relative;
   background: #F5F5F5;
   color:black;
-  padding: 25px;
+  padding: .8vw;
   width: auto;
   height: 30vw;
   width: 40vw;
@@ -12,6 +12,11 @@
 
 a:visited {
   color:blue;
+}
+
+#main-image {
+	width: 38.4vw;
+	height: 8.4vw;
 }
 
 #title {
@@ -28,17 +33,23 @@ a:visited {
 */
 .mfp-zoom-in {
   /* start state */
+
   /* animate in */
   /* animate out */
 }
+
+.mfp-content {
+  perspective: 2000px; 
+}
+
 .mfp-zoom-in .mfp-with-anim {
   opacity: 0;
-  transition: all 0.2s ease-in-out;
-  transform: scale(0.8);
+  transition: all .4s ease-in-out;
+  transform: rotateX(-90deg);
 }
 .mfp-zoom-in.mfp-bg {
   opacity: 0;
-  transition: all 0.3s ease-out;
+  transition: all .4s ease-out;
 }
 .mfp-zoom-in.mfp-ready .mfp-with-anim {
   opacity: 1;
@@ -48,9 +59,11 @@ a:visited {
   opacity: 0.8;
 }
 .mfp-zoom-in.mfp-removing .mfp-with-anim {
-  transform: scale(0.8);
+  transform: rotateX(-90deg);
   opacity: 0;
 }
 .mfp-zoom-in.mfp-removing.mfp-bg {
+
+  transition: all .8s ease-out;
   opacity: 0;
 }
