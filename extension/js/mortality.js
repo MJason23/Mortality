@@ -24,7 +24,7 @@ Date.prototype.yyyymmdd = function() {
       this.renderSettings();
       listenForCheck();
       $("reset").style.display = 'none';
-      $('info-img').src = "assets/infoWhite.png"
+      setWhiteInfoButton();
     }
     else {
       this.renderAge();
@@ -254,10 +254,47 @@ $("#cancel_button").click(function(){
   return false;
 });
 
+$('#info').click(function() 
+{
+  localStorage.infoSeen = "YES";
+  if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
+  {
+    document.getElementById("info-img").src = "assets/infoWhite.png"
+  }
+  else if(document.getElementById("info-img").src.indexOf("assets/infoBlackAlert.png") > -1)
+  {
+    document.getElementById("info-img").src = "assets/infoBlack.png"
+  }
+});
+
 $('#reset').click(function(){
   localStorage.removeItem("dobSet");
   location.reload();
 });
+
+function setWhiteInfoButton()
+{
+  if(localStorage.getItem("infoSeen") == "YES")
+  {
+    document.getElementById("info-img").src = "assets/infoWhite.png"
+  }
+  else
+  {
+    document.getElementById("info-img").src = "assets/infoWhiteAlert.png"
+  }
+}
+
+function setBlackInfoButton()
+{
+  if(localStorage.getItem("infoSeen") == "YES")
+  {
+    document.getElementById("info-img").src = "assets/infoBlack.png"
+  }
+  else
+  {
+    document.getElementById("info-img").src = "assets/infoBlackAlert.png"
+  }
+}
 
 function saveTheme(){
   var savedTheme = localStorage.getItem("colorTheme");
@@ -290,14 +327,14 @@ function loadDarkOrLightTheme(savedTheme)
       document.body.style.backgroundColor = "#F5F5F5";
       document.body.style.color = "#424242";
       document.getElementById('reset-img').src = "assets/settingsBlack.png"
-      document.getElementById('info-img').src = "assets/infoBlack.png"
+      setBlackInfoButton();
     }
     else
     {
       document.body.style.backgroundColor = "#1d1d1d";
       document.body.style.color = "#eff4ff";
       document.getElementById('reset-img').src = "assets/settings.png"
-      document.getElementById('info-img').src = "assets/infoWhite.png"
+      setWhiteInfoButton();
     }
 }
 

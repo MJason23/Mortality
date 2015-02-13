@@ -3,28 +3,132 @@
   position: relative;
   background: #F5F5F5;
   color:black;
-  padding: .8vw;
+  padding: .4vw;
   width: auto;
   height: 30vw;
   width: 40vw;
   margin: 0 auto;
+  border-radius: 0.5vw;
+}
+
+hr {
+    border: 0;
+    position: absolute;
+    top:9.8vw;
+    height: 1px;
+    left:1vw;
+    width:38vw;
+    background: #333;
+    background-image: -webkit-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:    -moz-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:     -ms-linear-gradient(left, #ccc, #333, #ccc); 
+    background-image:      -o-linear-gradient(left, #ccc, #333, #ccc); 
 }
 
 a:visited {
   color:blue;
 }
 
+#updates {
+	position: absolute;
+	top: 13.8vw;
+	left: 1.5vw;
+}
+
+.version {
+	font-weight: bold;
+	font-size:1vw;
+}
+
+.version-list {
+	list-style-position: inside;
+	font-size:0.8vw;
+	margin-top: 0.2vw;
+	width:25vw;
+	padding-left: 1vw;
+}
+
 #main-image {
-	width: 38.4vw;
-	height: 8.4vw;
+	width: 39.2vw;
+	height: 9.2vw;
 }
 
 #title {
-  font-size: 2vw;
+	position: absolute;
+	left: 2vw;
+	top: 10.6vw;
+  font-size: 2.2vw;
 }
 
-#chromelink {
+
+#link-label {
+	position: absolute;
+	right: 2.3vw;
+	bottom: 3.0vw;
+  font-size: .8vw;
+  cursor:default;
+}
+
+#link-input {
+	position: absolute;
+	right: 1vw;
+	bottom: 1vw;
   font-size: 1vw;
+  cursor:text;
+}
+
+#twitter-button {
+	position:absolute;
+	top:11.3vw;
+	right:1.5vw;
+	font-size: 1vw;
+	background: #1976D2;
+	border-bottom: 2px solid #0D47A1;
+	border-top:0px;
+	border-left:0px;
+	border-right:0px;
+	color: #F5F5F5;
+	width: 8vw;
+	height: 2.2vw;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+#twitter-button:hover {
+  background: #2196F3;
+  color: #FFFFFF;
+}
+
+#twitter-button:active {
+	border:0px;
+  background: #0D47A1;
+}
+
+#feedback-button {
+	position:absolute;
+	top:14vw;
+	right:1.5vw;
+	font-size: 1vw;
+	background: #D32F2F;
+	border-bottom: 2px solid #B71C1C;
+	border-top:0px;
+	border-left:0px;
+	border-right:0px;
+	color: #F5F5F5;
+	width: 8vw;
+	height: 2.2vw;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+#feedback-button:hover {
+  background: #FF1744;
+  color: #FFFFFF;
+}
+
+#feedback-button:active {
+	border:0px;
+  background: #B71C1C;
 }
 /* 
 

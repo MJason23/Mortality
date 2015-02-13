@@ -48,12 +48,11 @@ body {
 }
 
 body, input {
-  display: -webkit-flex;
-
-  font-family: 'Avenir', 'helvetica neue', helvetica, arial, sans-serif;
+  display: -webkit-flex;  
+  font-family: 'Avenir', 'NUNITO', 'Museo Sans', 'Muli', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
-a {
+a, button {
 outline: none;
 }
 
@@ -236,7 +235,6 @@ label {
   position: fixed;
   right: 15px;
   bottom: 10px;
-  font-size: 12px;
   cursor: pointer;
 }
 
@@ -244,6 +242,5 @@ label {
   position: fixed;
   left: 15px;
   bottom: 7px;
-  font-size: 12px;
   cursor: pointer;
 }

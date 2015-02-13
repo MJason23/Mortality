@@ -22,13 +22,32 @@
 <div id="app"></div>
 <div id="info-popup" class="white-popup mfp-with-anim mfp-hide">
   <img id="main-image" src="assets/popup.png">
+  <hr>
   <div id="content-container">
     <div id="title">Mortality</div>
-    <div id="chromelink"><a href="https://chrome.google.com/webstore/detail/mortality/eeedcpdcehnikgkhbobmkjcipjhlbmpn">Chrome Page</a></div>
-    <div id="credits">Developed by @MattyAyOh</div>
+    <form action="https://www.twitter.com/mattyayoh" target="_blank">
+    <button id="twitter-button" type="submit">@MattyAyOh</button>
+    </form>
+    <form action="https://chrome.google.com/webstore/detail/mortality/eeedcpdcehnikgkhbobmkjcipjhlbmpn/support" target="_blank">
+    <button id="feedback-button">Support</button>
+    </form>
+    <div id="link-label">Copy Link to Share ^^</div>
+    <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
+    <div id="updates">
+    <div id="v3.1.0" class="version">Version 3.1.0 - Don't hesitate to give me feedback ^^</div>
+    <ul class="version-list">
+      <li>Ability to add time to birth date</li>
+      <li>Cancel button in settings</li>
+      <li>Info button on bottom left</li>
+      <li>Info popup you are looking at right now</li>
+      <li>Fix for leap days miscalculating age</li>
+      <li>Make "Retro" less ugly. If you have a theme idea let me know</li>
+    </ul>
+    </div>
   </div>
   <div id="side-container"></div>
 </div>
+
 
 
 <script id="dob-template" type="text/x-handlebars-template">
