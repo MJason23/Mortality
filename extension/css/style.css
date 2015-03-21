@@ -48,7 +48,7 @@ body {
 }
 
 body, input {
-  display: -webkit-flex;  
+  display: -webkit-flex;
   font-family: 'Avenir', 'NUNITO', 'Museo Sans', 'Muli', 'helvetica neue', helvetica, arial, sans-serif;
 }
 
@@ -197,6 +197,10 @@ label {
   flex-grow: 1;
 }
 
+.checkbox {
+  margin-left:2vw;
+}
+
 /************************/
 /* Settings Identifiers */
 /************************/
@@ -208,7 +212,9 @@ label {
 #time_input {
   margin-top:1vw;
 }
+
 #submit_button {
+  margin-top:1vw;
   display: inline;
   border: none;
   border-radius: 0.25rem;
