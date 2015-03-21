@@ -20,9 +20,11 @@ Date.prototype.yyyymmdd = function() {
     this.appElement = appElement;
     this.load();
 
+    localStorage.removeItem("infoSeen");
+
     if (localStorage.getItem("dobSet") === null) {
       this.renderSettings();
-      listenForCheck();
+      loadCheckBoxes();
       $("reset").style.display = 'none';
       setWhiteInfoButton();
     }
@@ -142,6 +144,8 @@ Date.prototype.yyyymmdd = function() {
       localStorage.removeItem("dobTimeSet");
       localStorage.removeItem("dobMinutes")
     }
+    var hideAgeChecked = document.querySelector('input[id=hideAgeCheckBox').checked;
+    hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");
   };
 
   App.fn.renderSettings = function(){
@@ -163,68 +167,73 @@ Date.prototype.yyyymmdd = function() {
 
   App.fn.renderAge = function()
   {
-    var now = new Date();
-    var timezoneOffset = now.getTimezoneOffset() * minuteMS;
-    var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
+    if( localStorage.getItem("hideAge") === null )
+    {
+      var now = new Date();
+      var timezoneOffset = now.getTimezoneOffset() * minuteMS;
+      var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
 
-    var years = Math.floor(duration / yearMS);
-    duration -= (years*yearMS);
-    var months = Math.floor(duration / monthMS);
-    duration -= (months*monthMS);
-  	var days = Math.floor(duration / dayMS);
-    duration -= (days*dayMS);
-  	var hours = Math.floor(duration / hourMS);
-    duration -= (hours*hourMS);
-  	var minutes = Math.floor(duration / minuteMS);
-    duration -= (minutes*minuteMS);
-  	var seconds = Math.floor(duration / secondMS);
-    duration -= (seconds*secondMS);
-  	var milliseconds = Math.floor(duration / 10);
+      var years = Math.floor(duration / yearMS);
+      duration -= (years*yearMS);
+      var months = Math.floor(duration / monthMS);
+      duration -= (months*monthMS);
+    	var days = Math.floor(duration / dayMS);
+      duration -= (days*dayMS);
+    	var hours = Math.floor(duration / hourMS);
+      duration -= (hours*hourMS);
+    	var minutes = Math.floor(duration / minuteMS);
+      duration -= (minutes*minuteMS);
+    	var seconds = Math.floor(duration / secondMS);
+      duration -= (seconds*secondMS);
+    	var milliseconds = Math.floor(duration / 10);
 
-  	var yearString = zeroFill(years.toString(),2);
-  	var monthString = zeroFill(months.toString(),2);
-  	var dayString = zeroFill(days.toString(),2);
-  	var hourString = zeroFill(hours.toString(),2);
-  	var minuteString = zeroFill(minutes.toString(),2);
-  	var secondString = zeroFill(seconds.toString(),2);
-  	var msString = zeroFill(milliseconds.toString(),2);
+    	var yearString = zeroFill(years.toString(),2);
+    	var monthString = zeroFill(months.toString(),2);
+    	var dayString = zeroFill(days.toString(),2);
+    	var hourString = zeroFill(hours.toString(),2);
+    	var minuteString = zeroFill(minutes.toString(),2);
+    	var secondString = zeroFill(seconds.toString(),2);
+    	var msString = zeroFill(milliseconds.toString(),2);
 
-    requestAnimationFrame(function(){
-      this.setAppElementHTML(this.getTemplateScript('age')({
-        year: yearString,
-        month: monthString,
-        day: dayString,
-        hour: hourString,
-        minute: minuteString,
-        second: secondString,
-        ms: msString
-      }));
-      var savedTheme = localStorage.getItem("colorTheme");
-      if(savedTheme == "light" || savedTheme == "rainbowl")
+      requestAnimationFrame(function()
       {
-        var counts = document.getElementsByClassName('count');
-        for( i=0; i<counts.length; i++ ) {
-          counts[i].style.textShadow = "-3px 0 white, 0 3px white, 3px 0 white, 0 -3px white";
+        this.setAppElementHTML(this.getTemplateScript('age')(
+        {
+          year: yearString,
+          month: monthString,
+          day: dayString,
+          hour: hourString,
+          minute: minuteString,
+          second: secondString,
+          ms: msString
+        }));
+        var savedTheme = localStorage.getItem("colorTheme");
+        if(savedTheme == "light" || savedTheme == "rainbowl")
+        {
+          var counts = document.getElementsByClassName('count');
+          for( i=0; i<counts.length; i++ ) {
+            counts[i].style.textShadow = "-3px 0 white, 0 3px white, 3px 0 white, 0 -3px white";
+          }
+          var countLabels = document.getElementsByClassName('count-labels');
+          for( i=0; i<countLabels.length; i++ ) {
+            countLabels[i].style.textShadow = "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white";
+            countLabels[i].style.fontWeight = "500";
+          }
         }
-        var countLabels = document.getElementsByClassName('count-labels');
-        for( i=0; i<countLabels.length; i++ ) {
-          countLabels[i].style.textShadow = "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white";
-          countLabels[i].style.fontWeight = "500";
+        else
+        {
+          var counts = document.getElementsByClassName('count');
+          for( i=0; i<counts.length; i++ ) {
+            counts[i].style.textShadow = "-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black";
+          }
+          var countLabels = document.getElementsByClassName('count-labels');
+          for( i=0; i<countLabels.length; i++ ) {
+            countLabels[i].style.textShadow = "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black";
+            countLabels[i].style.fontWeight = "400";
+          }
         }
-      }
-      else
-      {
-        var counts = document.getElementsByClassName('count');
-        for( i=0; i<counts.length; i++ ) {
-          counts[i].style.textShadow = "-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black";
-        }
-        var countLabels = document.getElementsByClassName('count-labels');
-        for( i=0; i<countLabels.length; i++ ) {
-          countLabels[i].style.textShadow = "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black";
-          countLabels[i].style.fontWeight = "400";
-        }
-      }
-    }.bind(this));
+      }.bind(this));
+    }
   };
 
   App.fn.setAppElementHTML = function(html){
@@ -254,9 +263,9 @@ $("#cancel_button").click(function(){
   return false;
 });
 
-$('#info').click(function() 
+$('#info').click(function()
 {
-  localStorage.infoSeen = "YES";
+  localStorage.setItem("update-3.1.1", "YES");
   if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
   {
     document.getElementById("info-img").src = "assets/infoWhite.png"
@@ -274,25 +283,25 @@ $('#reset').click(function(){
 
 function setWhiteInfoButton()
 {
-  if(localStorage.getItem("infoSeen") == "YES")
+  if(localStorage.getItem("update-3.1.1") === null)
   {
-    document.getElementById("info-img").src = "assets/infoWhite.png"
+    document.getElementById("info-img").src = "assets/infoWhiteAlert.png"
   }
   else
   {
-    document.getElementById("info-img").src = "assets/infoWhiteAlert.png"
+        document.getElementById("info-img").src = "assets/infoWhite.png"
   }
 }
 
 function setBlackInfoButton()
 {
-  if(localStorage.getItem("infoSeen") == "YES")
+  if(localStorage.getItem("update-3.1.1") === null)
   {
-    document.getElementById("info-img").src = "assets/infoBlack.png"
+    document.getElementById("info-img").src = "assets/infoBlackAlert.png"
   }
   else
   {
-    document.getElementById("info-img").src = "assets/infoBlackAlert.png"
+    document.getElementById("info-img").src = "assets/infoBlack.png"
   }
 }
 
@@ -305,17 +314,22 @@ function saveTheme(){
   }
 };
 
-function listenForCheck() {
+function loadCheckBoxes() {
   var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
   if (localStorage.getItem("dobTimeSet") == "YES") {
     timeCheckbox.checked = true;
   }
-  showHideTimeSelector(timeCheckbox);
+  showTimeSelectorIf(timeCheckbox.checked);
+
+  var hideAgeCheckBox = document.querySelector('input[id=hideAgeCheckBox]');
+  if (localStorage.getItem("hideAge") == "YES") {
+    hideAgeCheckBox.checked = true;
+  }
 
   document.addEventListener("DOMContentLoaded", function (event) {
     var tempTimeCheckbox = document.querySelector('input[id=timeCheckbox]');
     tempTimeCheckbox.addEventListener('change', function (event) {
-        showHideTimeSelector(tempTimeCheckbox);
+        showTimeSelectorIf(tempTimeCheckbox.checked);
     });
   });
 }
@@ -416,8 +430,8 @@ function getChapters(monthBorn) {
 };
 
 
-function showHideTimeSelector(checkbox) {
-  if (checkbox.checked) {
+function showTimeSelectorIf(isChecked) {
+  if (isChecked) {
       document.getElementById("time_input").style.display = "block";
   } else {
       document.getElementById("time_input").style.display = "none";
