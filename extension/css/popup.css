@@ -47,6 +47,14 @@ a:visited {
   overflow:auto;
 }
 
+#about {
+  position: absolute;
+  top: 13.4vw;
+  left: 1.5vw;
+  height:15vw;
+  width:28vw;
+}
+
 .version {
 	font-weight: bold;
 	font-size:1vw;
@@ -116,7 +124,7 @@ a:visited {
   background: #388E3C;
 }
 
-#settings-button {
+#updates-button {
   position:absolute;
   top:14vw;
   right:1.5vw;
@@ -133,12 +141,12 @@ a:visited {
   vertical-align: middle;
 }
 
-#settings-button:hover {
+#updates-button:hover {
   background: #616161;
   color: #FFFFFF;
 }
 
-#settings-button:active {
+#updates-button:active {
   border:0px;
   background: #212121;
 }

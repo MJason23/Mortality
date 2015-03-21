@@ -39,6 +39,9 @@ Date.prototype.yyyymmdd = function() {
   App.fn = App.prototype;
 
   App.fn.load = function(){
+    var popupBody = document.querySelector('#popup-body');
+    popupBody.innerHTML = this.getTemplateScript('about-popup')();
+
     var x;
 
     this.dob = getDOB();

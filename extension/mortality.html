@@ -24,12 +24,11 @@
   <img id="main-image" src="assets/popup.png">
   <hr id="banner-hr">
   <div id="content-container">
-    <div id="title">Updates</div>
     <form action="https://www.twitter.com/mattyayoh" target="_blank">
     <button id="about-button" type="submit">About</button>
     </form>
     <form action="https://www.twitter.com/mattyayoh" target="_blank">
-    <button id="settings-button" type="submit">Settings</button>
+    <button id="updates-button" type="submit">Updates</button>
     </form>
     <hr id="button-hr">
     <form action="https://www.twitter.com/mattyayoh" target="_blank">
@@ -40,24 +39,7 @@
     </form>
     <div id="link-label">Copy Link to Share ^^</div>
     <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
-    <div id="updates">
-      <div id="v3.1.1" class="version">Version 3.1.1 - Don't hesitate to give me feedback ^^</div>
-      <ul class="version-list">
-        <li>Fix for the current month circle filling the wrong way</li>
-        <li>Add the ability to remove the age timer</li>
-        <li>Fix for cancel button inconsistency</li>
-        <li>Changing formatting for settings & info</li>
-      </ul>
-      <div id="v3.1.0" class="version">Version 3.1.0</div>
-      <ul class="version-list">
-        <li>Ability to add time to birth date</li>
-        <li>Cancel button in settings</li>
-        <li>Info button on bottom left</li>
-        <li>Info popup you are looking at right now</li>
-        <li>Fix for leap days miscalculating age</li>
-        <li>Make "Retro" less ugly. If you have a theme idea let me know</li>
-      </ul>
-    </div>
+    <div id="popup-body"></div>
   </div>
   <div id="side-container"></div>
 </div>
@@ -122,7 +104,48 @@
   </div>
 </script>
 
+<script id="about-popup-template" type="text/x-handlebars-template">
+  <div id="title">About</div>
+  <div id="about">
+    Mortality is a new tab extension that reminds you of your precise age.<br>
+    A bitter-sweet motivational tool, to remind you not to waste any time.<br>
+    Circles represent months, for the average lifespan of 80 years.<br>
+    As you age, the circles fill, and are split into the main Chapters of your life.
+    <ul class="version-list">
+      <li>Early Years (0 to ~5 years, Elementary starts in September))</li>
+      <li>Elementary (7 years)</li>
+      <li>Middle (2 years)</li>
+      <li>High School (4 years)</li>
+      <li>College (4 years)</li>
+      <li>Work (~44 years, Retire at 65)</li>
+      <li>Retire (~15 years, Death at 80)</li>
+    </ul>
+    Immortality and Time Travel will not exist in your lifetime.<br>
+    You can never go back :)
+  </div>
+</script>
 
+<script id="updates-popup-template" type="text/x-handlebars-template">
+  <div id="title">Updates</div>
+  <div id="updates">
+    <div id="v3.1.1" class="version">Version 3.1.1 - Dont hesitate to give me feedback ^^</div>
+    <ul class="version-list">
+      <li>Fix for the current month circle filling the wrong way</li>
+      <li>Add the ability to remove the age timer</li>
+      <li>Fix for cancel button inconsistency</li>
+      <li>Changing formatting for settings & info</li>
+    </ul>
+    <div id="v3.1.0" class="version">Version 3.1.0</div>
+    <ul class="version-list">
+      <li>Ability to add time to birth date</li>
+      <li>Cancel button in settings</li>
+      <li>Info button on bottom left</li>
+      <li>Info popup you are looking at right now</li>
+      <li>Fix for leap days miscalculating age</li>
+      <li>Make "Retro" less ugly. If you have a theme idea let me know</li>
+    </ul>
+  </div>
+</script>
 
 <script src="js/jquery-2.1.3.min.js"></script>
 <script src="js/handlebars.js"></script>
