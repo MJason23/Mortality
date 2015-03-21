@@ -497,8 +497,8 @@ function getTimeStringFromMinutes(totalMinutes) {
     var currentDate = new Date;
     var oneDay = 24*60*60*1000;
 
-    var diffDays = Math.round(Math.abs((tempDateDoB.getTime() - currentDate.getTime())/(oneDay)));
-    var fractionOfMonth = 360-(((diffDays%30)/30.0)*360);
+    var diffDays = Math.round(Math.abs((currentDate.getTime() - tempDateDoB.getTime())/(oneDay)));
+    var fractionOfMonth = ((diffDays%30)/30.0)*360;
 
     animate(fractionOfMonth, circleWidth/2);
   }
