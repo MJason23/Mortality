@@ -52,6 +52,7 @@ a:visited {
   left: 1.5vw;
   height:15vw;
   width:28vw;
+	font-size:0.8vw;
 }
 
 .version {
@@ -92,6 +93,7 @@ a:visited {
 	position: absolute;
 	right: 0.7vw;
 	bottom: 1vw;
+	width:9vw;
   font-size: 0.9vw;
   cursor:text;
 }
