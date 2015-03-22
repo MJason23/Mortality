@@ -97,59 +97,67 @@ a:visited {
   cursor:text;
 }
 
+.pressed-button {
+	position:absolute;
+	right:1.5vw;
+	font-size: 1vw;
+	background: #1B5E20;
+	border-bottom: 2px solid #1B5E20;
+	border-top:0px;
+	border-left:0px;
+	border-right:0px;
+	color: #9E9E9E;
+	width: 8vw;
+	height: 2.2vw;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.pressed-button:hover {
+	background: #1B5E20;
+	color: #9E9E9E;
+}
+
+.pressed-button:active {
+	border:0px;
+	background: #1B5E20;
+}
+
+.default-button {
+	position:absolute;
+	right:1.5vw;
+	font-size: 1vw;
+	background: #43A047;
+	border-bottom: 2px solid #388E3C;
+	border-top:0px;
+	border-left:0px;
+	border-right:0px;
+	color: #F5F5F5;
+	width: 8vw;
+	height: 2.2vw;
+	text-decoration: none;
+	vertical-align: middle;
+}
+
+.default-button:hover {
+	background: #4CAF50;
+	color: #FFFFFF;
+}
+
+.default-button:active {
+	border:0px;
+	background: #1B5E20;
+}
+
 #about-button {
-  position:absolute;
   top:11.3vw;
-  right:1.5vw;
-  font-size: 1vw;
-  background: #43A047;
-  border-bottom: 2px solid #388E3C;
-  border-top:0px;
-  border-left:0px;
-  border-right:0px;
-  color: #F5F5F5;
-  width: 8vw;
-  height: 2.2vw;
-  text-decoration: none;
-  vertical-align: middle;
 }
 
-#about-button:hover {
-  background: #4CAF50;
-  color: #FFFFFF;
-}
-
-#about-button:active {
-  border:0px;
-  background: #388E3C;
-}
 
 #updates-button {
-  position:absolute;
   top:14vw;
-  right:1.5vw;
-  font-size: 1vw;
-  background: #424242;
-  border-bottom: 2px solid #212121;
-  border-top:0px;
-  border-left:0px;
-  border-right:0px;
-  color: #BDBDBD;
-  width: 8vw;
-  height: 2.2vw;
-  text-decoration: none;
-  vertical-align: middle;
 }
 
-#updates-button:hover {
-  background: #616161;
-  color: #FFFFFF;
-}
-
-#updates-button:active {
-  border:0px;
-  background: #212121;
-}
 
 #twitter-button {
 	position:absolute;

@@ -268,11 +268,13 @@ $('#info').click(function()
 	var popupBody = document.querySelector('#popup-body');
 	if(localStorage.getItem("update-3.1.1")===null)
 	{
+		setUpdatesButtonPressed(true);
 		popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 		localStorage.setItem("update-3.1.1", "YES");
 	}
 	else
 	{
+		setUpdatesButtonPressed(false);
 		popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 	}
   if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
@@ -291,24 +293,32 @@ $('#reset').click(function(){
 });
 
 $("#about-button").click(function(){
+	setUpdatesButtonPressed(false);
 	var popupBody = document.querySelector('#popup-body');
 	popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 });
 
 $("#updates-button").click(function(){
+	setUpdatesButtonPressed(true);
 	var popupBody = document.querySelector('#popup-body');
 	popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 });
 
-function setUpdatesButtonPressed()
-{
-
+function setUpdatesButtonPressed(updatesPressed) {
+	var updatesButton = document.querySelector("#updates-button");
+	var aboutButton = document.querySelector("#about-button");
+	if (updatesPressed)
+	{
+		updatesButton.className = "pressed-button";
+		aboutButton.className = "default-button";
+	}
+	else
+	{
+		aboutButton.className = "pressed-button";
+		updatesButton.className = "default-button";
+	}
 }
 
-function setAboutButtonPressed()
-{
-
-}
 
 function setWhiteInfoButton()
 {
