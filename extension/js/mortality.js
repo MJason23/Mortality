@@ -39,9 +39,6 @@ Date.prototype.yyyymmdd = function() {
   App.fn = App.prototype;
 
   App.fn.load = function(){
-    var popupBody = document.querySelector('#popup-body');
-    popupBody.innerHTML = this.getTemplateScript('about-popup')();
-
     var x;
 
     this.dob = getDOB();
@@ -268,7 +265,16 @@ $("#cancel_button").click(function(){
 
 $('#info').click(function()
 {
-  localStorage.setItem("update-3.1.1", "YES");
+	var popupBody = document.querySelector('#popup-body');
+	if(localStorage.getItem("update-3.1.1")===null)
+	{
+		popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
+		localStorage.setItem("update-3.1.1", "YES");
+	}
+	else
+	{
+		popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
+	}
   if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
   {
     document.getElementById("info-img").src = "assets/infoWhite.png"
@@ -284,6 +290,15 @@ $('#reset').click(function(){
   location.reload();
 });
 
+$("#about-button").click(function(){
+	var popupBody = document.querySelector('#popup-body');
+	popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
+});
+
+$("#updates-button").click(function(){
+	var popupBody = document.querySelector('#popup-body');
+	popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
+});
 function setWhiteInfoButton()
 {
   if(localStorage.getItem("update-3.1.1") === null)
@@ -292,7 +307,7 @@ function setWhiteInfoButton()
   }
   else
   {
-        document.getElementById("info-img").src = "assets/infoWhite.png"
+	  document.getElementById("info-img").src = "assets/infoWhite.png"
   }
 }
 
