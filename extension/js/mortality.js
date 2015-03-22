@@ -299,6 +299,17 @@ $("#updates-button").click(function(){
 	var popupBody = document.querySelector('#popup-body');
 	popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 });
+
+function setUpdatesButtonPressed()
+{
+
+}
+
+function setAboutButtonPressed()
+{
+
+}
+
 function setWhiteInfoButton()
 {
   if(localStorage.getItem("update-3.1.1") === null)
@@ -425,12 +436,14 @@ function getChapters(monthBorn) {
   var chapters = localStorage.getItem("chapters");
   if (chapters == null) {
     var firstChapter = 0;
-    var secondChapter = 60
+    var secondChapter = 60;
     var educationStartOffset = 0;
-    if(monthBorn == 11) {
+    if(monthBorn == 11)
+    {
      educationStartOffset = 8;
     }
-    else {
+    else
+    {
      educationStartOffset = (7-monthBorn);
     }
     secondChapter += educationStartOffset;
@@ -490,7 +503,7 @@ function animate(theta, radius) {
     path.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
   }
   setTimeout(animate, 7200000); // 1/360 of a month in ms
-};
+}
 
 function getTimeStringFromMinutes(totalMinutes) {
   var hours = Math.floor(totalMinutes/60);
@@ -503,8 +516,9 @@ function getTimeStringFromMinutes(totalMinutes) {
     var div = document.querySelector('#circles');
     var circleWidth = div.childNodes[0].offsetWidth;
     circle.style.height= circleWidth +'px';
-    pie.style.width = circle.style.height;
-    pie.style.height= circle.style.height;
+	  var radius = circle.style.height;
+    pie.style.width = radius;
+    pie.style.height = radius;
 
     var tempDoB = localStorage.dob;
     var tempDateDoB;
@@ -519,33 +533,34 @@ function getTimeStringFromMinutes(totalMinutes) {
     var fractionOfMonth = ((diffDays%30)/30.0)*360;
 
     animate(fractionOfMonth, circleWidth/2);
-  }
+  };
 
   var styleSheets = document.styleSheets,
       circle,
       pie,
       i, j, k;
   k = 0;
-  for(i = 0 ; i < styleSheets.length ; i++) {
-    rules= styleSheets[i].rules ||
-           styleSheets[i].cssRules;
-    for(j = 0 ; j < rules.length ; j++) {
-      if(rules[j].selectorText==='.circle') {
-        circle= rules[j];
-        k++;
-        if(k>1) {
-          break;
-        }
-      }
-      else if(rules[j].selectorText==='.pie') {
-        pie = rules[j];
-        k++;
-        if(k>1) {
-          break;
-        }
-      }
-    }
-  }
+	var rules;
+	for (i = 0; i < styleSheets.length; i++) {
+		rules = styleSheets[i].rules ||
+		styleSheets[i].cssRules;
+		for (j = 0; j < rules.length; j++) {
+			if (rules[j].selectorText === '.circle') {
+				circle = rules[j];
+				k++;
+				if (k > 1) {
+					break;
+				}
+			}
+			else if (rules[j].selectorText === '.pie') {
+				pie = rules[j];
+				k++;
+				if (k > 1) {
+					break;
+				}
+			}
+		}
+	}
 })();
 
 window.onresize();
