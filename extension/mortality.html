@@ -45,46 +45,7 @@
 
 
 <script id="dob-template" type="text/x-handlebars-template">
-  <form id="options_form">
-    <div id="age_option_container">
-      <div id="dob" class="label_text">
-        When were you born?
-      </div>
-      <input type="date" id="dob_input" class="input_field">
-      <div class="checkbox">
-        <input id="timeCheckbox" type="checkbox">
-        <label for="timeCheckbox">Add Time</label>
-      </div>
-      <input type="time" id="time_input" class="input_field">
-    </div>
-    <div id="theme_container">
-      <div class="label_text">
-        Select Theme
-      </div>
-      <div>
-        <select id="theme_dropdown" class="input_field">
-          <option value="default">Default</option>
-          <option value="dark">Dark</option>
-          <option value="light">Light</option>
-          <option value="dawn">Dawn</option>
-          <option value="dusk">Dusk</option>
-          <option value="twilight">Twilight</option>
-          <option value="retro">Retro</option>
-          <option value="rainbowd">Rainbow-Dark</option>
-          <option value="rainbowl">Rainbow-Light</option>
-        </select>
-      </div>
-    </div>
 
-    <div class="checkbox">
-      <input id="hideAgeCheckBox" type="checkbox">
-      <label for="hideAgeCheckBox">Hide Age</label>
-    </div>
-    <span class="button-container">
-      <button type="submit" id="submit_button">Submit</button>
-      <a id="cancel_button" class="button">cancel</a>
-    </span>
-  </form>
 </script>
 
 <script id="age-template" type="text/x-handlebars-template">
@@ -146,9 +107,46 @@
 </script>
 
 <script id="settings-popup-template" type="text/x-handlebars-template">
-	<div id="settings" class="popup-content">
-		Jenna is so cool.
-	</div>
+	<form id="options_form">
+		<div id="age_option_container">
+			<div id="dob" class="label_text">
+				When were you born?
+			</div>
+			<input type="date" id="dob_input" class="input_field">
+			<div class="checkbox">
+				<input id="timeCheckbox" type="checkbox">
+				<label for="timeCheckbox">Add Time</label>
+			</div>
+			<input type="time" id="time_input" class="input_field">
+		</div>
+		<div id="theme_container">
+			<div class="label_text">
+				Select Theme
+			</div>
+			<div>
+				<select id="theme_dropdown" class="input_field">
+					<option value="default">Default</option>
+					<option value="dark">Dark</option>
+					<option value="light">Light</option>
+					<option value="dawn">Dawn</option>
+					<option value="dusk">Dusk</option>
+					<option value="twilight">Twilight</option>
+					<option value="retro">Retro</option>
+					<option value="rainbowd">Rainbow-Dark</option>
+					<option value="rainbowl">Rainbow-Light</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="checkbox">
+			<input id="hideAgeCheckBox" type="checkbox">
+			<label for="hideAgeCheckBox">Hide Age</label>
+		</div>
+    <span class="button-container">
+      <button type="submit" id="submit_button">Submit</button>
+      <a id="cancel_button" class="button">cancel</a>
+    </span>
+	</form>
 </script>
 
 <script src="js/jquery-2.1.3.min.js"></script>

@@ -23,7 +23,7 @@ Date.prototype.yyyymmdd = function() {
     localStorage.removeItem("infoSeen");
 
     if (localStorage.getItem("dobSet") === null) {
-      this.renderSettings();
+      infoButtonPressed();
       loadCheckBoxes();
       $("reset").style.display = 'none';
       setWhiteInfoButton();
@@ -263,7 +263,7 @@ $("#cancel_button").click(function(){
   return false;
 });
 
-$('#info').click(function()
+function infoButtonPressed()
 {
 	var popupBody = document.querySelector('#popup-body');
 	if(localStorage.getItem("update-3.1.1")===null)
@@ -277,14 +277,18 @@ $('#info').click(function()
 		setButtonPressed(1);
 		popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 	}
-  if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
-  {
-    document.getElementById("info-img").src = "assets/infoWhite.png"
-  }
-  else if(document.getElementById("info-img").src.indexOf("assets/infoBlackAlert.png") > -1)
-  {
-    document.getElementById("info-img").src = "assets/infoBlack.png"
-  }
+	if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
+	{
+		document.getElementById("info-img").src = "assets/infoWhite.png"
+	}
+	else if(document.getElementById("info-img").src.indexOf("assets/infoBlackAlert.png") > -1)
+	{
+		document.getElementById("info-img").src = "assets/infoBlack.png"
+	}
+}
+$('#info').click(function()
+{
+	infoButtonPressed();
 });
 
 $('#reset').click(function(){

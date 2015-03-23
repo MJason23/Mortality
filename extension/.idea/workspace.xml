@@ -27,12 +27,12 @@
       <file leaf-file-name="mortality.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mortality.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.8" vertical-offset="132" max-vertical-offset="3652">
-              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="33" />
+            <state vertical-scroll-proportion="-14.436363" vertical-offset="1870" max-vertical-offset="2952">
+              <caret line="148" column="9" selection-start-line="148" selection-start-column="9" selection-end-line="148" selection-end-column="9" />
               <folding>
                 <element signature="n#style#0;n#span#2;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#span#3;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1427073262825" expanded="true" signature="964:1047" placeholder="..." />
+                <marker date="1427074611998" expanded="true" signature="964:1047" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -41,7 +41,7 @@
       <file leaf-file-name="popup.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/popup.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2921" max-vertical-offset="6831">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2291" max-vertical-offset="5313">
               <caret line="185" column="22" selection-start-line="185" selection-start-column="22" selection-end-line="185" selection-end-column="22" />
               <folding />
             </state>
@@ -51,8 +51,8 @@
       <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1505" max-vertical-offset="6192">
-              <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1179" max-vertical-offset="5160">
+              <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -61,8 +61,8 @@
       <file leaf-file-name="mortality.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/mortality.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58094144" vertical-offset="7081" max-vertical-offset="16119">
-              <caret line="281" column="12" selection-start-line="281" selection-start-column="12" selection-end-line="281" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.56666666" vertical-offset="2850" max-vertical-offset="12621">
+              <caret line="160" column="34" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -84,9 +84,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="960" />
-    <option name="width" value="960" />
-    <option name="height" value="1050" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -175,6 +176,9 @@
     <list size="0" />
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e8802627-4511-4757-bdc9-f0b6d1826952" name="Default" comment="" />
@@ -185,7 +189,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="960" y="0" width="960" height="1050" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -236,7 +240,7 @@
           <folding>
             <element signature="n#style#0;n#span#2;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#3;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1427073262825" expanded="true" signature="964:1047" placeholder="..." />
+            <marker date="1427074611998" expanded="true" signature="964:1047" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -272,7 +276,7 @@
           <folding>
             <element signature="n#style#0;n#span#2;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#3;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1427073262825" expanded="true" signature="964:1047" placeholder="..." />
+            <marker date="1427074611998" expanded="true" signature="964:1047" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -308,14 +312,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1505" max-vertical-offset="6192">
-          <caret line="76" column="0" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/popup.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2921" max-vertical-offset="6831">
@@ -324,22 +320,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1179" max-vertical-offset="5160">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mortality.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.8" vertical-offset="132" max-vertical-offset="3652">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="33" />
+        <state vertical-scroll-proportion="-14.436363" vertical-offset="1870" max-vertical-offset="2952">
+          <caret line="148" column="9" selection-start-line="148" selection-start-column="9" selection-end-line="148" selection-end-column="9" />
           <folding>
             <element signature="n#style#0;n#span#2;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#3;n#span#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1427073262825" expanded="true" signature="964:1047" placeholder="..." />
+            <marker date="1427074611998" expanded="true" signature="964:1047" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/mortality.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58094144" vertical-offset="7081" max-vertical-offset="16119">
-          <caret line="281" column="12" selection-start-line="281" selection-start-column="12" selection-end-line="281" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.56666666" vertical-offset="2850" max-vertical-offset="12621">
+          <caret line="160" column="34" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
           <folding />
         </state>
       </provider>
