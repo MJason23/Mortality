@@ -234,15 +234,6 @@ Date.prototype.yyyymmdd = function() {
 
 })();
 
-
-$("#submit_button").click(function(){
-  window.app.saveDob();
-  saveTheme();
-});
-
-$("#cancel_button").click(function(){
-});
-
 function infoButtonPressed()
 {
 	var popupBody = document.querySelector('#popup-body');
@@ -339,6 +330,15 @@ function setupSettings(dob, dobMinutes)
     document.getElementById('time_input').value = temp;
   }
   setDropdownWithCurrentTheme();
+
+  $("#submit-button").click(function(){
+    window.app.saveDob();
+    saveTheme();
+  });
+
+  $("#cancel_button").click(function(){
+    console.log("HEY");
+  });
 }
 
 function setDropdownWithCurrentTheme(){
