@@ -25,11 +25,6 @@ Date.prototype.yyyymmdd = function() {
     localStorage.removeItem("infoSeen");
     ////////////////////////////////////
 
-    if( localStorage.getItem("dob") === null ) 
-    {
-      infoButtonPressed();
-    }
-
     var savedTheme = localStorage.getItem("colorTheme");
     loadDarkOrLightTheme(savedTheme);
 
@@ -239,6 +234,7 @@ function infoButtonPressed()
 	var popupBody = document.querySelector('#popup-body');
   if(localStorage.getItem("dob")===null)
   {
+    setModalPopup();
     setButtonPressed(2);
   }
 	else if(localStorage.getItem("update-3.1.1")===null)
@@ -260,6 +256,22 @@ function infoButtonPressed()
 		document.getElementById("info-img").src = "assets/infoBlack.png"
 	}
 }
+
+function setModalPopup() 
+{
+  $('#inline-popup').magnificPopup({
+    removalDelay: 800, //delay removal by X to allow out-animation
+    callbacks: {
+      beforeOpen: function() {
+         this.st.mainClass = this.st.el.attr('data-effect');
+      }
+    },
+    closeBtnInside: false,
+    modal: true,
+    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+  });
+}
+
 $('#info').click(function()
 {
 	infoButtonPressed();
