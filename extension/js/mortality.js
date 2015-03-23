@@ -239,16 +239,16 @@ function infoButtonPressed()
 	var popupBody = document.querySelector('#popup-body');
   if(localStorage.getItem("dob")===null)
   {
-    setButtonPressed(button.kSettings);
+    setButtonPressed(2);
   }
 	else if(localStorage.getItem("update-3.1.1")===null)
 	{
-		setButtonPressed(button.kUpdates);
+		setButtonPressed(1);
 		localStorage.setItem("update-3.1.1", "YES");
 	}
 	else
 	{
-		setButtonPressed(button.kAbout);
+		setButtonPressed(0);
 	}
 
 	if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
@@ -265,25 +265,19 @@ $('#info').click(function()
 	infoButtonPressed();
 });
 
-var button = {
-    kAbout: 0,
-    kUpdates: 1,
-    kSettings: 2
-};
-
 $("#about-button").click(function()
 {
-	setButtonPressed(button.kAbout);
+	setButtonPressed(0);
 });
 
 $("#updates-button").click(function()
 {
-	setButtonPressed(button.kUpdates);
+	setButtonPressed(1);
 });
 
 $("#settings-button").click(function()
 {
-	setButtonPressed(button.kSettings);
+	setButtonPressed(2);
 });
 
 function setButtonPressed(button) 
@@ -292,14 +286,14 @@ function setButtonPressed(button)
 	var aboutButton = document.querySelector("#about-button");
 	var settingsButton = document.querySelector("#settings-button");
   var popupBody = document.querySelector('#popup-body');
-	if (button == button.kAbout)
+	if (button == 0)
 	{
     popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 		aboutButton.className = "pressed-button";
 		updatesButton.className = "default-button";
 		settingsButton.className = "default-button";
 	}
-	else if (button == button.kUpdates)
+	else if (button == 1)
 	{
     popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 		aboutButton.className = "default-button";
@@ -334,10 +328,11 @@ function setupSettings(dob, dobMinutes)
   $("#submit-button").click(function(){
     window.app.saveDob();
     saveTheme();
+    $("#info-popup").magnificPopup('close');
   });
 
   $("#cancel_button").click(function(){
-    console.log("HEY");
+    $("#info-popup").magnificPopup('close');
   });
 }
 
@@ -350,21 +345,15 @@ function loadCheckBoxes()
   }
   showTimeSelectorIf(timeCheckbox.checked);
 
-  timeCheckbox.addEventListener('change', function (event) 
-  {
+  timeCheckbox.addEventListener('change', function (event) {
     showTimeSelectorIf(timeCheckbox.checked);
   });
-
-  
 
   var hideAgeCheckBox = document.querySelector('input[id=hideAgeCheckBox]');
   if (localStorage.getItem("hideAge") == "YES") 
   {
     hideAgeCheckBox.checked = true;
   }
-
-
-
 }
 
 function setDropdownWithCurrentTheme(){
