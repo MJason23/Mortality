@@ -37,21 +37,18 @@ a:visited {
   color:blue;
 }
 
-#updates {
+.popup-content {
 	position: absolute;
-	top: 13.8vw;
+	top: 11vw;
 	left: 1.5vw;
-  height:15vw;
-  width:28vw;
+	height:15vw;
+	width:28vw;
+}
+#updates {
   overflow:auto;
 }
 
 #about {
-  position: absolute;
-  top: 13.4vw;
-  left: 1.5vw;
-  height:15vw;
-  width:28vw;
 	font-size:0.8vw;
 }
 
@@ -72,14 +69,6 @@ a:visited {
 	width: 39.2vw;
 	height: 9.2vw;
 }
-
-#title {
-	position: absolute;
-	left: 2vw;
-	top: 10.6vw;
-  font-size: 2vw;
-}
-
 
 #link-label {
 	position: absolute;
