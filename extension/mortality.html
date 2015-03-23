@@ -24,8 +24,10 @@
   <img id="main-image" src="assets/popup.png">
   <hr id="banner-hr">
   <div id="content-container">
-    <button id="about-button" class="pressed-button" type="submit">About</button>
-    <button id="updates-button" class="default-button" type="submit">Updates</button>
+    <button id="about-button" type="submit">About</button>
+    <button id="updates-button" type="submit">Updates</button>
+	  <button id="settings-button" class="default-button" type="submit">Settings</button>
+
     <hr id="button-hr">
     <form action="https://www.twitter.com/mattyayoh" target="_blank">
     <button id="twitter-button" type="submit">@MattyAyOh</button>
@@ -141,6 +143,12 @@
       <li>Make "Retro" less ugly. If you have a theme idea let me know</li>
     </ul>
   </div>
+</script>
+
+<script id="settings-popup-template" type="text/x-handlebars-template">
+	<div id="settings" class="popup-content">
+		Jenna is so cool.
+	</div>
 </script>
 
 <script src="js/jquery-2.1.3.min.js"></script>

@@ -30,7 +30,7 @@ hr {
 #button-hr {
   width:8vw;
   right:1.5vw;
-  top:16.3vw;
+  top:19vw;
 }
 
 a:visited {
@@ -143,15 +143,17 @@ a:visited {
   top:11.3vw;
 }
 
-
 #updates-button {
   top:14vw;
 }
 
+#settings-button {
+	top:16.7vw;
+}
 
 #twitter-button {
 	position:absolute;
-	top:17.3vw;
+	top:20vw;
 	right:1.5vw;
 	font-size: 1vw;
 	background: #1976D2;
@@ -178,7 +180,7 @@ a:visited {
 
 #feedback-button {
 	position:absolute;
-	top:20vw;
+	top:22.7vw;
 	right:1.5vw;
 	font-size: 1vw;
 	background: #D32F2F;

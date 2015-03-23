@@ -268,13 +268,13 @@ $('#info').click(function()
 	var popupBody = document.querySelector('#popup-body');
 	if(localStorage.getItem("update-3.1.1")===null)
 	{
-		setUpdatesButtonPressed(true);
+		setButtonPressed(2);
 		popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 		localStorage.setItem("update-3.1.1", "YES");
 	}
 	else
 	{
-		setUpdatesButtonPressed(false);
+		setButtonPressed(1);
 		popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 	}
   if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
@@ -293,29 +293,44 @@ $('#reset').click(function(){
 });
 
 $("#about-button").click(function(){
-	setUpdatesButtonPressed(false);
+	setButtonPressed(1);
 	var popupBody = document.querySelector('#popup-body');
 	popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 });
 
 $("#updates-button").click(function(){
-	setUpdatesButtonPressed(true);
+	setButtonPressed(2);
 	var popupBody = document.querySelector('#popup-body');
 	popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 });
 
-function setUpdatesButtonPressed(updatesPressed) {
+$("#settings-button").click(function(){
+	setButtonPressed(3);
+	var popupBody = document.querySelector('#popup-body');
+	popupBody.innerHTML = window.app.getTemplateScript('settings-popup')();
+});
+
+function setButtonPressed(buttonNumber) {
 	var updatesButton = document.querySelector("#updates-button");
 	var aboutButton = document.querySelector("#about-button");
-	if (updatesPressed)
-	{
-		updatesButton.className = "pressed-button";
-		aboutButton.className = "default-button";
-	}
-	else
+	var settingsButton = document.querySelector("#settings-button");
+	if (buttonNumber == 1)
 	{
 		aboutButton.className = "pressed-button";
 		updatesButton.className = "default-button";
+		settingsButton.className = "default-button";
+	}
+	else if (buttonNumber == 2)
+	{
+		aboutButton.className = "default-button";
+		updatesButton.className = "pressed-button";
+		settingsButton.className = "default-button";
+	}
+	else
+	{
+		aboutButton.className = "default-button";
+		updatesButton.className = "default-button";
+		settingsButton.className = "pressed-button";
 	}
 }
 
