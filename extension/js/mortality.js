@@ -16,28 +16,31 @@ Date.prototype.yyyymmdd = function() {
   var minuteMS = 60000;
   var secondMS = 1000;
 
-  var App = function(appElement){
+  var App = function(appElement)
+  {
     this.appElement = appElement;
     this.load();
 
+    // CHANGE Previous Version /////////
     localStorage.removeItem("infoSeen");
+    ////////////////////////////////////
 
-    if (localStorage.getItem("dob") === null) {
+    if( localStorage.getItem("dob") === null ) 
+    {
       infoButtonPressed();
-      loadCheckBoxes();
-      setWhiteInfoButton();
     }
-    else {
-      this.renderAge();
-      var savedTheme = localStorage.getItem("colorTheme");
-      loadDarkOrLightTheme(savedTheme);
-      this.interval = setInterval(this.renderAge.bind(this), 115);
-    }
+
+    var savedTheme = localStorage.getItem("colorTheme");
+    loadDarkOrLightTheme(savedTheme);
+
+    this.renderAge();
+    setInterval(this.renderAge.bind(this), 115);
   };
 
   App.fn = App.prototype;
 
-  App.fn.load = function(){
+  App.fn.load = function()
+  {
     var x;
 
     this.dob = getDOB();
@@ -57,7 +60,8 @@ Date.prototype.yyyymmdd = function() {
     this.generateCircleLoops(numberMonths, chaptersArray);
   };
 
-  App.fn.generateCircleLoops = function(numberMonths, chaptersArray) {
+  App.fn.generateCircleLoops = function(numberMonths, chaptersArray) 
+  {
     for (var chapter = 0; chapter < chaptersArray.length; chapter++) {
       var startMonth = chaptersArray[chapter][0] + 1;
       var endMonth = chaptersArray[chapter][1];
@@ -145,23 +149,6 @@ Date.prototype.yyyymmdd = function() {
     var hideAgeChecked = document.querySelector('input[id=hideAgeCheckBox').checked;
     hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");
   };
-
-  App.fn.renderSettings = function(){
-    this.setAppElementHTML(this.getTemplateScript('dob')());
-    document.body.style.backgroundColor = "#1d1d1d";
-    document.body.style.color = "#eff4ff";
-    this.documentCircle.style.display = "none";
-    if( this.dob != 'null' ) {
-      document.getElementById('dob_input').value = this.dob.yyyymmdd();
-    }
-    if( this.dobMinutes != 'null' ) {
-      var temp = getTimeStringFromMinutes(this.dobMinutes);
-      document.getElementById('time_input').value = temp;
-    }
-    setDropdownWithCurrentTheme();
-  };
-
-
 
   App.fn.renderAge = function()
   {
@@ -251,13 +238,9 @@ Date.prototype.yyyymmdd = function() {
 $("#submit_button").click(function(){
   window.app.saveDob();
   saveTheme();
-  location.reload();
-  return false;
 });
 
 $("#cancel_button").click(function(){
-  location.reload();
-  return false;
 });
 
 function infoButtonPressed()
@@ -265,16 +248,16 @@ function infoButtonPressed()
 	var popupBody = document.querySelector('#popup-body');
   if(localStorage.getItem("dob")===null)
   {
-    setButtonPressed(3);
+    setButtonPressed(button.kSettings);
   }
 	else if(localStorage.getItem("update-3.1.1")===null)
 	{
-		setButtonPressed(2);
+		setButtonPressed(button.kUpdates);
 		localStorage.setItem("update-3.1.1", "YES");
 	}
 	else
 	{
-		setButtonPressed(1);
+		setButtonPressed(button.kAbout);
 	}
 
 	if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
@@ -291,34 +274,41 @@ $('#info').click(function()
 	infoButtonPressed();
 });
 
+var button = {
+    kAbout: 0,
+    kUpdates: 1,
+    kSettings: 2
+};
+
 $("#about-button").click(function()
 {
-	setButtonPressed(1);
+	setButtonPressed(button.kAbout);
 });
 
 $("#updates-button").click(function()
 {
-	setButtonPressed(2);
+	setButtonPressed(button.kUpdates);
 });
 
 $("#settings-button").click(function()
 {
-	setButtonPressed(3);
+	setButtonPressed(button.kSettings);
 });
 
-function setButtonPressed(buttonNumber) {
+function setButtonPressed(button) 
+{
 	var updatesButton = document.querySelector("#updates-button");
 	var aboutButton = document.querySelector("#about-button");
 	var settingsButton = document.querySelector("#settings-button");
   var popupBody = document.querySelector('#popup-body');
-	if (buttonNumber == 1)
+	if (button == button.kAbout)
 	{
     popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 		aboutButton.className = "pressed-button";
 		updatesButton.className = "default-button";
 		settingsButton.className = "default-button";
 	}
-	else if (buttonNumber == 2)
+	else if (button == button.kUpdates)
 	{
     popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 		aboutButton.className = "default-button";
@@ -331,9 +321,32 @@ function setButtonPressed(buttonNumber) {
 		aboutButton.className = "default-button";
 		updatesButton.className = "default-button";
 		settingsButton.className = "pressed-button";
+
+    setupSettings(window.app.dob, window.app.dobMinutes);
 	}
 }
 
+function setupSettings(dob, dobMinutes) 
+{
+  loadCheckBoxes();
+  if( dob != 'null' ) 
+  {
+    document.getElementById('dob_input').value = dob.yyyymmdd();
+  }
+  if( dobMinutes != 'null' ) 
+  {
+    var temp = getTimeStringFromMinutes(dobMinutes);
+    document.getElementById('time_input').value = temp;
+  }
+  setDropdownWithCurrentTheme();
+}
+
+function setDropdownWithCurrentTheme(){
+  var theme = localStorage.getItem("colorTheme");
+  if (theme != null) {
+    document.getElementById("theme_dropdown").value = theme;
+  }
+};
 
 function setWhiteInfoButton()
 {
@@ -359,7 +372,8 @@ function setBlackInfoButton()
   }
 }
 
-function saveTheme(){
+function saveTheme()
+{
   var savedTheme = localStorage.getItem("colorTheme");
   var selectedTheme = document.getElementById("theme_dropdown").value;
 
@@ -368,7 +382,8 @@ function saveTheme(){
   }
 };
 
-function loadCheckBoxes() {
+function loadCheckBoxes() 
+{
   var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
   if (localStorage.getItem("dobTimeSet") == "YES") {
     timeCheckbox.checked = true;
@@ -445,13 +460,6 @@ function getColorTheme() {
       default:
         return themes.def;
     }
-  }
-};
-
-function setDropdownWithCurrentTheme(){
-  var theme = localStorage.getItem("colorTheme");
-  if (theme != null) {
-    document.getElementById("theme_dropdown").value = theme;
   }
 };
 
