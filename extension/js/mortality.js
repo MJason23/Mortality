@@ -341,12 +341,41 @@ function setupSettings(dob, dobMinutes)
   });
 }
 
+function loadCheckBoxes() 
+{
+  var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
+  if (localStorage.getItem("dobTimeSet") == "YES") 
+  {
+    timeCheckbox.checked = true;
+  }
+  showTimeSelectorIf(timeCheckbox.checked);
+
+  timeCheckbox.addEventListener('change', function (event) 
+  {
+    showTimeSelectorIf(timeCheckbox.checked);
+  });
+
+  
+
+  var hideAgeCheckBox = document.querySelector('input[id=hideAgeCheckBox]');
+  if (localStorage.getItem("hideAge") == "YES") 
+  {
+    hideAgeCheckBox.checked = true;
+  }
+
+
+
+}
+
 function setDropdownWithCurrentTheme(){
   var theme = localStorage.getItem("colorTheme");
   if (theme != null) {
     document.getElementById("theme_dropdown").value = theme;
   }
 };
+
+
+
 
 function setWhiteInfoButton()
 {
@@ -381,27 +410,6 @@ function saveTheme()
     localStorage.setItem("colorTheme", selectedTheme);
   }
 };
-
-function loadCheckBoxes() 
-{
-  var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
-  if (localStorage.getItem("dobTimeSet") == "YES") {
-    timeCheckbox.checked = true;
-  }
-  showTimeSelectorIf(timeCheckbox.checked);
-
-  var hideAgeCheckBox = document.querySelector('input[id=hideAgeCheckBox]');
-  if (localStorage.getItem("hideAge") == "YES") {
-    hideAgeCheckBox.checked = true;
-  }
-
-  document.addEventListener("DOMContentLoaded", function (event) {
-    var tempTimeCheckbox = document.querySelector('input[id=timeCheckbox]');
-    tempTimeCheckbox.addEventListener('change', function (event) {
-        showTimeSelectorIf(tempTimeCheckbox.checked);
-    });
-  });
-}
 
 function loadDarkOrLightTheme(savedTheme)
 {
