@@ -237,13 +237,6 @@ label {
 /* Counter Identifiers */
 /***********************/
 
-#reset {
-  position: fixed;
-  right: 15px;
-  bottom: 10px;
-  cursor: pointer;
-}
-
 #info {
   position: fixed;
   left: 15px;

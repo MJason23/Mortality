@@ -22,10 +22,9 @@ Date.prototype.yyyymmdd = function() {
 
     localStorage.removeItem("infoSeen");
 
-    if (localStorage.getItem("dobSet") === null) {
+    if (localStorage.getItem("dob") === null) {
       infoButtonPressed();
       loadCheckBoxes();
-      $("reset").style.display = 'none';
       setWhiteInfoButton();
     }
     else {
@@ -124,8 +123,7 @@ Date.prototype.yyyymmdd = function() {
     if( !dateInput.valueAsDate ) return;
 
     this.dob = dateInput.valueAsDate;
-    localStorage.dob = this.dob.getTime();
-    localStorage.dobSet = "YES";
+    localStorage.setItem("dob", this.dob.getTime());
 
     var timeChecked = document.querySelector('input[id=timeCheckbox]').checked;
     if( timeChecked )
@@ -258,7 +256,6 @@ $("#submit_button").click(function(){
 });
 
 $("#cancel_button").click(function(){
-  localStorage.dobSet = "YES";
   location.reload();
   return false;
 });
@@ -266,17 +263,20 @@ $("#cancel_button").click(function(){
 function infoButtonPressed()
 {
 	var popupBody = document.querySelector('#popup-body');
-	if(localStorage.getItem("update-3.1.1")===null)
+  if(localStorage.getItem("dob")===null)
+  {
+    setButtonPressed(3);
+  }
+	else if(localStorage.getItem("update-3.1.1")===null)
 	{
 		setButtonPressed(2);
-		popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 		localStorage.setItem("update-3.1.1", "YES");
 	}
 	else
 	{
 		setButtonPressed(1);
-		popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 	}
+
 	if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
 	{
 		document.getElementById("info-img").src = "assets/infoWhite.png"
@@ -291,47 +291,43 @@ $('#info').click(function()
 	infoButtonPressed();
 });
 
-$('#reset').click(function(){
-  localStorage.removeItem("dobSet");
-  location.reload();
-});
-
-$("#about-button").click(function(){
+$("#about-button").click(function()
+{
 	setButtonPressed(1);
-	var popupBody = document.querySelector('#popup-body');
-	popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 });
 
-$("#updates-button").click(function(){
+$("#updates-button").click(function()
+{
 	setButtonPressed(2);
-	var popupBody = document.querySelector('#popup-body');
-	popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 });
 
-$("#settings-button").click(function(){
+$("#settings-button").click(function()
+{
 	setButtonPressed(3);
-	var popupBody = document.querySelector('#popup-body');
-	popupBody.innerHTML = window.app.getTemplateScript('settings-popup')();
 });
 
 function setButtonPressed(buttonNumber) {
 	var updatesButton = document.querySelector("#updates-button");
 	var aboutButton = document.querySelector("#about-button");
 	var settingsButton = document.querySelector("#settings-button");
+  var popupBody = document.querySelector('#popup-body');
 	if (buttonNumber == 1)
 	{
+    popupBody.innerHTML = window.app.getTemplateScript('about-popup')();
 		aboutButton.className = "pressed-button";
 		updatesButton.className = "default-button";
 		settingsButton.className = "default-button";
 	}
 	else if (buttonNumber == 2)
 	{
+    popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
 		aboutButton.className = "default-button";
 		updatesButton.className = "pressed-button";
 		settingsButton.className = "default-button";
 	}
 	else
 	{
+    popupBody.innerHTML = window.app.getTemplateScript('settings-popup')();
 		aboutButton.className = "default-button";
 		updatesButton.className = "default-button";
 		settingsButton.className = "pressed-button";
@@ -398,14 +394,12 @@ function loadDarkOrLightTheme(savedTheme)
     {
       document.body.style.backgroundColor = "#F5F5F5";
       document.body.style.color = "#424242";
-      document.getElementById('reset-img').src = "assets/settingsBlack.png"
       setBlackInfoButton();
     }
     else
     {
       document.body.style.backgroundColor = "#1d1d1d";
       document.body.style.color = "#eff4ff";
-      document.getElementById('reset-img').src = "assets/settings.png"
       setWhiteInfoButton();
     }
 }
