@@ -32,7 +32,7 @@ Date.prototype.yyyymmdd = function() {
       this.renderAge();
       var savedTheme = localStorage.getItem("colorTheme");
       loadDarkOrLightTheme(savedTheme);
-      this.interval = setInterval(this.renderAge.bind(this), 110);
+      this.interval = setInterval(this.renderAge.bind(this), 115);
     }
   };
 
