@@ -117,7 +117,7 @@ Date.prototype.yyyymmdd = function() {
 
   App.fn.saveDob = function()
   {
-    var dateInput = $('dob_input');
+    var dateInput = $('dob-input');
     //TODO: Show ERROR
     if( !dateInput.valueAsDate ) return;
 
@@ -334,20 +334,19 @@ function setButtonPressed(button)
 
     setupSettings(window.app.dob, window.app.dobMinutes);
 	}
+  if(localStorage.getItem("dob")===null)
+  {
+    $("#cancel-button").toggle();
+  }
 }
 
 function setupSettings(dob, dobMinutes)
 {
   loadCheckBoxes();
-  if( dob != 'null' )
-  {
-    document.getElementById('dob_input').value = dob.yyyymmdd();
-  }
-  if( dobMinutes != 'null' )
-  {
-    var temp = getTimeStringFromMinutes(dobMinutes);
-    document.getElementById('time-input').value = temp;
-  }
+
+  document.getElementById('dob-input').value = dob.yyyymmdd();
+  var temp = getTimeStringFromMinutes(dobMinutes);
+  document.getElementById('time-input').value = temp;
   setDropdownWithCurrentTheme();
 
   $("#submit-button").click(function(){
@@ -356,7 +355,7 @@ function setupSettings(dob, dobMinutes)
     $("#info-popup").magnificPopup('close');
   });
 
-  $("#cancel_button").click(function(){
+  $("#cancel-button").click(function(){
     $("#info-popup").magnificPopup('close');
   });
 }
@@ -624,6 +623,7 @@ function getTimeStringFromMinutes(totalMinutes) {
       if(localStorage.getItem("dob")===null)
       {
         $("#info")[0].click();
+        $("#cancel-button").toggle();
       }
     });
 })(jQuery);

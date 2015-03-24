@@ -247,7 +247,7 @@ label {
 
 #submit-button {
   position:absolute;
-  left:10vw;
+  left:12vw;
   bottom:1vw;
   margin-top:1vw;
   display: inline;
@@ -259,10 +259,10 @@ label {
   cursor: pointer;
 }
 
-#cancel_button {
+#cancel-button {
   position:absolute;
   bottom:1.5vw;
-  left:17vw;
+  left:19vw;
   display: inline;
   cursor: pointer;
 }
