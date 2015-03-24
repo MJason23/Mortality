@@ -278,12 +278,26 @@ $('#info').click(function()
 
 $("#about-button").click(function()
 {
-	setButtonPressed(0);
+  if(localStorage.getItem("dob")===null)
+  {
+    setButtonPressed(2);
+  }
+  else
+  {
+    setButtonPressed(0);
+  }
 });
 
 $("#updates-button").click(function()
 {
-	setButtonPressed(1);
+  if(localStorage.getItem("dob")===null)
+  {
+    setButtonPressed(2);
+  }
+  else
+  {
+    setButtonPressed(1);
+  }
 });
 
 $("#settings-button").click(function()
