@@ -607,8 +607,10 @@ function getTimeStringFromMinutes(totalMinutes) {
 
 (function($) {
     $(window).load(function () {
-        // retrieved this line of code from http://dimsemenov.com/plugins/magnific-popup/documentation.html#api
+      if(localStorage.getItem("dob")===null)
+      {
         $("#info")[0].click();
+      }
     });
 })(jQuery);
 
