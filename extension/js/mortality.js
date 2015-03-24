@@ -124,10 +124,10 @@ Date.prototype.yyyymmdd = function() {
     this.dob = dateInput.valueAsDate;
     localStorage.setItem("dob", this.dob.getTime());
 
-    var timeChecked = document.querySelector('input[id=timeCheckbox]').checked;
+    var timeChecked = document.querySelector('input[id=time-checkbox]').checked;
     if( timeChecked )
     {
-      var timeInput = $('time_input');
+      var timeInput = $('time-input');
       //TODO: Show ERROR
       if( !timeInput.valueAsDate ) return;
       var timeArray = timeInput.value.split(":");
@@ -346,7 +346,7 @@ function setupSettings(dob, dobMinutes)
   if( dobMinutes != 'null' )
   {
     var temp = getTimeStringFromMinutes(dobMinutes);
-    document.getElementById('time_input').value = temp;
+    document.getElementById('time-input').value = temp;
   }
   setDropdownWithCurrentTheme();
 
@@ -363,7 +363,7 @@ function setupSettings(dob, dobMinutes)
 
 function loadCheckBoxes()
 {
-  var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
+  var timeCheckbox = document.querySelector('input[id=time-checkbox]');
   if (localStorage.getItem("dobTimeSet") == "YES")
   {
     timeCheckbox.checked = true;
@@ -384,7 +384,7 @@ function loadCheckBoxes()
 function setDropdownWithCurrentTheme(){
   var theme = localStorage.getItem("colorTheme");
   if (theme != null) {
-    document.getElementById("theme_dropdown").value = theme;
+    document.getElementById("theme-dropdown").value = theme;
   }
 };
 
@@ -418,7 +418,7 @@ function setBlackInfoButton()
 function saveTheme()
 {
   var savedTheme = localStorage.getItem("colorTheme");
-  var selectedTheme = document.getElementById("theme_dropdown").value;
+  var selectedTheme = document.getElementById("theme-dropdown").value;
 
   if (savedTheme != selectedTheme) {
     localStorage.setItem("colorTheme", selectedTheme);
@@ -516,9 +516,9 @@ function getChapters(monthBorn) {
 
 function showTimeSelectorIf(isChecked) {
   if (isChecked) {
-      document.getElementById("time_input").style.display = "block";
+      document.getElementById("time-input").style.display = "block";
   } else {
-      document.getElementById("time_input").style.display = "none";
+      document.getElementById("time-input").style.display = "none";
   }
 }
 

@@ -86,7 +86,6 @@ label {
 
   cursor: pointer;
   position: relative;
-  margin-left: 4.5vw;
 }
 
 /************************/
@@ -123,19 +122,21 @@ label {
   padding-bottom: 10px;
 }
 
+.button-container {
+  margin-left:3.4vw;
+}
+
+.checkbox {
+}
+/*******************/
+/*  Main Classes   */
+/*******************/
+
 .age-container {
   position: absolute;
   left: 50%;
   top: 42%;
 }
-
-.button-container {
-  margin-left:3.4vw;
-}
-
-/*******************/
-/* Counter Classes */
-/*******************/
 
 .pie {
   float: left;
@@ -194,10 +195,6 @@ label {
   flex-grow: 1;
 }
 
-.checkbox {
-  margin-left:2vw;
-}
-
 /************************/
 /* Settings Identifiers */
 /************************/
@@ -206,11 +203,52 @@ label {
   padding-top: 0.5rem;
 }
 
-#time_input {
-  margin-top:1vw;
+#dob-text {
+  position:absolute;
+  left:2.5vw;
+  top:10.3vw;
 }
 
+#dob-input {
+  position:absolute;
+  left:2.5vw;
+  top:13vw;
+}
+#addTime-label {
+  position:absolute;
+  left:19vw;
+  top:11vw;
+}
+#time-input {
+  position:absolute;
+  left:16vw;
+  top:13vw;
+}
+
+#theme-text {
+  position: absolute;
+  left: 2.5vw;
+  top: 15vw;
+}
+
+#theme-dropdown {
+  position: absolute;
+  left: 2.5vw;
+  top: 17.5vw;
+}
+
+#hideAge-label {
+  position: absolute;
+  left: 4.4vw;
+  top: 20.6vw;
+}
+
+
+
 #submit-button {
+  position:absolute;
+  left:10vw;
+  bottom:1vw;
   margin-top:1vw;
   display: inline;
   border: none;
@@ -222,16 +260,16 @@ label {
 }
 
 #cancel_button {
-  position:relative;
-  bottom:5px;
-  margin-left:1vw;
+  position:absolute;
+  bottom:1.5vw;
+  left:17vw;
   display: inline;
-  color: #FFF;
   cursor: pointer;
 }
 
+
 /***********************/
-/* Counter Identifiers */
+/* Main Identifiers */
 /***********************/
 
 #info {

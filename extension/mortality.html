@@ -102,22 +102,24 @@
 <script id="settings-popup-template" type="text/x-handlebars-template">
 	<form id="options_form">
 		<div id="age_option_container">
-			<div id="dob" class="label_text">
+			<div id="dob-text" class="label_text">
 				When were you born?
 			</div>
-			<input type="date" id="dob_input" class="input_field">
+			<input type="date" id="dob-input" class="input_field">
+
 			<div class="checkbox">
-				<input id="timeCheckbox" type="checkbox">
-				<label for="timeCheckbox">Add Time</label>
+				<input id="time-checkbox" type="checkbox">
+				<label for="time-checkbox" id="addTime-label">Add Time</label>
 			</div>
-			<input type="time" id="time_input" class="input_field">
+			<input type="time" id="time-input" class="input_field">
 		</div>
+
 		<div id="theme_container">
-			<div class="label_text">
+			<div id="theme-text" class="label_text">
 				Select Theme
 			</div>
 			<div>
-				<select id="theme_dropdown" class="input_field">
+				<select id="theme-dropdown" class="input_field">
 					<option value="default">Default</option>
 					<option value="dark">Dark</option>
 					<option value="light">Light</option>
@@ -133,7 +135,7 @@
 
 		<div class="checkbox">
 			<input id="hideAgeCheckBox" type="checkbox">
-			<label for="hideAgeCheckBox">Hide Age</label>
+			<label for="hideAgeCheckBox" id="hideAge-label">Hide Age</label>
 		</div>
     <span class="button-container">
       <button id="submit-button">Submit</button>
