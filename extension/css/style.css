@@ -82,8 +82,7 @@ button {
 }
 
 label {
-  color: #B0B5B9;
-  font-size: 1.1rem;
+  font-size: 1rem;
 
   cursor: pointer;
   position: relative;
@@ -95,11 +94,11 @@ label {
 /************************/
 
 .input_field {
-  width: 15rem;
-  font-size: 1.5rem;
+  width: 11rem;
+  font-size: 1.2rem;
   margin-bottom: 1vw;
   border-radius: .25rem;
-  height: 2.4rem;
+  height: 2rem;
 }
 
 .checkbox label:before {
@@ -118,9 +117,7 @@ label {
 
 .label_text {
   -webkit-user-select: none;
-  color: #B0B5B9;
-  font-size: 1.3rem;
-  text-align: center;
+  font-size: 1rem;
   line-height: 1;
   padding-top: 1vw;
   padding-bottom: 10px;
