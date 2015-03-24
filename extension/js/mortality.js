@@ -55,7 +55,7 @@ Date.prototype.yyyymmdd = function() {
     this.generateCircleLoops(numberMonths, chaptersArray);
   };
 
-  App.fn.generateCircleLoops = function(numberMonths, chaptersArray) 
+  App.fn.generateCircleLoops = function(numberMonths, chaptersArray)
   {
     for (var chapter = 0; chapter < chaptersArray.length; chapter++) {
       var startMonth = chaptersArray[chapter][0] + 1;
@@ -231,7 +231,6 @@ Date.prototype.yyyymmdd = function() {
 
 function infoButtonPressed()
 {
-	var popupBody = document.querySelector('#popup-body');
   if(localStorage.getItem("dob")===null)
   {
     setModalPopup();
@@ -257,7 +256,7 @@ function infoButtonPressed()
 	}
 }
 
-function setModalPopup() 
+function setModalPopup()
 {
   $('#inline-popup').magnificPopup({
     removalDelay: 800, //delay removal by X to allow out-animation
@@ -292,7 +291,7 @@ $("#settings-button").click(function()
 	setButtonPressed(2);
 });
 
-function setButtonPressed(button) 
+function setButtonPressed(button)
 {
 	var updatesButton = document.querySelector("#updates-button");
 	var aboutButton = document.querySelector("#about-button");
@@ -323,14 +322,14 @@ function setButtonPressed(button)
 	}
 }
 
-function setupSettings(dob, dobMinutes) 
+function setupSettings(dob, dobMinutes)
 {
   loadCheckBoxes();
-  if( dob != 'null' ) 
+  if( dob != 'null' )
   {
     document.getElementById('dob_input').value = dob.yyyymmdd();
   }
-  if( dobMinutes != 'null' ) 
+  if( dobMinutes != 'null' )
   {
     var temp = getTimeStringFromMinutes(dobMinutes);
     document.getElementById('time_input').value = temp;
@@ -348,10 +347,10 @@ function setupSettings(dob, dobMinutes)
   });
 }
 
-function loadCheckBoxes() 
+function loadCheckBoxes()
 {
   var timeCheckbox = document.querySelector('input[id=timeCheckbox]');
-  if (localStorage.getItem("dobTimeSet") == "YES") 
+  if (localStorage.getItem("dobTimeSet") == "YES")
   {
     timeCheckbox.checked = true;
   }
@@ -362,7 +361,7 @@ function loadCheckBoxes()
   });
 
   var hideAgeCheckBox = document.querySelector('input[id=hideAgeCheckBox]');
-  if (localStorage.getItem("hideAge") == "YES") 
+  if (localStorage.getItem("hideAge") == "YES")
   {
     hideAgeCheckBox.checked = true;
   }
@@ -510,8 +509,11 @@ function showTimeSelectorIf(isChecked) {
 }
 
 function getDOB() {
-  var savedDoB = localStorage.dob;
-  if(savedDoB != 'null') {
+  var savedDoB = localStorage.getItem("dob");
+  if( savedDoB === null) {
+    return new Date;
+  }
+  else {
     return new Date(parseInt(savedDoB));
   }
 };
@@ -603,4 +605,12 @@ function getTimeStringFromMinutes(totalMinutes) {
 	}
 })();
 
+(function($) {
+    $(window).load(function () {
+        // retrieved this line of code from http://dimsemenov.com/plugins/magnific-popup/documentation.html#api
+        $("#info")[0].click();
+    });
+})(jQuery);
+
 window.onresize();
+
