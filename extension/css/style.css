@@ -121,10 +121,6 @@ label {
   padding-bottom: 10px;
 }
 
-.button-container {
-  margin-left:3.4vw;
-}
-
 .checkbox {
 }
 /*******************/
@@ -197,10 +193,6 @@ label {
 /************************/
 /* Settings Identifiers */
 /************************/
-
-#age_option_container {
-  padding-top: 0.5rem;
-}
 
 #dob-text {
   position:absolute;
