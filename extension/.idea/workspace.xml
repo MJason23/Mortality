@@ -27,7 +27,7 @@
       <file leaf-file-name="mortality.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mortality.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6923077" vertical-offset="1596" max-vertical-offset="2703">
+            <state vertical-scroll-proportion="-4.6538463" vertical-offset="1545" max-vertical-offset="2703">
               <caret line="98" column="8" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
               <folding />
             </state>
@@ -37,27 +37,27 @@
       <file leaf-file-name="popup.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/popup.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3162" max-vertical-offset="4318">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3009" max-vertical-offset="4318">
               <caret line="186" column="22" selection-start-line="186" selection-start-column="22" selection-end-line="186" selection-end-column="22" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mortality.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mortality.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/mortality.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.827586" vertical-offset="5395" max-vertical-offset="10846">
-              <caret line="329" column="54" selection-start-line="329" selection-start-column="37" selection-end-line="329" selection-end-column="54" />
+            <state vertical-scroll-proportion="0.7544444" vertical-offset="9929" max-vertical-offset="10846">
+              <caret line="624" column="37" selection-start-line="624" selection-start-column="37" selection-end-line="624" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.80516684" vertical-offset="3706" max-vertical-offset="4845">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3916" max-vertical-offset="4845">
               <caret line="262" column="12" selection-start-line="262" selection-start-column="12" selection-end-line="262" selection-end-column="12" />
               <folding />
             </state>
@@ -74,8 +74,8 @@
       <list>
         <option value="$PROJECT_DIR$/css/popup.css" />
         <option value="$PROJECT_DIR$/mortality.html" />
-        <option value="$PROJECT_DIR$/js/mortality.js" />
         <option value="$PROJECT_DIR$/css/style.css" />
+        <option value="$PROJECT_DIR$/js/mortality.js" />
       </list>
     </option>
   </component>
@@ -335,6 +335,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3916" max-vertical-offset="4845">
+          <caret line="262" column="12" selection-start-line="262" selection-start-column="12" selection-end-line="262" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/css/popup.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="3162" max-vertical-offset="4318">
@@ -343,26 +351,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/mortality.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.827586" vertical-offset="5395" max-vertical-offset="10846">
-          <caret line="329" column="54" selection-start-line="329" selection-start-column="37" selection-end-line="329" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mortality.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6923077" vertical-offset="1596" max-vertical-offset="2703">
+        <state vertical-scroll-proportion="-4.6538463" vertical-offset="1545" max-vertical-offset="2703">
           <caret line="98" column="8" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/js/mortality.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.80516684" vertical-offset="3706" max-vertical-offset="4845">
-          <caret line="262" column="12" selection-start-line="262" selection-start-column="12" selection-end-line="262" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.7544444" vertical-offset="9929" max-vertical-offset="10846">
+          <caret line="624" column="37" selection-start-line="624" selection-start-column="37" selection-end-line="624" selection-end-column="37" />
           <folding />
         </state>
       </provider>

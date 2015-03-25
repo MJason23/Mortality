@@ -622,8 +622,8 @@ function getTimeStringFromMinutes(totalMinutes) {
     $(window).load(function () {
       if(localStorage.getItem("dob")===null)
       {
+	      $("#cancel-button").toggle();
         $("#info")[0].click();
-        $("#cancel-button").toggle();
       }
     });
 })(jQuery);
