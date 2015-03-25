@@ -102,7 +102,6 @@ label {
 
 .checkbox label:before {
   border-radius: 3px;
-  top:2px;
   left:-25px;
   content: "";
 
@@ -212,35 +211,35 @@ label {
 #dob-input {
   position:absolute;
   left:2.5vw;
-  top:13vw;
+  top:12.5vw;
 }
 #addTime-label {
   position:absolute;
   left:19vw;
-  top:11vw;
+  top:11.2vw;
 }
 #time-input {
   position:absolute;
   left:16vw;
-  top:13vw;
+  top:12.5vw;
 }
 
 #theme-text {
   position: absolute;
   left: 2.5vw;
-  top: 15vw;
+  top: 14vw;
 }
 
 #theme-dropdown {
   position: absolute;
   left: 2.5vw;
-  top: 17.5vw;
+  top: 16.2vw;
 }
 
 #hideAge-label {
   position: absolute;
   left: 4.4vw;
-  top: 20.6vw;
+  top: 18.6vw;
 }
 
 
@@ -261,7 +260,7 @@ label {
 
 #cancel-button {
   position:absolute;
-  bottom:1.5vw;
+  bottom:1.4vw;
   left:19vw;
   display: inline;
   cursor: pointer;
