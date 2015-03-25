@@ -114,7 +114,7 @@
 			<input type="time" id="time-input" class="input_field">
 		</div>
 
-		<div id="theme_container">
+		<div id="theme-container">
 			<div id="theme-text" class="label_text">
 				Select Theme
 			</div>
@@ -133,10 +133,37 @@
 			</div>
 		</div>
 
+		<div id="precision-container">
+			<div id="precision-text" class="label_text">
+				Select Precision
+			</div>
+			<div>
+				<select id="precision-dropdown" class="input_field">
+					<option value="default">Milliseconds</option>
+					<option value="dark">Seconds</option>
+					<option value="light">Minutes</option>
+					<option value="dawn">Hours</option>
+					<option value="dusk">Days</option>
+					<option value="twilight">Months</option>
+					<option value="retro">Years</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="checkbox">
+			<input id="swapTimer-checkbox" type="checkbox">
+			<label for="swapTimer-checkbox" id="swapTimer-label">Display Current Time</label>
+		</div>
+
 		<div class="checkbox">
 			<input id="hideAgeCheckBox" type="checkbox">
 			<label for="hideAgeCheckBox" id="hideAge-label">Hide Age</label>
 		</div>
+		<div class="checkbox">
+			<input id="hideCircles-checkbox" type="checkbox">
+			<label for="hideCircles-checkbox" id="hideCircles-label">Hide Circles</label>
+		</div>
+
     <span class="button-container">
       <button id="submit-button">Submit</button>
       <a id="cancel-button" class="button">cancel</a>
