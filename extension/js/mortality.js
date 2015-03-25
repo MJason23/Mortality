@@ -34,25 +34,27 @@ Date.prototype.yyyymmdd = function() {
 
   App.fn = App.prototype;
 
-  App.fn.load = function()
-  {
-    var x;
+  App.fn.load = function() {
+	  var x;
 
-    this.dob = getDOB();
-    this.dobMinutes = localStorage.dobMinutes || 0;
+	  this.dob = getDOB();
+	  this.dobMinutes = localStorage.dobMinutes || 0;
 
-    var monthBorn = this.dob.getMonth();
-    var chaptersArray = getChapters(monthBorn);
+	  if (localStorage.getItem("hideCircles") === null)
+	  {
+		  var monthBorn = this.dob.getMonth();
+		  var chaptersArray = getChapters(monthBorn);
 
-    this.documentCircle = document.querySelector('#circles');
+		  this.documentCircle = document.querySelector('#circles');
 
-    var currentDate = new Date;
-    var oneDay = 24*60*60*1000;
+		  var currentDate = new Date;
+		  var oneDay = 24 * 60 * 60 * 1000;
 
-    var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime())/(oneDay)));
-    var numberMonths = Math.floor(diffDays/30);
+		  var diffDays = Math.round(Math.abs((this.dob.getTime() - currentDate.getTime()) / (oneDay)));
+		  var numberMonths = Math.floor(diffDays / 30);
 
-    this.generateCircleLoops(numberMonths, chaptersArray);
+		  this.generateCircleLoops(numberMonths, chaptersArray);
+    }
   };
 
   App.fn.generateCircleLoops = function(numberMonths, chaptersArray)
@@ -141,8 +143,11 @@ Date.prototype.yyyymmdd = function() {
       localStorage.removeItem("dobTimeSet");
       localStorage.removeItem("dobMinutes")
     }
-    var hideAgeChecked = document.querySelector('input[id=hideAgeCheckBox').checked;
+    var hideAgeChecked = document.querySelector('input[id=hideAge-checkbox').checked;
     hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");
+
+	  var hideCirclesChecked = document.querySelector('input[id=hideCircles-checkbox').checked;
+	  hideCirclesChecked ? localStorage.setItem("hideCircles", "YES") : localStorage.removeItem("hideCircles");
   };
 
   App.fn.renderAge = function()
@@ -373,11 +378,17 @@ function loadCheckBoxes()
     showTimeSelectorIf(timeCheckbox.checked);
   });
 
-  var hideAgeCheckBox = document.querySelector('input[id=hideAgeCheckBox]');
+  var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
   if (localStorage.getItem("hideAge") == "YES")
   {
-    hideAgeCheckBox.checked = true;
+    hideAgeCheckbox.checked = true;
   }
+
+	var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
+	if (localStorage.getItem("hideCircles") == "YES")
+	{
+		hideCirclesCheckbox.checked = true;
+	}
 }
 
 function setDropdownWithCurrentTheme(){
