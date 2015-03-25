@@ -100,6 +100,18 @@ label {
   height: 2rem;
 }
 
+.years-label {
+  position: absolute;
+  top: 23.5vw;
+}
+
+.years-input {
+  position: absolute;
+  top: 24.5vw;
+  width:2.2vw;
+  border-radius:0.05vw;
+}
+
 .checkbox label:before {
   border-radius: 3px;
   left:-25px;
@@ -259,6 +271,82 @@ label {
 }
 
 
+#chapter-label {
+  position: absolute;
+  left: 2.5vw;
+  top: 21.2vw;
+}
+
+#age-chapter-label {
+  position: absolute;
+  left:3.7vw;
+  top:23.5vw;
+  font-size: 0.5vw;
+}
+
+#first-chapter-label {
+  left: 2.5vw;
+}
+
+#first-chapter-input {
+  left: 2.5vw;
+}
+
+#second-chapter-label {
+  left: 5.8vw;
+}
+
+#second-chapter-input {
+  left: 5.8vw;
+}
+
+#third-chapter-label {
+  left: 9.1vw;
+}
+
+#third-chapter-input {
+  left: 9.1vw;
+}
+
+#fourth-chapter-label {
+  left: 12.4vw;
+}
+
+#fourth-chapter-input {
+  left: 12.4vw;
+}
+
+#fifth-chapter-label {
+  left: 15.7vw;
+}
+
+#fifth-chapter-input {
+  left: 15.7vw;
+}
+
+#sixth-chapter-label {
+  left: 19vw;
+}
+
+#sixth-chapter-input {
+  left: 19vw;
+}
+
+#seventh-chapter-label {
+  left: 22.3vw;
+}
+
+#seventh-chapter-input {
+  left: 22.3vw;
+}
+
+#eighth-chapter-label {
+  left: 25.6vw;
+}
+
+#eighth-chapter-input {
+  left: 25.6vw;
+}
 
 #submit-button {
   position:absolute;
