@@ -412,10 +412,27 @@ function setupSettings(dob, dobMinutes)
     document.getElementById("precision-dropdown").value = savedPrecision;
   }
 
+  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
+  if( savedChapterLengths === null )
+  {
+    savedChapterLengths = [5,7,2,4,4,43,15,0];
+  }
+
+  $("#first-chapter-input").val(savedChapterLengths[0]);
+  $("#second-chapter-input").val(savedChapterLengths[1]);
+  $("#third-chapter-input").val(savedChapterLengths[2]);
+  $("#fourth-chapter-input").val(savedChapterLengths[3]);
+  $("#fifth-chapter-input").val(savedChapterLengths[4]);
+  $("#sixth-chapter-input").val(savedChapterLengths[5]);
+  $("#seventh-chapter-input").val(savedChapterLengths[6]);
+  $("#eighth-chapter-input").val(savedChapterLengths[7]);
+
+
   $("#submit-button").click(function(){
     window.app.saveDob();
     saveTheme();
 	  savePrecision();
+    saveChapterLengths();
     $("#info-popup").magnificPopup('close');
   });
 
@@ -498,6 +515,21 @@ function savePrecision()
 {
 	var selectedPrecision = document.getElementById("precision-dropdown").value;
 	localStorage.setItem("precision", selectedPrecision);
+}
+
+function saveChapterLengths()
+{
+  var chapterLengths = [
+    $("#first-chapter-input").val(),
+    $("#second-chapter-input").val(),
+    $("#third-chapter-input").val(),
+    $("#fourth-chapter-input").val(),
+    $("#fifth-chapter-input").val(),
+    $("#sixth-chapter-input").val(),
+    $("#seventh-chapter-input").val(),
+    $("#eighth-chapter-input").val()
+  ];
+  localStorage.setItem("chapterLengths", JSON.stringify(chapterLengths));
 }
 
 function loadDarkOrLightTheme(savedTheme)
