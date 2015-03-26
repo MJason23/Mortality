@@ -178,49 +178,42 @@ Date.prototype.yyyymmdd = function() {
 	    while(true) {
 		    var years = Math.floor(duration / yearMS);
 		    var yearString = zeroFill(years.toString(), 2);
-		    var yearLabelString = "YEARS";
 		    if (savedPrecision == "year") {
 			    break;
 		    }
 		    duration -= (years * yearMS);
 		    var months = Math.floor(duration / monthMS);
 		    var monthString = zeroFill(months.toString(), 2);
-		    var monthLabelString = "MONTHS";
 		    if (savedPrecision == "month") {
 			    break;
 		    }
 		    duration -= (months * monthMS);
 		    var days = Math.floor(duration / dayMS);
 		    var dayString = zeroFill(days.toString(), 2);
-		    var dayLabelString = "DAYS";
 		    if (savedPrecision == "day") {
 			    break;
 		    }
 		    duration -= (days * dayMS);
 		    var hours = Math.floor(duration / hourMS);
 		    var hourString = zeroFill(hours.toString(), 2);
-		    var hourLabelString = "HOURS";
 		    if (savedPrecision == "hour") {
 			    break;
 		    }
 		    duration -= (hours * hourMS);
 		    var minutes = Math.floor(duration / minuteMS);
 		    var minuteString = zeroFill(minutes.toString(), 2);
-		    var minuteLabelString = "MINUTES";
 		    if (savedPrecision == "min") {
 			    break;
 		    }
 		    duration -= (minutes * minuteMS);
 		    var seconds = Math.floor(duration / secondMS);
 		    var secondString = zeroFill(seconds.toString(), 2);
-		    var secondLabelString = "SECONDS";
 		    if (savedPrecision == "sec") {
 			    break;
 		    }
 		    duration -= (seconds * secondMS);
 		    var milliseconds = Math.floor(duration / 10);
 		    var msString = zeroFill(milliseconds.toString(), 2);
-		    var msLabelString = "MS";
 		    break;
 	    }
 
@@ -235,13 +228,6 @@ Date.prototype.yyyymmdd = function() {
           minute: minuteString,
           second: secondString,
           ms: msString,
-          yearLabel: yearLabelString,
-          monthLabel: monthLabelString,
-          dayLabel: dayLabelString,
-          hourLabel: hourLabelString,
-          minuteLabel: minuteLabelString,
-          secondLabel: secondLabelString,
-          msLabel: msLabelString
         }));
 
 	      //TODO: Possible to refactor this out?
