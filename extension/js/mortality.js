@@ -29,10 +29,26 @@ Date.prototype.yyyymmdd = function() {
     loadDarkOrLightTheme(savedTheme);
 
     this.renderAge();
-    setInterval(this.renderAge.bind(this), 115);
+    this.updateInterval();
   };
 
+
   App.fn = App.prototype;
+
+  App.fn.updateInterval = function()
+  {
+    var interval = 60000;
+    var savedPrecision = localStorage.getItem("precision");
+    if(savedPrecision == "sec")
+    {
+      interval = 1000
+    }
+    if(savedPrecision == "ms")
+    {
+      interval = 115;
+    }
+    setInterval(this.renderAge.bind(this),interval);
+  };
 
   App.fn.load = function() {
 	  var x;
