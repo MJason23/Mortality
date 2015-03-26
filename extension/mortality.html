@@ -46,13 +46,13 @@
 	<div class="age-container">
 		<div class="count">{{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
     <span class="count-labels">
-      <span class="count-label">YEARS</span>
-      <span class="count-label">MONTHS</span>
-      <span class="count-label" style="margin-left:.2vw">DAYS</span>
-      <span class="count-label" style="margin-left:-.2vw">HOURS</span>
-      <span class="count-label">MINUTES</span>
-      <span class="count-label">SECONDS</span>
-      <span class="count-label">MS</span>
+	    <span class='count-label'>{{yearLabel}}</span>
+	    <span class='count-label'>{{monthLabel}}</span>
+	    <span class='count-label' style='margin-left:.2vw'>{{dayLabel}}</span>
+	    <span class='count-label' style='margin-left:-.2vw'>{{hourLabel}}</span>
+	    <span class='count-label'>{{minuteLabel}}</span>
+	    <span class='count-label'>{{secondLabel}}</span>
+	    <span class='count-label'>{{msLabel}}</span>
     </span>
 	</div>
 </script>
@@ -139,13 +139,13 @@
 			</div>
 			<div>
 				<select id="precision-dropdown" class="input_field">
-					<option value="default">Milliseconds</option>
-					<option value="dark">Seconds</option>
-					<option value="light">Minutes</option>
-					<option value="dawn">Hours</option>
-					<option value="dusk">Days</option>
-					<option value="twilight">Months</option>
-					<option value="retro">Years</option>
+					<option value="ms">Milliseconds</option>
+					<option value="sec">Seconds</option>
+					<option value="min">Minutes</option>
+					<option value="hour">Hours</option>
+					<option value="day">Days</option>
+					<option value="month">Months</option>
+					<option value="year">Years</option>
 				</select>
 			</div>
 		</div>

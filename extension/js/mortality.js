@@ -158,29 +158,57 @@ Date.prototype.yyyymmdd = function() {
       var timezoneOffset = now.getTimezoneOffset() * minuteMS;
       var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
 
-      var years = Math.floor(duration / yearMS);
-      duration -= (years*yearMS);
-      var months = Math.floor(duration / monthMS);
-      duration -= (months*monthMS);
-    	var days = Math.floor(duration / dayMS);
-      duration -= (days*dayMS);
-    	var hours = Math.floor(duration / hourMS);
-      duration -= (hours*hourMS);
-    	var minutes = Math.floor(duration / minuteMS);
-      duration -= (minutes*minuteMS);
-    	var seconds = Math.floor(duration / secondMS);
-      duration -= (seconds*secondMS);
-    	var milliseconds = Math.floor(duration / 10);
+	    var savedPrecision = localStorage.getItem("precision");
+	    while(true) {
+		    var years = Math.floor(duration / yearMS);
+		    var yearString = zeroFill(years.toString(), 2);
+		    var yearLabelString = "YEARS";
+		    if (savedPrecision == "year") {
+			    break;
+		    }
+		    duration -= (years * yearMS);
+		    var months = Math.floor(duration / monthMS);
+		    var monthString = zeroFill(months.toString(), 2);
+		    var monthLabelString = "MONTHS";
+		    if (savedPrecision == "month") {
+			    break;
+		    }
+		    duration -= (months * monthMS);
+		    var days = Math.floor(duration / dayMS);
+		    var dayString = zeroFill(days.toString(), 2);
+		    var dayLabelString = "DAYS";
+		    if (savedPrecision == "day") {
+			    break;
+		    }
+		    duration -= (days * dayMS);
+		    var hours = Math.floor(duration / hourMS);
+		    var hourString = zeroFill(hours.toString(), 2);
+		    var hourLabelString = "HOURS";
+		    if (savedPrecision == "hour") {
+			    break;
+		    }
+		    duration -= (hours * hourMS);
+		    var minutes = Math.floor(duration / minuteMS);
+		    var minuteString = zeroFill(minutes.toString(), 2);
+		    var minuteLabelString = "MINUTES";
+		    if (savedPrecision == "min") {
+			    break;
+		    }
+		    duration -= (minutes * minuteMS);
+		    var seconds = Math.floor(duration / secondMS);
+		    var secondString = zeroFill(seconds.toString(), 2);
+		    var secondLabelString = "SECONDS";
+		    if (savedPrecision == "sec") {
+			    break;
+		    }
+		    duration -= (seconds * secondMS);
+		    var milliseconds = Math.floor(duration / 10);
+		    var msString = zeroFill(milliseconds.toString(), 2);
+		    var msLabelString = "MS";
+		    break;
+	    }
 
-    	var yearString = zeroFill(years.toString(),2);
-    	var monthString = zeroFill(months.toString(),2);
-    	var dayString = zeroFill(days.toString(),2);
-    	var hourString = zeroFill(hours.toString(),2);
-    	var minuteString = zeroFill(minutes.toString(),2);
-    	var secondString = zeroFill(seconds.toString(),2);
-    	var msString = zeroFill(milliseconds.toString(),2);
-
-      requestAnimationFrame(function()
+	    requestAnimationFrame(function()
       {
         this.setAppElementHTML(this.getTemplateScript('age')(
         {
@@ -190,8 +218,17 @@ Date.prototype.yyyymmdd = function() {
           hour: hourString,
           minute: minuteString,
           second: secondString,
-          ms: msString
+          ms: msString,
+          yearLabel: yearLabelString,
+          monthLabel: monthLabelString,
+          dayLabel: dayLabelString,
+          hourLabel: hourLabelString,
+          minuteLabel: minuteLabelString,
+          secondLabel: secondLabelString,
+          msLabel: msLabelString
         }));
+
+	      //TODO: Possible to refactor this out?
         var savedTheme = localStorage.getItem("colorTheme");
         if(savedTheme == "light" || savedTheme == "rainbowl")
         {
@@ -357,6 +394,7 @@ function setupSettings(dob, dobMinutes)
   $("#submit-button").click(function(){
     window.app.saveDob();
     saveTheme();
+	  savePrecision();
     $("#info-popup").magnificPopup('close');
   });
 
@@ -431,9 +469,15 @@ function saveTheme()
   var selectedTheme = document.getElementById("theme-dropdown").value;
 
   if (savedTheme != selectedTheme) {
-    localStorage.setItem("colorTheme", selectedTheme);
+	  localStorage.setItem("colorTheme", selectedTheme);
   }
-};
+}
+
+function savePrecision()
+{
+	var selectedPrecision = document.getElementById("precision-dropdown").value;
+	localStorage.setItem("precision", selectedPrecision);
+}
 
 function loadDarkOrLightTheme(savedTheme)
 {
@@ -493,7 +537,7 @@ function getColorTheme() {
         return themes.def;
     }
   }
-};
+}
 
 function getChapters(monthBorn) {
   var chapters = localStorage.getItem("chapters");
