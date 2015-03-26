@@ -43,7 +43,7 @@ Date.prototype.yyyymmdd = function() {
     {
       interval = 1000
     }
-    if(savedPrecision == "ms")
+    else if(savedPrecision == "ms" || savedPrecision === null)
     {
       interval = 115;
     }
