@@ -46,13 +46,27 @@
 	<div class="age-container">
 		<div class="count">{{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
     <span class="count-labels">
-	    <span class='count-label'>{{yearLabel}}</span>
-	    <span class='count-label'>{{monthLabel}}</span>
-	    <span class='count-label' style='margin-left:.2vw'>{{dayLabel}}</span>
-	    <span class='count-label' style='margin-left:-.2vw'>{{hourLabel}}</span>
-	    <span class='count-label'>{{minuteLabel}}</span>
-	    <span class='count-label'>{{secondLabel}}</span>
-	    <span class='count-label'>{{msLabel}}</span>
+      {{#if yearLabel}}
+	     <span class='count-label'>{{yearLabel}}</span>
+      {{/if}}
+      {{#if monthLabel}}
+	     <span class='count-label'>{{monthLabel}}</span>
+      {{/if}}
+      {{#if dayLabel}}
+        <span class='count-label' style='margin-left:.2vw'>{{dayLabel}}</span>
+      {{/if}}
+      {{#if hourLabel}}
+        <span class='count-label' style='margin-left:-.2vw'>{{hourLabel}}</span>
+      {{/if}}
+      {{#if minuteLabel}}
+        <span class='count-label'>{{minuteLabel}}</span>
+      {{/if}}
+      {{#if secondLabel}}
+        <span class='count-label'>{{secondLabel}}</span>
+      {{/if}}
+      {{#if msLabel}}
+        <span class='count-label'>{{msLabel}}</span>
+      {{/if}}
     </span>
 	</div>
 </script>
