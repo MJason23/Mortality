@@ -407,6 +407,11 @@ function setupSettings(dob, dobMinutes)
   document.getElementById('time-input').value = temp;
   setDropdownWithCurrentTheme();
 
+  var savedPrecision = localStorage.getItem("precision");
+  if (savedPrecision != null) {
+    document.getElementById("precision-dropdown").value = savedPrecision;
+  }
+
   $("#submit-button").click(function(){
     window.app.saveDob();
     saveTheme();
