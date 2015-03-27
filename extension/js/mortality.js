@@ -25,11 +25,9 @@ Date.prototype.yyyymmdd = function() {
     localStorage.removeItem("infoSeen");
     ////////////////////////////////////
 
-    var savedTheme = localStorage.getItem("colorTheme");
-    loadDarkOrLightTheme(savedTheme);
-
     this.renderAge();
     this.updateInterval();
+    loadDarkOrLightTheme();
   };
 
 
@@ -217,10 +215,25 @@ Date.prototype.yyyymmdd = function() {
 		    break;
 	    }
 
+      // yearString = now.getHours();
+      // monthString = ":"
+      // dayString = now.getMinutes();
+      // hourString = ":"
+      // minuteString = now.getSeconds();
+      var savedTheme = localStorage.getItem("colorTheme");
+      if(savedTheme == "light" || savedTheme == "rainbowl") {
+        var whiteFlag = "YES";
+      }
+      else {
+        var blackFlag = "YES";
+      }
+
 	    requestAnimationFrame(function()
       {
         this.setAppElementHTML(this.getTemplateScript('age')(
         {
+          white: whiteFlag,
+          black: blackFlag,
           year: yearString,
           month: monthString,
           day: dayString,
@@ -229,33 +242,6 @@ Date.prototype.yyyymmdd = function() {
           second: secondString,
           ms: msString,
         }));
-
-	      //TODO: Possible to refactor this out?
-        var savedTheme = localStorage.getItem("colorTheme");
-        if(savedTheme == "light" || savedTheme == "rainbowl")
-        {
-          var counts = document.getElementsByClassName('count');
-          for( i=0; i<counts.length; i++ ) {
-            counts[i].style.textShadow = "-3px 0 white, 0 3px white, 3px 0 white, 0 -3px white";
-          }
-          var countLabels = document.getElementsByClassName('count-labels');
-          for( i=0; i<countLabels.length; i++ ) {
-            countLabels[i].style.textShadow = "-1px 0 white, 0 1px white, 1px 0 white, 0 -1px white";
-            countLabels[i].style.fontWeight = "500";
-          }
-        }
-        else
-        {
-          var counts = document.getElementsByClassName('count');
-          for( i=0; i<counts.length; i++ ) {
-            counts[i].style.textShadow = "-3px 0 black, 0 3px black, 3px 0 black, 0 -3px black";
-          }
-          var countLabels = document.getElementsByClassName('count-labels');
-          for( i=0; i<countLabels.length; i++ ) {
-            countLabels[i].style.textShadow = "-1px 0 black, 0 1px black, 1px 0 black, 0 -1px black";
-            countLabels[i].style.fontWeight = "400";
-          }
-        }
       }.bind(this));
     }
   };
@@ -518,8 +504,9 @@ function saveChapterLengths()
   localStorage.setItem("chapterLengths", JSON.stringify(chapterLengths));
 }
 
-function loadDarkOrLightTheme(savedTheme)
+function loadDarkOrLightTheme()
 {
+    var savedTheme = localStorage.getItem("colorTheme");
     if(savedTheme == "light" || savedTheme == "rainbowl")
     {
       document.body.style.backgroundColor = "#F5F5F5";

@@ -44,8 +44,19 @@
 
 <script id="age-template" type="text/x-handlebars-template">
 	<div class="age-container">
-		<div class="count">{{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
-    <span class="count-labels">
+    {{#if white}}
+		<div class="white-count">
+    {{/if}}
+    {{#if black}}
+    <div class="black-count">
+    {{/if}}
+    {{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
+    {{#if white}}
+    <span class="white-count-labels">
+    {{/if}}
+    {{#if black}}
+    <span class="black-count-labels">
+    {{/if}}
       {{#if year}}
 	     <span class='count-label'>YEARS</span>
       {{/if}}
