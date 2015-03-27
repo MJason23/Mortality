@@ -536,18 +536,18 @@ function loadDarkOrLightTheme(savedTheme)
 
 function getColorTheme() {
   var themes = {
-    "def" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E'],
-    "dark" : ['#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242'],
-    "light" : ['#212121', '#424242', '#616161', '#757575', '#9E9E9E', '#BDBDBD', '#E0E0E0'],
-    "dawn" : ['#FFEB3B', '#FBC02D', '#F9A825', '#FF9800', '#F57C00', '#E65100', '#795548'],
-    "dusk" : ['#391003', '#5D1A25', '#722007','#ab300a', '#bf360c', '#cb5e3c', '#df9a85'],
-    "twilight" : ['#4527A0', '#283593', '#3F51B5', '#5C6BC0', '#78909C', '#B0BEC5', '#ECEFF1'],
-    "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#00E8BB', '#00a282'],
-    "rainbowl" : ['#B71C1C', '#E65100', '#FFD600', '#1B5E20', '#004D40', '#01579B', '#673AB7'],
-    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#7bc043', '#009688', '#0392cf', '#644ca2']
-  }
+    "def" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E', '#689F38'],
+    "dark" : ['#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242', '#2E2E2E'],
+    "light" : ['#212121', '#424242', '#616161', '#757575', '#9E9E9E', '#BDBDBD', '#E0E0E0', '#ECECEC'],
+    "dawn" : ['#FFEB3B', '#FBC02D', '#F9A825', '#FF9800', '#F57C00', '#E65100', '#795548', '#4E342E'],
+    "dusk" : ['#391003', '#5D1A25', '#722007','#ab300a', '#bf360c', '#cb5e3c', '#C47A6F', '#df9a85'],
+    "twilight" : ['#4527A0', '#283593', '#3F51B5', '#5C6BC0', '#8c97d2', '#78909C', '#B0BEC5', '#ECEFF1'],
+    "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#FF984C', '#00E8BB', '#00a282'],
+    "rainbowl" : ['#B71C1C', '#E65100', '#FFD600', '#1B5E20', '#004D40', '#3378af', '#673AB7', '#482880'],
+    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#7bc043', '#009688', '#0392cf', '#644ca2', '#482880']
+  };
 
-  savedTheme = localStorage.getItem("colorTheme");
+  var savedTheme = localStorage.getItem("colorTheme");
 
   if (savedTheme == null) {
     return themes.def;
@@ -579,32 +579,54 @@ function getColorTheme() {
 }
 
 function getChapters(monthBorn) {
-  var chapters = localStorage.getItem("chapters");
-  if (chapters == null) {
-    var firstChapter = 0;
-    var secondChapter = 60;
-    var educationStartOffset = 0;
-    if(monthBorn == 11)
-    {
-     educationStartOffset = 8;
-    }
-    else
-    {
-     educationStartOffset = (7-monthBorn);
-    }
-    secondChapter += educationStartOffset;
-    var thirdChapter = secondChapter + 84;
-    var fourthChapter = thirdChapter + 24;
-    var fifthChapter = fourthChapter + 48;
-    var sixthChapter = fifthChapter + 48;
-    var seventhChapter = sixthChapter + 540;
-    var eighthChapter = seventhChapter + 141 - educationStartOffset;
-    return [[firstChapter, secondChapter], [secondChapter, thirdChapter]
-      ,[thirdChapter, fourthChapter], [fourthChapter, fifthChapter]
-      ,[fifthChapter, sixthChapter], [sixthChapter, seventhChapter]
-      ,[seventhChapter, eighthChapter]];
+  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
+  if( savedChapterLengths === null )
+  {
+    savedChapterLengths = [5,7,2,4,4,43,15,0];
   }
-};
+
+  for( var i=0; i<8; i++ ) {
+    savedChapterLengths[i] = savedChapterLengths[i]*12
+  }
+
+  var index = 0;
+  var totalMonths = 0;
+  for( index; index<8; index++ ) {
+    if((totalMonths+savedChapterLengths[index]) > 945) {
+      savedChapterLengths[index] = (945-totalMonths);
+    }
+    totalMonths += savedChapterLengths[index];
+  }
+
+  var beginningChapter = 0;
+  var firstChapter = savedChapterLengths[0];
+  var educationStartOffset = 0;
+  if(monthBorn == 11)
+  {
+   educationStartOffset = 8;
+  }
+  else
+  {
+   educationStartOffset = (7-monthBorn);
+  }
+  firstChapter += educationStartOffset;
+  var secondChapter = firstChapter + (savedChapterLengths[1]);
+  var thirdChapter = secondChapter + (savedChapterLengths[2]);
+  var fourthChapter = thirdChapter + (savedChapterLengths[3]);
+  var fifthChapter = fourthChapter + (savedChapterLengths[4]);
+  //540
+  var sixthChapter = fifthChapter + (savedChapterLengths[5]);
+  //141
+  var seventhChapter = sixthChapter + (savedChapterLengths[6]);
+  var eighthChapter = 945;
+
+
+
+  return [[beginningChapter, firstChapter], [firstChapter, secondChapter], [secondChapter, thirdChapter]
+    ,[thirdChapter, fourthChapter], [fourthChapter, fifthChapter]
+    ,[fifthChapter, sixthChapter], [sixthChapter, seventhChapter]
+    ,[seventhChapter, eighthChapter]];
+}
 
 
 function showTimeSelectorIf(isChecked) {
