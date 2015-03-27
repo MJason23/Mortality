@@ -46,6 +46,7 @@ Date.prototype.yyyymmdd = function() {
         {
           interval = 115;
         }
+        this.renderAge();
         setInterval(this.renderAge.bind(this),interval);
       }
       else {
