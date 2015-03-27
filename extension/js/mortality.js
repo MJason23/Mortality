@@ -477,11 +477,27 @@ function loadCheckBoxes()
     hideAgeCheckbox.checked = true;
   }
 
+  hideAgeCheckbox.addEventListener('change', function (event) {
+    var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
+    if(hideCirclesCheckbox.checked == true)
+    {
+      hideCirclesCheckbox.checked = false;
+    }
+  });
+
 	var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
 	if (localStorage.getItem("hideCircles") == "YES")
 	{
 		hideCirclesCheckbox.checked = true;
 	}
+
+  hideCirclesCheckbox.addEventListener('change', function (event) {
+    var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
+    if(hideAgeCheckbox.checked == true)
+    {
+      hideAgeCheckbox.checked = false;
+    }
+  });
 
   var swapTimerCheckbox = document.querySelector('input[id=swapTimer-checkbox]');
   if (localStorage.getItem("swap") == "YES")
