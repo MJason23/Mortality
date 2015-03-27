@@ -23,6 +23,7 @@ Date.prototype.yyyymmdd = function() {
 
     // CHANGE Previous Version /////////
     localStorage.removeItem("infoSeen");
+    localStorage.removeItem("update-3.1.1");
     ////////////////////////////////////
 
     this.updateInterval();
@@ -309,14 +310,15 @@ function infoButtonPressed()
     setModalPopup();
     setButtonPressed(2);
   }
-	else if(localStorage.getItem("update-3.1.1")===null)
+  //UPDATE WHEN REVVING VERSIONS
+	else if(localStorage.getItem("version")=="3.2.0")
 	{
-		setButtonPressed(1);
-		localStorage.setItem("update-3.1.1", "YES");
+		setButtonPressed(0);
 	}
 	else
 	{
-		setButtonPressed(0);
+		setButtonPressed(1);
+    localStorage.setItem("version", "3.2.0");
 	}
 
 	if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
@@ -496,31 +498,27 @@ function setDropdownWithCurrentTheme(){
 };
 
 
-
-
 function setWhiteInfoButton()
 {
-  if(localStorage.getItem("update-3.1.1") === null)
-  {
-    document.getElementById("info-img").src = "assets/infoWhiteAlert.png"
+  if(localStorage.getItem("version") == "3.2.0") {
+    document.getElementById("info-img").src = "assets/infoWhite.png"
   }
-  else
-  {
-	  document.getElementById("info-img").src = "assets/infoWhite.png"
+  else {
+    document.getElementById("info-img").src = "assets/infoWhiteAlert.png"
   }
 }
 
 function setBlackInfoButton()
 {
-  if(localStorage.getItem("update-3.1.1") === null)
-  {
-    document.getElementById("info-img").src = "assets/infoBlackAlert.png"
-  }
-  else
-  {
+  if(localStorage.getItem("version") == "3.2.0") {
     document.getElementById("info-img").src = "assets/infoBlack.png"
   }
+  else {
+    document.getElementById("info-img").src = "assets/infoBlackAlert.png"
+  }
 }
+
+
 
 function saveTheme()
 {
