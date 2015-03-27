@@ -41,6 +41,17 @@
   <div id="side-container"></div>
 </div>
 
+<script id="clock-template" type="text/x-handlebars-template">
+  <div class="age-container">
+    {{#if white}}
+    <div class="white-count">
+    {{/if}}
+    {{#if black}}
+    <div class="black-count">
+    {{/if}}
+    {{hour}}:{{minute}}:{{second}} {{ampm}}</div>
+  </div>
+</script>
 
 <script id="age-template" type="text/x-handlebars-template">
 	<div class="age-container">
@@ -177,12 +188,12 @@
 
 		<div class="checkbox">
 			<input id="swapTimer-checkbox" type="checkbox">
-			<label for="swapTimer-checkbox" id="swapTimer-label">Display Current Time</label>
+			<label for="swapTimer-checkbox" id="swapTimer-label">Swap Age w/ Time</label>
 		</div>
 
 		<div class="checkbox">
 			<input id="hideAge-checkbox" type="checkbox">
-			<label for="hideAge-checkbox" id="hideAge-label">Hide Age</label>
+			<label for="hideAge-checkbox" id="hideAge-label">Hide Age/Time</label>
 		</div>
 		<div class="checkbox">
 			<input id="hideCircles-checkbox" type="checkbox">

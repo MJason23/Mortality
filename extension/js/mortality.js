@@ -25,7 +25,6 @@ Date.prototype.yyyymmdd = function() {
     localStorage.removeItem("infoSeen");
     ////////////////////////////////////
 
-    this.renderAge();
     this.updateInterval();
     loadDarkOrLightTheme();
   };
@@ -35,17 +34,25 @@ Date.prototype.yyyymmdd = function() {
 
   App.fn.updateInterval = function()
   {
-    var interval = 60000;
-    var savedPrecision = localStorage.getItem("precision");
-    if(savedPrecision == "sec")
-    {
-      interval = 1000
+    if( localStorage.getItem("hideAge") === null ) {
+      if( localStorage.getItem("swap") === null ) {
+        var interval = 60000;
+        var savedPrecision = localStorage.getItem("precision");
+        if(savedPrecision == "sec")
+        {
+          interval = 1000
+        }
+        else if(savedPrecision == "ms" || savedPrecision === null)
+        {
+          interval = 115;
+        }
+        setInterval(this.renderAge.bind(this),interval);
+      }
+      else {
+        this.renderTime();
+        setInterval(this.renderTime.bind(this),1000);
+      }
     }
-    else if(savedPrecision == "ms" || savedPrecision === null)
-    {
-      interval = 115;
-    }
-    setInterval(this.renderAge.bind(this),interval);
   };
 
   App.fn.load = function() {
@@ -162,88 +169,123 @@ Date.prototype.yyyymmdd = function() {
 
 	  var hideCirclesChecked = document.querySelector('input[id=hideCircles-checkbox').checked;
 	  hideCirclesChecked ? localStorage.setItem("hideCircles", "YES") : localStorage.removeItem("hideCircles");
+
+    var swapTimerChecked = document.querySelector('input[id=swapTimer-checkbox').checked;
+    swapTimerChecked ? localStorage.setItem("swap", "YES") : localStorage.removeItem("swap");
   };
 
   App.fn.renderAge = function()
   {
-    if( localStorage.getItem("hideAge") === null )
-    {
-      var now = new Date();
-      var timezoneOffset = now.getTimezoneOffset() * minuteMS;
-      var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
+    var now = new Date();
+    var timezoneOffset = now.getTimezoneOffset() * minuteMS;
+    var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
 
-	    var savedPrecision = localStorage.getItem("precision");
-	    while(true) {
-		    var years = Math.floor(duration / yearMS);
-		    var yearString = zeroFill(years.toString(), 2);
-		    if (savedPrecision == "year") {
-			    break;
-		    }
-		    duration -= (years * yearMS);
-		    var months = Math.floor(duration / monthMS);
-		    var monthString = zeroFill(months.toString(), 2);
-		    if (savedPrecision == "month") {
-			    break;
-		    }
-		    duration -= (months * monthMS);
-		    var days = Math.floor(duration / dayMS);
-		    var dayString = zeroFill(days.toString(), 2);
-		    if (savedPrecision == "day") {
-			    break;
-		    }
-		    duration -= (days * dayMS);
-		    var hours = Math.floor(duration / hourMS);
-		    var hourString = zeroFill(hours.toString(), 2);
-		    if (savedPrecision == "hour") {
-			    break;
-		    }
-		    duration -= (hours * hourMS);
-		    var minutes = Math.floor(duration / minuteMS);
-		    var minuteString = zeroFill(minutes.toString(), 2);
-		    if (savedPrecision == "min") {
-			    break;
-		    }
-		    duration -= (minutes * minuteMS);
-		    var seconds = Math.floor(duration / secondMS);
-		    var secondString = zeroFill(seconds.toString(), 2);
-		    if (savedPrecision == "sec") {
-			    break;
-		    }
-		    duration -= (seconds * secondMS);
-		    var milliseconds = Math.floor(duration / 10);
-		    var msString = zeroFill(milliseconds.toString(), 2);
+    var savedPrecision = localStorage.getItem("precision");
+    while(true) {
+	    var years = Math.floor(duration / yearMS);
+	    var yearString = zeroFill(years.toString(), 2);
+	    if (savedPrecision == "year") {
 		    break;
 	    }
-
-      // yearString = now.getHours();
-      // monthString = ":"
-      // dayString = now.getMinutes();
-      // hourString = ":"
-      // minuteString = now.getSeconds();
-      var savedTheme = localStorage.getItem("colorTheme");
-      if(savedTheme == "light" || savedTheme == "rainbowl") {
-        var whiteFlag = "YES";
-      }
-      else {
-        var blackFlag = "YES";
-      }
-
-	    requestAnimationFrame(function()
-      {
-        this.setAppElementHTML(this.getTemplateScript('age')(
-        {
-          white: whiteFlag,
-          black: blackFlag,
-          year: yearString,
-          month: monthString,
-          day: dayString,
-          hour: hourString,
-          minute: minuteString,
-          second: secondString,
-          ms: msString,
-        }));
-      }.bind(this));
+	    duration -= (years * yearMS);
+	    var months = Math.floor(duration / monthMS);
+	    var monthString = zeroFill(months.toString(), 2);
+	    if (savedPrecision == "month") {
+		    break;
+	    }
+	    duration -= (months * monthMS);
+	    var days = Math.floor(duration / dayMS);
+	    var dayString = zeroFill(days.toString(), 2);
+	    if (savedPrecision == "day") {
+		    break;
+	    }
+	    duration -= (days * dayMS);
+	    var hours = Math.floor(duration / hourMS);
+	    var hourString = zeroFill(hours.toString(), 2);
+	    if (savedPrecision == "hour") {
+		    break;
+	    }
+	    duration -= (hours * hourMS);
+	    var minutes = Math.floor(duration / minuteMS);
+	    var minuteString = zeroFill(minutes.toString(), 2);
+	    if (savedPrecision == "min") {
+		    break;
+	    }
+	    duration -= (minutes * minuteMS);
+	    var seconds = Math.floor(duration / secondMS);
+	    var secondString = zeroFill(seconds.toString(), 2);
+	    if (savedPrecision == "sec") {
+		    break;
+	    }
+	    duration -= (seconds * secondMS);
+	    var milliseconds = Math.floor(duration / 10);
+	    var msString = zeroFill(milliseconds.toString(), 2);
+	    break;
     }
+
+    // yearString = now.getHours();
+    // monthString = ":"
+    // dayString = now.getMinutes();
+    // hourString = ":"
+    // minuteString = now.getSeconds();
+    var savedTheme = localStorage.getItem("colorTheme");
+    if(savedTheme == "light" || savedTheme == "rainbowl") {
+      var whiteFlag = "YES";
+    }
+    else {
+      var blackFlag = "YES";
+    }
+
+    requestAnimationFrame(function()
+    {
+      this.setAppElementHTML(this.getTemplateScript('age')(
+      {
+        white: whiteFlag,
+        black: blackFlag,
+        year: yearString,
+        month: monthString,
+        day: dayString,
+        hour: hourString,
+        minute: minuteString,
+        second: secondString,
+        ms: msString,
+      }));
+    }.bind(this));
+  };
+
+  App.fn.renderTime = function()
+  {
+    var now = new Date();
+    var ampmString = "AM";
+    var hour = now.getHours();
+    if( hour > 12 ) {
+      ampmString = "PM";
+      hour = hour % 12;
+    }
+    var hourString = zeroFill(hour.toString(), 2);
+    var minuteString = zeroFill(now.getMinutes().toString(), 2);
+    var secondString = zeroFill(now.getSeconds().toString(), 2);
+
+    var savedTheme = localStorage.getItem("colorTheme");
+    if(savedTheme == "light" || savedTheme == "rainbowl") {
+      var whiteFlag = "YES";
+    }
+    else {
+      var blackFlag = "YES";
+    }
+
+    requestAnimationFrame(function()
+    {
+      this.setAppElementHTML(this.getTemplateScript('clock')(
+      {
+        white: whiteFlag,
+        black: blackFlag,
+        hour: hourString,
+        minute: minuteString,
+        second: secondString,
+        ampm: ampmString
+      }));
+    }.bind(this));
   };
 
   App.fn.setAppElementHTML = function(html){
@@ -437,6 +479,12 @@ function loadCheckBoxes()
 	{
 		hideCirclesCheckbox.checked = true;
 	}
+
+  var swapTimerCheckbox = document.querySelector('input[id=swapTimer-checkbox]');
+  if (localStorage.getItem("swap") == "YES")
+  {
+    swapTimerCheckbox.checked = true;
+  }
 }
 
 function setDropdownWithCurrentTheme(){
