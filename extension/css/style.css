@@ -68,22 +68,14 @@ input[type=checkbox]:checked + label:before {
     line-height: 1.5vw;
 }
 
-input[type='color'] {
-  height: 50px;
-  width: 100%;
-  border-width: 0px;
-}
-
 button {
   font-size: 1.5vw;
-
   appearance: none;
   -webkit-appearance: none;
 }
 
 label {
   font-size: 1vw;
-
   cursor: pointer;
   position: relative;
 }
@@ -116,11 +108,11 @@ label {
 
 .checkbox label:before {
   border-radius: 3px;
-  left:-25px;
+  left:-1.5vw;
   content: "";
 
-  width: 1.3vw;
-  height: 1.3vw;
+  width: 1.2vw;
+  height: 1.2vw;
 
   position: absolute;
   background-color: #ffffff;
@@ -359,9 +351,10 @@ label {
 
 
 #chapter-label {
+  font-size:1vw;
   position: absolute;
   left: 2.5vw;
-  top: 21.2vw;
+  top: 22.2vw;
 }
 
 #age-chapter-label {

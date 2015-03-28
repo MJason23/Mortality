@@ -26,11 +26,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf>
-          <file leaf-file-name="mortality.html" pinned="false" current-in-tab="true">
+          <file leaf-file-name="mortality.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/mortality.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.40112358" vertical-offset="0" max-vertical-offset="4828">
-                  <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+                <state vertical-scroll-proportion="-12.153846" vertical-offset="3526" max-vertical-offset="4828">
+                  <caret line="226" column="12" selection-start-line="226" selection-start-column="6" selection-end-line="226" selection-end-column="12" />
                   <folding>
                     <element signature="n#style#0;n#span#2;n#span#0;n#span#0;n#div#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                     <element signature="n#style#0;n#span#3;n#span#0;n#span#0;n#div#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -39,11 +39,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
+          <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/css/style.css">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.0" vertical-offset="4103" max-vertical-offset="8058">
-                  <caret line="250" column="12" selection-start-line="250" selection-start-column="12" selection-end-line="250" selection-end-column="12" />
+                <state vertical-scroll-proportion="0.40888888" vertical-offset="5684" max-vertical-offset="7973">
+                  <caret line="356" column="9" selection-start-line="356" selection-start-column="9" selection-end-line="356" selection-end-column="9" />
                   <folding />
                 </state>
               </provider>
@@ -68,8 +68,8 @@
           <file leaf-file-name="mortality.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/mortality.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="0.7102593" vertical-offset="4810" max-vertical-offset="13481">
-                  <caret line="320" column="68" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
+                <state vertical-scroll-proportion="0.7102593" vertical-offset="5082" max-vertical-offset="13753">
+                  <caret line="336" column="36" selection-start-line="336" selection-start-column="36" selection-end-line="336" selection-end-column="36" />
                   <folding />
                 </state>
               </provider>
@@ -87,9 +87,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/css/popup.css" />
-        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/mortality.html" />
         <option value="$PROJECT_DIR$/js/mortality.js" />
+        <option value="$PROJECT_DIR$/css/style.css" />
       </list>
     </option>
   </component>
@@ -524,18 +524,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
+    <entry file="file://$PROJECT_DIR$/js/mortality.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4103" max-vertical-offset="8058">
-          <caret line="250" column="12" selection-start-line="250" selection-start-column="12" selection-end-line="250" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.7102593" vertical-offset="5082" max-vertical-offset="13753">
+          <caret line="336" column="36" selection-start-line="336" selection-start-column="36" selection-end-line="336" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mortality.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40112358" vertical-offset="0" max-vertical-offset="4828">
-          <caret line="21" column="9" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        <state vertical-scroll-proportion="-12.153846" vertical-offset="3526" max-vertical-offset="4828">
+          <caret line="226" column="12" selection-start-line="226" selection-start-column="6" selection-end-line="226" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#span#2;n#span#0;n#span#0;n#div#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#span#3;n#span#0;n#span#0;n#div#0;n#div#0;n#script#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -543,10 +543,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/mortality.js">
+    <entry file="file://$PROJECT_DIR$/css/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7102593" vertical-offset="4810" max-vertical-offset="13481">
-          <caret line="320" column="68" selection-start-line="320" selection-start-column="68" selection-end-line="320" selection-end-column="68" />
+        <state vertical-scroll-proportion="0.40888888" vertical-offset="5684" max-vertical-offset="7973">
+          <caret line="356" column="9" selection-start-line="356" selection-start-column="9" selection-end-line="356" selection-end-column="9" />
           <folding />
         </state>
       </provider>
