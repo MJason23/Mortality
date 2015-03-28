@@ -19,6 +19,11 @@
 <div id = "info"><img id="info-img" src="assets/infoBlack.png" /></div>
 </a>
 
+<div id="update-bubble" class="bubble">
+  <div class="popup-text">Mortality has been updated,<br>
+    check out the changes here!</div>
+</div>
+
 <div id="info-popup" class="white-popup mfp-with-anim mfp-hide">
   <img id="main-image" src="assets/popup.png">
   <hr id="banner-hr">
@@ -156,7 +161,7 @@
 <script id="settings-popup-template" type="text/x-handlebars-template">
 	<form id="options_form">
 		<div id="age_option_container">
-			<div id="dob-text" class="label_text">
+			<div id="dob-text" class="label-text">
 				When were you born?
 			</div>
 			<input type="date" id="dob-input" class="input_field">
@@ -169,7 +174,7 @@
 		</div>
 
 		<div id="theme-container">
-			<div id="theme-text" class="label_text">
+			<div id="theme-text" class="label-text">
 				Select Theme
 			</div>
 			<div>
@@ -188,7 +193,7 @@
 		</div>
 
 		<div id="precision-container">
-			<div id="precision-text" class="label_text">
+			<div id="precision-text" class="label-text">
 				Select Precision
 			</div>
 			<div>
@@ -218,7 +223,7 @@
 			<label for="hideCircles-checkbox" id="hideCircles-label">Hide Circles</label>
 		</div>
 
-    <div id="chapter-label" class="label_text">
+    <div id="chapter-label" class="label-text">
       Modify Life Chapters (Years):
     </div>
     <div id="age-chapter-label">

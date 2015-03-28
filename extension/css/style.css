@@ -125,12 +125,23 @@ label {
   box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
 }
 
-.label_text {
+.label-text {
   -webkit-user-select: none;
   font-size: 1rem;
   line-height: 1;
   padding-top: 1vw;
   padding-bottom: 10px;
+}
+
+.popup-text {
+  -webkit-user-select: none;
+  font-size: 1rem;
+  line-height: 1;
+  padding-top:10px;
+  padding-left:10px;
+  padding-bottom: 10px;
+  color: #000000;
+  cursor:default;
 }
 
 .checkbox {
@@ -231,6 +242,49 @@ label {
   text-align: center;
   flex-basis: 20px;
   flex-grow: 1;
+}
+
+.bubble
+{
+  position: absolute;
+  bottom: 50px;
+  left: 10px;
+  width: 230px;
+  height: 56px;
+  padding: 0px;
+  background: #FFFFFF;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  border: #000000 solid 2px;
+}
+
+.bubble:after
+{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 12px 9px 0;
+  border-color: #FFFFFF transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  bottom: -12px;
+  left: 11px;
+}
+
+.bubble:before
+{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 13px 10px 0;
+  border-color: #000000 transparent;
+  display: block;
+  width: 0;
+  z-index: 0;
+  bottom: -15px;
+  left: 10px;
 }
 
 /************************/

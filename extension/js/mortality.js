@@ -318,6 +318,7 @@ function infoButtonPressed()
 	else
 	{
 		setButtonPressed(1);
+    document.getElementById("update-bubble").style.display = "none";
     localStorage.setItem("version", "3.2.0");
 	}
 
@@ -502,9 +503,11 @@ function setWhiteInfoButton()
 {
   if(localStorage.getItem("version") == "3.2.0") {
     document.getElementById("info-img").src = "assets/infoWhite.png"
+    document.getElementById("update-bubble").style.display = "none";
   }
   else {
     document.getElementById("info-img").src = "assets/infoWhiteAlert.png"
+    document.getElementById("update-bubble").style.display = "block";
   }
 }
 
@@ -512,9 +515,11 @@ function setBlackInfoButton()
 {
   if(localStorage.getItem("version") == "3.2.0") {
     document.getElementById("info-img").src = "assets/infoBlack.png"
+    document.getElementById("update-bubble").style.display = "none";
   }
   else {
     document.getElementById("info-img").src = "assets/infoBlackAlert.png"
+    document.getElementById("update-bubble").style.display = "block";
   }
 }
 
