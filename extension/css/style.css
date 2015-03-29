@@ -10,9 +10,7 @@ body,html {
 
 body {
   background-color: #F5F5F5;
-
   color: #424242;
-
   -webkit-align-items: center;
   -webkit-font-smoothing: antialiased;
   -webkit-justify-content: center;
@@ -59,15 +57,75 @@ ul {
   width:25vw;
   padding-left: 1vw;
 }
+
 /*******************/
-/*  Main Classes   */
+/*  Timer Classes  */
 /*******************/
 
-.age-container {
+.timer-container {
   position: absolute;
   left: 50%;
   top: 42%;
 }
+
+.timer {
+  -webkit-user-select: none;
+  position: relative;
+  left: -50%;
+  top: -50%;
+  margin-left: .7vw;
+  margin-right: .7vw;
+  margin-bottom: .4vw;
+  font-size: 5vw;
+  font-weight: 500;
+  line-height: 1;
+  cursor: default;
+}
+#white-timer-age {
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+}
+
+#white-timer-clock {
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+}
+
+#black-timer-age {
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+
+#black-timer-clock {
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+
+.timer-label {
+  -webkit-user-select: none;
+  text-align: center;
+  flex-basis: 20px;
+  flex-grow: 1;
+}
+
+.timer-labels {
+  -webkit-user-select: none;
+  display:flex;
+  position: relative;
+  left: -50%;
+  margin: 0;
+  font-size: 1.0vw;
+  font-weight: 400;
+  line-height: 1;
+  cursor: default;
+}
+#white-timer-labels {
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+#black-timer-labels {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/*******************/
+/*  Life Chapters  */
+/*******************/
 
 .pie {
   float: left;
@@ -88,74 +146,9 @@ ul {
   background-color: #424242;
 }
 
-.white-count {
-  -webkit-user-select: none;
-  position: relative;
-  left: -50%;
-  top: -50%;
-
-  margin-left: .7vw;
-  margin-right: .7vw;
-  margin-bottom: .4vw;
-  font-size: 5vw;
-  font-weight: 500;
-  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
-  line-height: 1;
-
-  cursor: default;
-}
-
-.black-count {
-  -webkit-user-select: none;
-  position: relative;
-  left: -50%;
-  top: -50%;
-
-  margin-left: .7vw;
-  margin-right: .7vw;
-  margin-bottom: .4vw;
-  font-size: 5vw;
-  font-weight: 500;
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
-  line-height: 1;
-
-  cursor: default;
-}
-
-.white-count-labels {
-  -webkit-user-select: none;
-  display:flex;
-  position: relative;
-  left: -50%;
-  margin: 0;
-  font-size: 1.0vw;
-  font-weight: 400;
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  line-height: 1;
-
-  cursor: default;
-}
-
-.black-count-labels {
-  -webkit-user-select: none;
-  display:flex;
-  position: relative;
-  left: -50%;
-  margin: 0;
-  font-size: 1.0vw;
-  font-weight: 400;
-  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-  line-height: 1;
-
-  cursor: default;
-}
-
-.count-label {
-  -webkit-user-select: none;
-  text-align: center;
-  flex-basis: 20px;
-  flex-grow: 1;
-}
+/*******************/
+/* Updates Button  */
+/*******************/
 
 #update-bubble
 {
@@ -164,7 +157,7 @@ ul {
   left: 10px;
   width: 230px;
   height: 56px;
-  padding: 0px;
+  padding: 0;
   background: #FFFFFF;
   -webkit-border-radius: 9px;
   -moz-border-radius: 9px;

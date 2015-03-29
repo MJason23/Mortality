@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/popup.css">
   <link rel="stylesheet" href="css/settings.css">
-  <link rel="stylesheet" href="css/updates.css">
 </head>
 <body>
 
@@ -41,7 +40,7 @@
     <form action="https://chrome.google.com/webstore/detail/mortality/eeedcpdcehnikgkhbobmkjcipjhlbmpn/support" target="_blank">
     <button id="feedback-button">Feedback</button>
     </form>
-    <div id="link-label">Copy Link to Share ^^</div>
+    <label id="link-label" for="link-input">Copy Link to Share ^^</label>
     <input id="link-input" type="text" value="http://goo.gl/vADzdb" class="field left" readonly>
     <div id="popup-body"></div>
   </div>
@@ -49,54 +48,58 @@
 </div>
 
 <script id="clock-template" type="text/x-handlebars-template">
-  <div class="age-container">
+  <div class="timer-container">
     {{#if white}}
-    <div class="white-count">
+    <div class="timer" id="white-timer-clock">{{hour}}:{{minute}}:{{second}} {{ampm}}</div>
     {{/if}}
     {{#if black}}
-    <div class="black-count">
+    <div class="timer" id="black-timer-clock">{{hour}}:{{minute}}:{{second}} {{ampm}}</div>
     {{/if}}
-    {{hour}}:{{minute}}:{{second}} {{ampm}}</div>
   </div>
 </script>
 
 <script id="age-template" type="text/x-handlebars-template">
-	<div class="age-container">
+	<div class="timer-container">
     {{#if white}}
-		<div class="white-count">
+		<div class="timer" id="white-timer-age">{{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
     {{/if}}
     {{#if black}}
-    <div class="black-count">
+    <div class="timer" id="black-timer-age">{{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
     {{/if}}
-    {{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
+
     {{#if white}}
-    <span class="white-count-labels">
+    <span id="white-timer-labels" class="timer-labels">
     {{/if}}
     {{#if black}}
-    <span class="black-count-labels">
+    <span id="black-timer-labels" class="timer-labels">
     {{/if}}
       {{#if year}}
-	     <span class='count-label'>YEARS</span>
+	     <span class='timer-label'>YEARS</span>
       {{/if}}
       {{#if month}}
-	     <span class='count-label'>MONTHS</span>
+	     <span class='timer-label'>MONTHS</span>
       {{/if}}
       {{#if day}}
-        <span class='count-label' style='margin-left:.2vw'>DAYS</span>
+        <span class='timer-label' style='margin-left:.2vw'>DAYS</span>
       {{/if}}
       {{#if hour}}
-        <span class='count-label' style='margin-left:-.2vw'>HOURS</span>
+        <span class='timer-label' style='margin-left:-.2vw'>HOURS</span>
       {{/if}}
       {{#if minute}}
-        <span class='count-label'>MINUTES</span>
+        <span class='timer-label'>MINUTES</span>
       {{/if}}
       {{#if second}}
-        <span class='count-label'>SECONDS</span>
+        <span class='timer-label'>SECONDS</span>
       {{/if}}
       {{#if ms}}
-        <span class='count-label'>MS</span>
+        <span class='timer-label'>MS</span>
       {{/if}}
-    </span>
+    {{#if white}}
+      </span>
+    {{/if}}
+    {{#if black}}
+      </span>
+    {{/if}}
 	</div>
 </script>
 
@@ -162,25 +165,20 @@
 
 <script id="settings-popup-template" type="text/x-handlebars-template">
 	<form id="options_form">
-		<div id="age_option_container">
-			<div id="dob-text" class="label-text">
-				When were you born?
-			</div>
-			<input type="date" id="dob-input" class="input_field">
+    <label id="dob-text" class="label-text" for="dob-input">When were you born?</label>
+    <input type="date" id="dob-input" class="input-textfield">
 
-			<div class="checkbox">
-				<input id="time-checkbox" type="checkbox">
-				<label for="time-checkbox" id="addTime-label">Add Time</label>
-			</div>
-			<input type="time" id="time-input" class="input_field">
-		</div>
+    <div class="checkbox">
+      <label for="time-checkbox" id="addTime-label">Add Time</label>
+      <input id="time-checkbox" type="checkbox">
+    </div>
+    <label for="time-input"></label>
+    <input type="time" id="time-input" class="input-textfield">
 
 		<div id="theme-container">
-			<div id="theme-text" class="label-text">
-				Select Theme
-			</div>
 			<div>
-				<select id="theme-dropdown" class="input_field">
+        <label id="theme-text" class="label-text" for="theme-dropdown">Select Theme</label>
+        <select id="theme-dropdown" class="input-textfield">
 					<option value="default">Default</option>
 					<option value="dark">Dark</option>
 					<option value="light">Light</option>
@@ -195,11 +193,9 @@
 		</div>
 
 		<div id="precision-container">
-			<div id="precision-text" class="label-text">
-				Select Precision
-			</div>
 			<div>
-				<select id="precision-dropdown" class="input_field">
+        <label id="precision-text" class="label-text" for="precision-dropdown">Select Precision</label>
+				<select id="precision-dropdown" class="input-textfield">
 					<option value="ms">Milliseconds</option>
 					<option value="sec">Seconds</option>
 					<option value="min">Minutes</option>
@@ -225,43 +221,35 @@
 			<label for="hideCircles-checkbox" id="hideCircles-label">Hide Circles</label>
 		</div>
 
-    <div id="chapter-label" class="label_text">
+    <div id="chapter-label" class="label-text">
       Modify Length of Life Chapters (in Years):
     </div>
     <div id="age-chapter-label">
       [Age]
     </div>
-    <div id="first-chapter-label" class="years-label">
-      1st
-    </div>
+
+    <label for="first-chapter-input" id="first-chapter-label" class="years-label">1st</label>
     <input type="number" id="first-chapter-input" class="years-input" min="0" max="99">
-    <div id="second-chapter-label" class="years-label">
-      2nd
-    </div>
+
+    <label for="second-chapter-input" id="second-chapter-label" class="years-label">2nd</label>
     <input type="number" id="second-chapter-input" class="years-input" min="0" max="99">
-    <div id="third-chapter-label" class="years-label">
-      3rd
-    </div>
+
+    <label for="third-chapter-input" id="third-chapter-label" class="years-label">3rd</label>
     <input type="number" id="third-chapter-input" class="years-input" min="0" max="99">
-    <div id="fourth-chapter-label" class="years-label">
-      4th
-    </div>
+
+    <label for="fourth-chapter-input" id="fourth-chapter-label" class="years-label">4th</label>
     <input type="number" id="fourth-chapter-input" class="years-input" min="0" max="99">
-    <div id="fifth-chapter-label" class="years-label">
-      5th
-    </div>
+
+    <label for="fifth-chapter-input" id="fifth-chapter-label" class="years-label">5th</label>
     <input type="number" id="fifth-chapter-input" class="years-input" min="0" max="99">
-    <div id="sixth-chapter-label" class="years-label">
-      6th
-    </div>
+
+    <label for="sixth-chapter-input" id="sixth-chapter-label" class="years-label">6th</label>
     <input type="number" id="sixth-chapter-input" class="years-input" min="0" max="99">
-    <div id="seventh-chapter-label" class="years-label">
-      7th
-    </div>
+
+    <label for="seventh-chapter-input" id="seventh-chapter-label" class="years-label">7th</label>
     <input type="number" id="seventh-chapter-input" class="years-input" min="0" max="99">
-    <div id="eighth-chapter-label" class="years-label">
-      8th
-    </div>
+
+    <label for="eighth-chapter-input" id="eighth-chapter-label" class="years-label">8th</label>
     <input type="number" id="eighth-chapter-input" class="years-input" min="0" max="99">
 
     <span class="button-container">

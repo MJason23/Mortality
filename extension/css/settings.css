@@ -1,5 +1,5 @@
 
-.input_field {
+.input-textfield {
   width: 11vw;
   font-size: 1.2vw;
   margin-bottom: 1vw;
@@ -36,10 +36,10 @@
 
 .label-text {
   -webkit-user-select: none;
+  cursor:default;
   font-size: 1vw;
   line-height: 1;
   padding-top: 1vw;
-  padding-bottom: 10px;
 }
 
 #dob-text {
@@ -110,7 +110,7 @@
   font-size:1vw;
   position: absolute;
   left: 2.5vw;
-  top: 22.2vw;
+  top: 21vw;
 }
 
 #age-chapter-label {

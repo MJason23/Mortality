@@ -1,4 +1,16 @@
-/* text-based popup styling */
+#about {
+  font-size:0.8vw;
+}
+
+#updates {
+  overflow:auto;
+}
+
+.version {
+  font-weight: bold;
+  font-size:1vw;
+}
+
 .white-popup {
   position: relative;
   background: #F5F5F5;
@@ -39,13 +51,12 @@ a:visited {
 
 .popup-content {
 	position: absolute;
+  cursor: default;
 	top: 11vw;
 	left: 1.5vw;
 	height:17.5vw;
 	width:28vw;
 }
-
-
 
 #main-image {
 	width: 39.2vw;
