@@ -1,31 +1,3 @@
-@media only screen and (min-width:960px) {
-
-}
-@media only screen and (min-width:1440px) {
-
-}
-@media only screen and (min-width:2000px) {
-
-}
-@media only screen and (max-device-width:480px) {
-
-}
-@media only screen and (device-width:768px) {
-
-}
-/* different techniques for iPad screening */
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait) {
-
-}
-@media only screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape) {
-
-}
-
-*,*:before,*:after {
-  -webkit-box-sizing: border-box;
-
-}
-
 /****************/
 /*   Elements   */
 /****************/
@@ -80,65 +52,12 @@ label {
   position: relative;
 }
 
-/************************/
-/*   Settings Classes   */
-/************************/
-
-.input_field {
-  width: 11vw;
-  font-size: 1.2vw;
-  margin-bottom: 1vw;
-  border-radius: .25vw;
-  height: 2vw;
-}
-
-.years-label {
-  position: absolute;
+ul {
+  list-style-position: inside;
   font-size:0.8vw;
-  top: 23.5vw;
-}
-
-.years-input {
-  position: absolute;
-  top: 24.5vw;
-  width:2.2vw;
-  height: 1.6vw;
-  border-radius:0.05vw;
-}
-
-.checkbox label:before {
-  border-radius: 3px;
-  left:-1.5vw;
-  content: "";
-
-  width: 1.2vw;
-  height: 1.2vw;
-
-  position: absolute;
-  background-color: #ffffff;
-  box-shadow: inset 0px 2px 3px 0px rgba(0, 0, 0, .3), 0px 1px 0px 0px rgba(255, 255, 255, .8);
-}
-
-.label-text {
-  -webkit-user-select: none;
-  font-size: 1vw;
-  line-height: 1;
-  padding-top: 1vw;
-  padding-bottom: 10px;
-}
-
-.popup-text {
-  -webkit-user-select: none;
-  font-size: 1rem;
-  line-height: 1;
-  padding-top:10px;
-  padding-left:10px;
-  padding-bottom: 10px;
-  color: #000000;
-  cursor:default;
-}
-
-.checkbox {
+  margin-top: 0.2vw;
+  width:25vw;
+  padding-left: 1vw;
 }
 /*******************/
 /*  Main Classes   */
@@ -238,7 +157,7 @@ label {
   flex-grow: 1;
 }
 
-.bubble
+#update-bubble
 {
   position: absolute;
   bottom: 50px;
@@ -253,7 +172,7 @@ label {
   border: #000000 solid 2px;
 }
 
-.bubble:after
+#update-bubble:after
 {
   content: '';
   position: absolute;
@@ -267,7 +186,7 @@ label {
   left: 11px;
 }
 
-.bubble:before
+#update-bubble:before
 {
   content: '';
   position: absolute;
@@ -281,181 +200,18 @@ label {
   left: 10px;
 }
 
-/************************/
-/* Settings Identifiers */
-/************************/
-
-#dob-text {
-  position:absolute;
-  left:2.5vw;
-  top:10.3vw;
+#update-bubble-text {
+  -webkit-user-select: none;
+  font-size: 1rem;
+  line-height: 1;
+  padding-top:10px;
+  padding-left:10px;
+  padding-bottom: 10px;
+  color: #000000;
+  cursor:default;
 }
 
-#dob-input {
-  position:absolute;
-  left:2.5vw;
-  top:12.5vw;
-}
-#addTime-label {
-  position:absolute;
-  left:17.4vw;
-  top:11.2vw;
-}
-#time-input {
-  position:absolute;
-  left:16vw;
-  top:12.5vw;
-}
-
-#swapTimer-label {
-	position:absolute;
-	left:17.4vw;
-	top:20vw;
-}
-
-#precision-text {
-	position: absolute;
-	left: 16vw;
-	top: 14vw;
-}
-
-#precision-dropdown {
-	position: absolute;
-	left: 16vw;
-	top: 16.2vw;
-}
-
-#theme-text {
-  position: absolute;
-  left: 2.5vw;
-  top: 14vw;
-}
-
-#theme-dropdown {
-  position: absolute;
-  left: 2.5vw;
-  top: 16.2vw;
-}
-
-#hideAge-label {
-  position: absolute;
-  left: 4.4vw;
-  top: 18.6vw;
-}
-
-#hideCircles-label {
-	position: absolute;
-	left: 4.4vw;
-	top: 20vw;
-}
-
-
-#chapter-label {
-  font-size:1vw;
-  position: absolute;
-  left: 2.5vw;
-  top: 22.2vw;
-}
-
-#age-chapter-label {
-  position: absolute;
-  left:3.7vw;
-  top:23.5vw;
-  font-size: 0.5vw;
-}
-
-#first-chapter-label {
-  left: 2.5vw;
-}
-
-#first-chapter-input {
-  left: 2.5vw;
-}
-
-#second-chapter-label {
-  left: 5.8vw;
-}
-
-#second-chapter-input {
-  left: 5.8vw;
-}
-
-#third-chapter-label {
-  left: 9.1vw;
-}
-
-#third-chapter-input {
-  left: 9.1vw;
-}
-
-#fourth-chapter-label {
-  left: 12.4vw;
-}
-
-#fourth-chapter-input {
-  left: 12.4vw;
-}
-
-#fifth-chapter-label {
-  left: 15.7vw;
-}
-
-#fifth-chapter-input {
-  left: 15.7vw;
-}
-
-#sixth-chapter-label {
-  left: 19vw;
-}
-
-#sixth-chapter-input {
-  left: 19vw;
-}
-
-#seventh-chapter-label {
-  left: 22.3vw;
-}
-
-#seventh-chapter-input {
-  left: 22.3vw;
-}
-
-#eighth-chapter-label {
-  left: 25.6vw;
-}
-
-#eighth-chapter-input {
-  left: 25.6vw;
-}
-
-#submit-button {
-  position:absolute;
-  left:12vw;
-  bottom:1vw;
-  margin-top:1vw;
-  display: inline;
-  border: none;
-  border-radius: 0.25vw;
-  outline: none;
-  background-color: #0BE;
-  color: #FFF;
-  cursor: pointer;
-}
-
-#cancel-button {
-  position:absolute;
-  bottom:1.4vw;
-  left:19vw;
-  display: inline;
-  cursor: pointer;
-}
-
-
-/***********************/
-/* Main Identifiers */
-/***********************/
-
-#info {
+#info-button {
   position: fixed;
   left: 15px;
   bottom: 7px;

@@ -44,26 +44,8 @@ a:visited {
 	height:17.5vw;
 	width:28vw;
 }
-#updates {
-  overflow:auto;
-}
 
-#about {
-	font-size:0.8vw;
-}
 
-.version {
-	font-weight: bold;
-	font-size:1vw;
-}
-
-.version-list {
-	list-style-position: inside;
-	font-size:0.8vw;
-	margin-top: 0.2vw;
-	width:25vw;
-	padding-left: 1vw;
-}
 
 #main-image {
 	width: 39.2vw;

@@ -347,7 +347,7 @@ function setModalPopup()
   });
 }
 
-$('#info').click(function()
+$('#info-button').click(function()
 {
 	infoButtonPressed();
 });
@@ -794,7 +794,7 @@ function getTimeStringFromMinutes(totalMinutes) {
       if(localStorage.getItem("dob")===null)
       {
 	      $("#cancel-button").toggle();
-        $("#info")[0].click();
+        $("#info-button")[0].click();
       }
     });
 })(jQuery);

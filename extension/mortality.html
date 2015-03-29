@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/popup.css">
+  <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/updates.css">
 </head>
 <body>
 
@@ -16,11 +18,11 @@
 <div id="app"></div>
 
 <a id="inline-popup" href="#info-popup" data-effect="mfp-zoom-in">
-<div id = "info"><img id="info-img" src="assets/infoBlack.png" /></div>
+<div id="info-button"><img id="info-img" src="assets/infoBlack.png" /></div>
 </a>
 
-<div id="update-bubble" class="bubble">
-  <div class="popup-text">Mortality has been updated,<br>
+<div id="update-bubble">
+  <div id="update-bubble-text">Mortality has been updated,<br>
     check out the changes here!</div>
 </div>
 
@@ -105,7 +107,7 @@
     Circles represent months, for the average lifespan of 80 years.<br>
     As you age, the circles fill, and are split into the main Chapters of your life.<br>
 	  These are the default chapters:
-    <ul class="version-list">
+    <ul>
       <li>Early Years (0 to ~5 years, Elementary starts in September))</li>
       <li>Elementary (7 years)</li>
       <li>Middle (2 years)</li>
@@ -123,7 +125,7 @@
   <div id="updates" class="popup-content">
     <div class="version">Feedback is Appreciated ^^</div>
     <div id="v3.2.0" class="version">Version 3.2.0</div>
-    <ul class="version-list">
+    <ul>
       <li>Ability to specify precision of your age</li>
       <li>Can hide circles</li>
       <li>Can show current time instead of your age</li>
@@ -133,14 +135,14 @@
       <li>Refactoring to decrease burden of computations</li>
     </ul>
     <div id="v3.0.0" class="version">Version 3.0.0</div>
-    <ul class="version-list">
+    <ul>
       <li>Fix for the current month circle filling the wrong way</li>
       <li>Add the ability to remove the age timer</li>
       <li>Fix for cancel button inconsistency</li>
       <li>Changing formatting for settings & info</li>
     </ul>
     <div id="v2.0.0" class="version">Version 2.0.0</div>
-    <ul class="version-list">
+    <ul>
       <li>Ability to add time to birth date</li>
       <li>Cancel button in settings</li>
       <li>Info button on bottom left</li>
@@ -149,7 +151,7 @@
       <li>Make "Retro" less ugly. If you have a theme idea let me know</li>
     </ul>
     <div id="v1.0.0" class="version">Version 1.0.0</div>
-    <ul class="version-list">
+    <ul>
       <li>Add birthday</li>
       <li>Circles indicating months lived</li>
       <li>Circles split into chapters</li>
