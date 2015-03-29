@@ -58,8 +58,6 @@ Date.prototype.yyyymmdd = function() {
   };
 
   App.fn.load = function() {
-	  var x;
-
 	  this.dob = getDOB();
 	  this.dobMinutes = localStorage.dobMinutes || 0;
 
@@ -104,7 +102,7 @@ Date.prototype.yyyymmdd = function() {
 
         var pie = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         pie.setAttribute("class","pie");
-        pie.setAttribute("opacity",1.0)
+        pie.setAttribute("opacity","1.0");
 
 
 
@@ -250,7 +248,7 @@ Date.prototype.yyyymmdd = function() {
         hour: hourString,
         minute: minuteString,
         second: secondString,
-        ms: msString,
+        ms: msString
       }));
     }.bind(this));
   };
@@ -421,8 +419,7 @@ function setupSettings(dob, dobMinutes)
   loadCheckBoxes();
 
   document.getElementById('dob-input').value = dob.yyyymmdd();
-  var temp = getTimeStringFromMinutes(dobMinutes);
-  document.getElementById('time-input').value = temp;
+  document.getElementById('time-input').value = getTimeStringFromMinutes(dobMinutes);
   setDropdownWithCurrentTheme();
 
   var savedPrecision = localStorage.getItem("precision");
@@ -468,7 +465,7 @@ function loadCheckBoxes()
   }
   showTimeSelectorIf(timeCheckbox.checked);
 
-  timeCheckbox.addEventListener('change', function (event) {
+  timeCheckbox.addEventListener('change', function () {
     showTimeSelectorIf(timeCheckbox.checked);
   });
 
@@ -478,7 +475,7 @@ function loadCheckBoxes()
     hideAgeCheckbox.checked = true;
   }
 
-  hideAgeCheckbox.addEventListener('change', function (event) {
+  hideAgeCheckbox.addEventListener('change', function () {
     var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
     if(hideCirclesCheckbox.checked == true)
     {
@@ -492,7 +489,7 @@ function loadCheckBoxes()
 		hideCirclesCheckbox.checked = true;
 	}
 
-  hideCirclesCheckbox.addEventListener('change', function (event) {
+  hideCirclesCheckbox.addEventListener('change', function () {
     var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
     if(hideAgeCheckbox.checked == true)
     {
@@ -512,17 +509,17 @@ function setDropdownWithCurrentTheme(){
   if (theme != null) {
     document.getElementById("theme-dropdown").value = theme;
   }
-};
+}
 
 
 function setWhiteInfoButton()
 {
   if(localStorage.getItem("version") == "3.2.0") {
-    document.getElementById("info-img").src = "assets/infoWhite.png"
+    document.getElementById("info-img").src = "assets/infoWhite.png";
     document.getElementById("update-bubble").style.display = "none";
   }
   else {
-    document.getElementById("info-img").src = "assets/infoWhiteAlert.png"
+    document.getElementById("info-img").src = "assets/infoWhiteAlert.png";
     document.getElementById("update-bubble").style.display = "block";
   }
 }
@@ -530,11 +527,11 @@ function setWhiteInfoButton()
 function setBlackInfoButton()
 {
   if(localStorage.getItem("version") == "3.2.0") {
-    document.getElementById("info-img").src = "assets/infoBlack.png"
+    document.getElementById("info-img").src = "assets/infoBlack.png";
     document.getElementById("update-bubble").style.display = "none";
   }
   else {
-    document.getElementById("info-img").src = "assets/infoBlackAlert.png"
+    document.getElementById("info-img").src = "assets/infoBlackAlert.png";
     document.getElementById("update-bubble").style.display = "block";
   }
 }
@@ -700,7 +697,7 @@ function getDOB() {
   else {
     return new Date(parseInt(savedDoB));
   }
-};
+}
 
 function zeroFill(number, width)
 {
@@ -710,7 +707,7 @@ function zeroFill(number, width)
     return new Array( width + (/\./.test( number ) ? 2 : 1) ).join( '0' ) + number;
   }
   return number + "";
-};
+}
 
 function animate(theta, radius) {
   var path = document.getElementById('path');
@@ -797,7 +794,7 @@ function getTimeStringFromMinutes(totalMinutes) {
         $("#info-button")[0].click();
       }
     });
-})(jQuery);
+})();
 
 window.onresize();
 
