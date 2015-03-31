@@ -1,0 +1,140 @@
+
+function getDOB() {
+  var savedDoB = localStorage.getItem("dob");
+  if( savedDoB === null) {
+    return new Date;
+  }
+  else {
+    return new Date(parseInt(savedDoB));
+  }
+}
+
+
+function getChapters(monthBorn) {
+  var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
+  if( savedChapterLengths === null )
+  {
+    savedChapterLengths = [5,7,2,4,4,43,15,0];
+  }
+
+  for( var i=0; i<8; i++ ) {
+    savedChapterLengths[i] = savedChapterLengths[i]*12
+  }
+
+  var index = 0;
+  var totalMonths = 0;
+  for( index; index<8; index++ ) {
+    if((totalMonths+savedChapterLengths[index]) > 945) {
+      savedChapterLengths[index] = (945-totalMonths);
+    }
+    totalMonths += savedChapterLengths[index];
+  }
+
+  var beginningChapter = 0;
+  var firstChapter = savedChapterLengths[0];
+  var educationStartOffset = 0;
+  if(monthBorn == 11)
+  {
+   educationStartOffset = 8;
+  }
+  else
+  {
+   educationStartOffset = (7-monthBorn);
+  }
+  firstChapter += educationStartOffset;
+  var secondChapter = firstChapter + (savedChapterLengths[1]);
+  var thirdChapter = secondChapter + (savedChapterLengths[2]);
+  var fourthChapter = thirdChapter + (savedChapterLengths[3]);
+  var fifthChapter = fourthChapter + (savedChapterLengths[4]);
+  //540
+  var sixthChapter = fifthChapter + (savedChapterLengths[5]);
+  //141
+  var seventhChapter = sixthChapter + (savedChapterLengths[6]);
+  var eighthChapter = 945;
+
+
+
+  return [[beginningChapter, firstChapter], [firstChapter, secondChapter], [secondChapter, thirdChapter]
+    ,[thirdChapter, fourthChapter], [fourthChapter, fifthChapter]
+    ,[fifthChapter, sixthChapter], [sixthChapter, seventhChapter]
+    ,[seventhChapter, eighthChapter]];
+}
+
+function saveChapterLengths()
+{
+  var chapterLengths = [
+    $("#first-chapter-input").val(),
+    $("#second-chapter-input").val(),
+    $("#third-chapter-input").val(),
+    $("#fourth-chapter-input").val(),
+    $("#fifth-chapter-input").val(),
+    $("#sixth-chapter-input").val(),
+    $("#seventh-chapter-input").val(),
+    $("#eighth-chapter-input").val()
+  ];
+  localStorage.setItem("chapterLengths", JSON.stringify(chapterLengths));
+}
+
+
+function getColorTheme() {
+  var themes = {
+    "def" : ['#311B92', '#1A237E', '#0D47A1', '#006064', '#004D40', '#1B5E20', '#33691E', '#689F38'],
+    "dark" : ['#EEEEEE', '#E0E0E0', '#BDBDBD', '#9E9E9E', '#757575', '#616161', '#424242', '#2E2E2E'],
+    "light" : ['#212121', '#424242', '#616161', '#757575', '#9E9E9E', '#BDBDBD', '#E0E0E0', '#ECECEC'],
+    "dawn" : ['#FFEB3B', '#FBC02D', '#F9A825', '#FF9800', '#F57C00', '#E65100', '#795548', '#4E342E'],
+    "dusk" : ['#391003', '#5D1A25', '#722007','#ab300a', '#bf360c', '#cb5e3c', '#C47A6F', '#df9a85'],
+    "twilight" : ['#4527A0', '#283593', '#3F51B5', '#5C6BC0', '#8c97d2', '#78909C', '#B0BEC5', '#ECEFF1'],
+    "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#FF984C', '#00E8BB', '#00a282'],
+    "rainbowl" : ['#B71C1C', '#E65100', '#FFD600', '#1B5E20', '#004D40', '#3378af', '#673AB7', '#482880'],
+    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#7bc043', '#009688', '#0392cf', '#644ca2', '#482880']
+  };
+
+  var savedTheme = localStorage.getItem("colorTheme");
+
+  if (savedTheme == null) {
+    return themes.def;
+  }
+  else {
+    switch (savedTheme) {
+      case "default":
+        return themes.def;
+      case "dark":
+        return themes.dark;
+      case "light":
+        return themes.light;
+      case "dawn":
+        return themes.dawn;
+      case "dusk":
+        return themes.dusk;
+      case "twilight":
+        return themes.twilight;
+      case "retro":
+        return themes.retro;
+      case "rainbowd":
+        return themes.rainbowd;
+      case "rainbowl":
+        return themes.rainbowl;
+      default:
+        return themes.def;
+    }
+  }
+}
+
+
+function saveTheme()
+{
+  var savedTheme = localStorage.getItem("colorTheme");
+  var selectedTheme = document.getElementById("theme-dropdown").value;
+
+  if (savedTheme != selectedTheme) {
+    localStorage.setItem("colorTheme", selectedTheme);
+  }
+}
+
+
+
+function savePrecision()
+{
+  var selectedPrecision = document.getElementById("precision-dropdown").value;
+  localStorage.setItem("precision", selectedPrecision);
+}
