@@ -250,7 +250,7 @@ function setBlackInfoButton()
 function loadDarkOrLightTheme()
 {
     var savedTheme = localStorage.getItem("colorTheme");
-    if(savedTheme == "light" || savedTheme == "rainbowl")
+    if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky")
     {
       document.body.style.backgroundColor = "#F5F5F5";
       document.body.style.color = "#424242";

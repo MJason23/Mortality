@@ -9,7 +9,6 @@ function getDOB() {
   }
 }
 
-
 function getChapters(monthBorn) {
   var savedChapterLengths = JSON.parse(localStorage.getItem("chapterLengths"));
   if( savedChapterLengths === null )
@@ -52,8 +51,6 @@ function getChapters(monthBorn) {
   var seventhChapter = sixthChapter + (savedChapterLengths[6]);
   var eighthChapter = 945;
 
-
-
   return [[beginningChapter, firstChapter], [firstChapter, secondChapter], [secondChapter, thirdChapter]
     ,[thirdChapter, fourthChapter], [fourthChapter, fifthChapter]
     ,[fifthChapter, sixthChapter], [sixthChapter, seventhChapter]
@@ -84,9 +81,12 @@ function getColorTheme() {
     "dawn" : ['#FFEB3B', '#FBC02D', '#F9A825', '#FF9800', '#F57C00', '#E65100', '#795548', '#4E342E'],
     "dusk" : ['#391003', '#5D1A25', '#722007','#ab300a', '#bf360c', '#cb5e3c', '#C47A6F', '#df9a85'],
     "twilight" : ['#4527A0', '#283593', '#3F51B5', '#5C6BC0', '#8c97d2', '#78909C', '#B0BEC5', '#ECEFF1'],
-    "retro" : ['#13a1a9', '#18CAD4', '#941036', '#D4184E', '#FFF14C', '#FF984C', '#00E8BB', '#00a282'],
+    "retro" : ['#D4184E', '#FF984C', '#00E8BB', '#18CAD4','#D4184E', '#FF984C', '#00E8BB', '#18CAD4'],
     "rainbowl" : ['#B71C1C', '#E65100', '#FFD600', '#1B5E20', '#004D40', '#3378af', '#673AB7', '#482880'],
-    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#7bc043', '#009688', '#0392cf', '#644ca2', '#482880']
+    "rainbowd" : ['#ee4035', '#f37736', '#fcec4d', '#7bc043', '#009688', '#0392cf', '#644ca2', '#482880'],
+    "cupid" : ['#ef95b4', '#ea729b', '#e54f83', '#c91e5a', '#AF2B5B', '#7C465D', '#543544', '#2B242A'],
+    "rasta" : ['#156900', '#1E9600', '#61b54c', '#ccc100', '#FFF200', '#b20000', '#FF0000', '#FF3232'],
+    "sky" : ['#007dff', '#009fff', '#00aaff', '#00d2ff', '#77dcf2', '#a0e7db', '#c9ead2', '#e7ffcb']
   };
 
   var savedTheme = localStorage.getItem("colorTheme");
@@ -114,12 +114,17 @@ function getColorTheme() {
         return themes.rainbowd;
       case "rainbowl":
         return themes.rainbowl;
+      case "cupid":
+        return themes.cupid;
+      case "rasta":
+        return themes.rasta;
+      case "sky":
+        return themes.sky;
       default:
         return themes.def;
     }
   }
 }
-
 
 function saveTheme()
 {
@@ -130,8 +135,6 @@ function saveTheme()
     localStorage.setItem("colorTheme", selectedTheme);
   }
 }
-
-
 
 function savePrecision()
 {

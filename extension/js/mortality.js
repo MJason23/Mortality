@@ -144,7 +144,6 @@
     if( timeChecked )
     {
       var timeInput = $('time-input');
-      //TODO: Show ERROR
       if( !timeInput.valueAsDate ) return;
       var timeArray = timeInput.value.split(":");
       this.dobMinutes = timeArray[0]*60 + timeArray[1]*1;
@@ -222,7 +221,7 @@
     // hourString = ":"
     // minuteString = now.getSeconds();
     var savedTheme = localStorage.getItem("colorTheme");
-    if(savedTheme == "light" || savedTheme == "rainbowl") {
+    if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
       var whiteFlag = "YES";
     }
     else {
@@ -260,7 +259,7 @@
     var secondString = zeroFill(now.getSeconds().toString(), 2);
 
     var savedTheme = localStorage.getItem("colorTheme");
-    if(savedTheme == "light" || savedTheme == "rainbowl") {
+    if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
       var whiteFlag = "YES";
     }
     else {
