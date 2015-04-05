@@ -131,7 +131,6 @@ ul {
   float: left;
   width: 1.9%;
   margin: 0.16%;
-  border-radius: 50%;
 }
 
 .circle {
@@ -152,6 +151,7 @@ ul {
 
 #update-bubble
 {
+  display: none;
   position: absolute;
   bottom: 50px;
   left: 10px;

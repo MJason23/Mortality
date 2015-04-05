@@ -14,7 +14,8 @@
       "48": "assets/icon-48.png"
    },
    "manifest_version": 2,
-   "name": "Mortality",
+   "name": "Mortality - New Tab",
+   "short_name": "Mortality",
    "offline_enabled": true,
-   "version": "3.2.0"
+   "version": "3.3.0"
 }
