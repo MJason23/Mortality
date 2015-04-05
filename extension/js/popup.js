@@ -169,8 +169,7 @@ function setupSettings(dob, dobMinutes)
 function loadCheckBoxes()
 {
   var timeCheckbox = document.querySelector('input[id=time-checkbox]');
-  if (localStorage.getItem("dobTimeSet") == "YES")
-  {
+  if (localStorage.getItem("dobTimeSet") == "YES") {
     timeCheckbox.checked = true;
   }
   showTimeSelectorIf(timeCheckbox.checked);
@@ -180,37 +179,71 @@ function loadCheckBoxes()
   });
 
   var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
-  if (localStorage.getItem("hideAge") == "YES")
-  {
+  if (localStorage.getItem("hideAge") == "YES") {
     hideAgeCheckbox.checked = true;
   }
 
   hideAgeCheckbox.addEventListener('change', function () {
     var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
-    if(hideCirclesCheckbox.checked == true)
-    {
+    if(hideCirclesCheckbox.checked == true) {
       hideCirclesCheckbox.checked = false;
     }
   });
 
   var hideCirclesCheckbox = document.querySelector('input[id=hideCircles-checkbox]');
-  if (localStorage.getItem("hideCircles") == "YES")
-  {
+  if (localStorage.getItem("hideCircles") == "YES") {
     hideCirclesCheckbox.checked = true;
   }
 
   hideCirclesCheckbox.addEventListener('change', function () {
     var hideAgeCheckbox = document.querySelector('input[id=hideAge-checkbox]');
-    if(hideAgeCheckbox.checked == true)
-    {
+    if(hideAgeCheckbox.checked == true) {
       hideAgeCheckbox.checked = false;
     }
   });
 
   var swapTimerCheckbox = document.querySelector('input[id=swapTimer-checkbox]');
-  if (localStorage.getItem("swap") == "YES")
-  {
+  if (localStorage.getItem("swap") == "YES") {
     swapTimerCheckbox.checked = true;
+  }
+
+  var shapeCircleCheckbox = document.querySelector('input[id=shapeCircle-checkbox]');
+  if (localStorage.getItem("hideCircles") == "YES") {
+    shapeCircleCheckbox.checked = true;
+  }
+
+  shapeCircleCheckbox.addEventListener('change', function () {
+    var shapeCircleCheckbox = document.querySelector('input[id=shapeCircle-checkbox]');
+    if(shapeCircleCheckbox.checked == false) {
+      shapeCircleCheckbox.checked = true;
+    }
+    var shapeSquareCheckbox = document.querySelector('input[id=shapeSquare-checkbox]');
+    if(shapeSquareCheckbox.checked == true) {
+      shapeSquareCheckbox.checked = false;
+    }
+  });
+
+  var shapeSquareCheckbox = document.querySelector('input[id=shapeSquare-checkbox]');
+  if (localStorage.getItem("hideCircles") == "YES") {
+    shapeSquareCheckbox.checked = true;
+  }
+
+  shapeSquareCheckbox.addEventListener('change', function () {
+    var shapeSquareCheckbox = document.querySelector('input[id=shapeSquare-checkbox]');
+    if(shapeSquareCheckbox.checked == false) {
+      shapeSquareCheckbox.checked = true;
+    }
+    var shapeCircleCheckbox = document.querySelector('input[id=shapeCircle-checkbox]');
+    if(shapeCircleCheckbox.checked == true) {
+      shapeCircleCheckbox.checked = false;
+    }
+  });
+
+  if( localStorage.getItem("shape") == "square") {
+    shapeSquareCheckbox.checked = true;
+  }
+  else {
+    shapeCircleCheckbox.checked = true;
   }
 }
 

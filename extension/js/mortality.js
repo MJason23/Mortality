@@ -89,23 +89,25 @@
           this.createCircle(bkgdColor, '1.00');
         }
 
-        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        path.setAttribute("fill",bkgdColor);
-        path.id = 'path';
-
         var pie = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         pie.setAttribute("class","pie");
         pie.setAttribute("opacity","1.0");
 
-
-
-        var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        var circle;
+        var path;
+        if(localStorage.getItem("shape") == "square") {
+          circle = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+          path = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        }
+        else {
+          circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+          path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        }
         circle.id = 'piecircle';
-        circle.setAttribute("cx","10");
-        circle.setAttribute("cy","10");
-        circle.setAttribute("r","10");
         circle.setAttribute("fill", bkgdColor);
         circle.setAttribute("fill-opacity","0.25");
+        path.setAttribute("fill",bkgdColor);
+        path.id = 'path';
         pie.appendChild(circle);
         pie.appendChild(path);
         this.documentCircle.appendChild(pie);
@@ -164,6 +166,12 @@
 
     var swapTimerChecked = document.querySelector('input[id=swapTimer-checkbox').checked;
     swapTimerChecked ? localStorage.setItem("swap", "YES") : localStorage.removeItem("swap");
+
+    var shapeCircleChecked = document.querySelector('input[id=shapeCircle-checkbox').checked;
+    shapeCircleChecked ? localStorage.setItem("shape", "circle") : localStorage.removeItem("shape");
+
+    var shapeSquareChecked = document.querySelector('input[id=shapeSquare-checkbox').checked;
+    shapeSquareChecked ? localStorage.setItem("shape", "square") : localStorage.removeItem("shape");
   };
 
   App.fn.renderAge = function()
@@ -215,11 +223,6 @@
 	    break;
     }
 
-    // yearString = now.getHours();
-    // monthString = ":"
-    // dayString = now.getMinutes();
-    // hourString = ":"
-    // minuteString = now.getSeconds();
     var savedTheme = localStorage.getItem("colorTheme");
     if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
       var whiteFlag = "YES";
@@ -298,17 +301,26 @@ function animate(theta, radius) {
   var path = document.getElementById('path');
   var piecircle = document.getElementById('piecircle');
   if(path && piecircle) {
-    piecircle.setAttribute("cx",radius);
-    piecircle.setAttribute("cy",radius);
-    piecircle.setAttribute("r",radius);
+    if (localStorage.getItem("shape") == "square") {
+      piecircle.setAttribute("height", (2 * radius));
+      piecircle.setAttribute("width", (2 * radius));
+      var fraction = theta/360;
+      path.setAttribute("height", (2*radius));
+      path.setAttribute("width", (fraction*(2*radius)));
+    }
+    else {
+      piecircle.setAttribute("cx", radius);
+      piecircle.setAttribute("cy", radius);
+      piecircle.setAttribute("r", radius);
 
-    theta += 0.5;
-    theta %= 360;
-    var x = Math.sin(theta * Math.PI / 180) * radius;
-    var y = Math.cos(theta * Math.PI / 180) * -radius;
-    var d = 'M0,0 v' + -radius + 'A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 1 : 0) + ',1 ' + x + ',' + y + 'z';
-    path.setAttribute('d', d);
-    path.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
+      theta += 0.5;
+      theta %= 360;
+      var x = Math.sin(theta * Math.PI / 180) * radius;
+      var y = Math.cos(theta * Math.PI / 180) * -radius;
+      var d = 'M0,0 v' + -radius + 'A' + radius + ',' + radius + ' 1 ' + ((theta > 180) ? 1 : 0) + ',1 ' + x + ',' + y + 'z';
+      path.setAttribute('d', d);
+      path.setAttribute('transform', 'translate(' + radius + ',' + radius + ')');
+    }
   }
   setTimeout(animate, 7200000); // 1/360 of a month in ms
 }
@@ -319,6 +331,9 @@ function animate(theta, radius) {
     var div = document.querySelector('#circles');
     var circleWidth = div.childNodes[0].offsetWidth;
     circle.style.height= circleWidth +'px';
+    if(localStorage.getItem("shape") == "square") {
+      circle.style.borderRadius = 0;
+    }
 	  var radius = circle.style.height;
     pie.style.width = radius;
     pie.style.height = radius;

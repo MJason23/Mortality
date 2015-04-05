@@ -65,6 +65,18 @@
   top:12.5vw;
 }
 
+#shapeCircle-label {
+  position:absolute;
+  left:17.4vw;
+  top:18.6vw;
+}
+
+#shapeSquare-label {
+  position:absolute;
+  left:23.4vw;
+  top:18.6vw;
+}
+
 #swapTimer-label {
   position:absolute;
   left:17.4vw;
