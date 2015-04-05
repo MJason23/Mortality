@@ -19,7 +19,7 @@ function infoButtonPressed()
     setButtonPressed(2);
   }
   //UPDATE WHEN REVVING VERSIONS
-  else if(localStorage.getItem("version")=="3.2.0")
+  else if(localStorage.getItem("version")=="3.3.0")
   {
     setButtonPressed(0);
   }
@@ -27,7 +27,7 @@ function infoButtonPressed()
   {
     setButtonPressed(1);
     document.getElementById("update-bubble").style.display = "none";
-    localStorage.setItem("version", "3.2.0");
+    localStorage.setItem("version", "3.3.0");
   }
 
   if(document.getElementById("info-img").src.indexOf("assets/infoWhiteAlert.png") > -1)
@@ -257,7 +257,7 @@ function setDropdownWithCurrentTheme(){
 
 function setWhiteInfoButton()
 {
-  if(localStorage.getItem("version") == "3.2.0") {
+  if(localStorage.getItem("version") == "3.3.0") {
     document.getElementById("info-img").src = "assets/infoWhite.png";
     document.getElementById("update-bubble").style.display = "none";
   }
@@ -269,7 +269,7 @@ function setWhiteInfoButton()
 
 function setBlackInfoButton()
 {
-  if(localStorage.getItem("version") == "3.2.0") {
+  if(localStorage.getItem("version") == "3.3.0") {
     document.getElementById("info-img").src = "assets/infoBlack.png";
     document.getElementById("update-bubble").style.display = "none";
   }
