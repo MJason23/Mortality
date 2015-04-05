@@ -1,6 +1,5 @@
-// Inline popups
 $('#inline-popup').magnificPopup({
-  removalDelay: 800, //delay removal by X to allow out-animation
+  removalDelay: 800,
   callbacks: {
     beforeOpen: function() {
        this.st.mainClass = this.st.el.attr('data-effect');
@@ -8,7 +7,7 @@ $('#inline-popup').magnificPopup({
   },
   closeBtnInside: false,
   modal: false,
-  midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+  midClick: true
 });
 
 
@@ -44,7 +43,7 @@ function infoButtonPressed()
 function setModalPopup()
 {
   $('#inline-popup').magnificPopup({
-    removalDelay: 800, //delay removal by X to allow out-animation
+    removalDelay: 800,
     callbacks: {
       beforeOpen: function() {
          this.st.mainClass = this.st.el.attr('data-effect');
@@ -52,7 +51,7 @@ function setModalPopup()
     },
     closeBtnInside: false,
     modal: true,
-    midClick: true // allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source.
+    midClick: true
   });
 }
 
@@ -263,8 +262,6 @@ function loadDarkOrLightTheme()
       setWhiteInfoButton();
     }
 }
-
-
 
 function showTimeSelectorIf(isChecked) {
   if (isChecked) {
