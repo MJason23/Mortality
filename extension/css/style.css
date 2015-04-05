@@ -152,6 +152,7 @@ ul {
 
 #update-bubble
 {
+  display: none;
   position: absolute;
   bottom: 50px;
   left: 10px;
