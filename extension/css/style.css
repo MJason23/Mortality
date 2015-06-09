@@ -64,37 +64,26 @@ ul {
 
 .timer-container {
   position: absolute;
-  left: 50%;
+  left: 21%;
   top: 42%;
 }
 
-.timer {
+.timer, .clock {
   -webkit-user-select: none;
   position: relative;
-  left: -50%;
-  top: -50%;
   margin-left: .7vw;
   margin-right: .7vw;
   margin-bottom: .4vw;
-  font-size: 5vw;
+  font-size: 6vw;
   font-weight: 500;
   line-height: 1;
   cursor: default;
 }
-#white-timer-age {
-  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
-}
 
-#white-timer-clock {
-  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
-}
-
-#black-timer-age {
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
-}
-
-#black-timer-clock {
-  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+.clock {
+  margin-top:-.5vw;
+  font-size: 8vw;
+  left:10%;
 }
 
 .timer-label {
@@ -108,13 +97,21 @@ ul {
   -webkit-user-select: none;
   display:flex;
   position: relative;
-  left: -50%;
   margin: 0;
-  font-size: 1.0vw;
+  font-size: 1.5vw;
   font-weight: 400;
   line-height: 1;
   cursor: default;
 }
+
+#white-timer-age, #white-timer-clock {
+  text-shadow: -3px 0 white, 0 3px white, 3px 0 white, 0 -3px white;
+}
+
+#black-timer-age, #black-timer-clock {
+  text-shadow: -3px 0 black, 0 3px black, 3px 0 black, 0 -3px black;
+}
+
 #white-timer-labels {
   text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
