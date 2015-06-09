@@ -253,9 +253,12 @@
     var now = new Date();
     var ampmString = "AM";
     var hour = now.getHours();
-    if( hour > 12 ) {
+    if( hour > 11 ) {
       ampmString = "PM";
       hour = hour % 12;
+    }
+    if( hour == 0 ) {
+      hour = 12;
     }
     var hourString = zeroFill(hour.toString(), 2);
     var minuteString = zeroFill(now.getMinutes().toString(), 2);
