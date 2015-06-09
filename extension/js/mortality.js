@@ -182,45 +182,45 @@
 
     var savedPrecision = localStorage.getItem("precision");
     while(true) {
-	    var years = Math.floor(duration / yearMS);
-	    var yearString = zeroFill(years.toString(), 2);
-	    if (savedPrecision == "year") {
-		    break;
-	    }
-	    duration -= (years * yearMS);
-	    var months = Math.floor(duration / monthMS);
-	    var monthString = zeroFill(months.toString(), 2);
-	    if (savedPrecision == "month") {
-		    break;
-	    }
-	    duration -= (months * monthMS);
-	    var days = Math.floor(duration / dayMS);
-	    var dayString = zeroFill(days.toString(), 2);
-	    if (savedPrecision == "day") {
-		    break;
-	    }
-	    duration -= (days * dayMS);
-	    var hours = Math.floor(duration / hourMS);
-	    var hourString = zeroFill(hours.toString(), 2);
-	    if (savedPrecision == "hour") {
-		    break;
-	    }
-	    duration -= (hours * hourMS);
-	    var minutes = Math.floor(duration / minuteMS);
-	    var minuteString = zeroFill(minutes.toString(), 2);
-	    if (savedPrecision == "min") {
-		    break;
-	    }
-	    duration -= (minutes * minuteMS);
-	    var seconds = Math.floor(duration / secondMS);
-	    var secondString = zeroFill(seconds.toString(), 2);
-	    if (savedPrecision == "sec") {
-		    break;
-	    }
-	    duration -= (seconds * secondMS);
-	    var milliseconds = Math.floor(duration / 10);
-	    var msString = zeroFill(milliseconds.toString(), 2);
-	    break;
+      var years = Math.floor(duration / yearMS);
+      var yearString = zeroFill(years.toString(), 2);
+      if (savedPrecision == "year") {
+        break;
+      }
+      duration -= (years * yearMS);
+      var months = Math.floor(duration / monthMS);
+      var monthString = zeroFill(months.toString(), 2);
+      if (savedPrecision == "month") {
+        break;
+      }
+      duration -= (months * monthMS);
+      var days = Math.floor(duration / dayMS);
+      var dayString = zeroFill(days.toString(), 2);
+      if (savedPrecision == "day") {
+        break;
+      }
+      duration -= (days * dayMS);
+      var hours = Math.floor(duration / hourMS);
+      var hourString = zeroFill(hours.toString(), 2);
+      if (savedPrecision == "hour") {
+        break;
+      }
+      duration -= (hours * hourMS);
+      var minutes = Math.floor(duration / minuteMS);
+      var minuteString = zeroFill(minutes.toString(), 2);
+      if (savedPrecision == "min") {
+        break;
+      }
+      duration -= (minutes * minuteMS);
+      var seconds = Math.floor(duration / secondMS);
+      var secondString = zeroFill(seconds.toString(), 2);
+      if (savedPrecision == "sec") {
+        break;
+      }
+      duration -= (seconds * secondMS);
+      var milliseconds = Math.floor(duration / 10);
+      var msString = zeroFill(milliseconds.toString(), 2);
+      break;
     }
 
     var savedTheme = localStorage.getItem("colorTheme");
@@ -337,7 +337,7 @@ function animate(theta, radius) {
     if(localStorage.getItem("shape") == "square") {
       circle.style.borderRadius = 0;
     }
-	  var radius = circle.style.height;
+    var radius = circle.style.height;
     pie.style.width = radius;
     pie.style.height = radius;
 
@@ -361,34 +361,34 @@ function animate(theta, radius) {
       pie,
       i, j, k;
   k = 0;
-	var rules;
-	for (i = 0; i < styleSheets.length; i++) {
-		rules = styleSheets[i].rules ||
-		styleSheets[i].cssRules;
-		for (j = 0; j < rules.length; j++) {
-			if (rules[j].selectorText === '.circle') {
-				circle = rules[j];
-				k++;
-				if (k > 1) {
-					break;
-				}
-			}
-			else if (rules[j].selectorText === '.pie') {
-				pie = rules[j];
-				k++;
-				if (k > 1) {
-					break;
-				}
-			}
-		}
-	}
+  var rules;
+  for (i = 0; i < styleSheets.length; i++) {
+    rules = styleSheets[i].rules ||
+    styleSheets[i].cssRules;
+    for (j = 0; j < rules.length; j++) {
+      if (rules[j].selectorText === '.circle') {
+        circle = rules[j];
+        k++;
+        if (k > 1) {
+          break;
+        }
+      }
+      else if (rules[j].selectorText === '.pie') {
+        pie = rules[j];
+        k++;
+        if (k > 1) {
+          break;
+        }
+      }
+    }
+  }
 })();
 
 (function($) {
     $(window).load(function () {
       if(localStorage.getItem("dob")===null)
       {
-	      $("#cancel-button").toggle();
+        $("#cancel-button").toggle();
         $("#info-button")[0].click();
       }
     });
