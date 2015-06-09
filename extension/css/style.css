@@ -75,7 +75,7 @@ ul {
   margin-right: .7vw;
   margin-bottom: .4vw;
   font-size: 6vw;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1;
   cursor: default;
 }
@@ -83,7 +83,7 @@ ul {
 .clock {
   margin-top:-.5vw;
   font-size: 8vw;
-  left:10%;
+  left:12.5%;
 }
 
 .timer-label {
