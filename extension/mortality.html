@@ -60,46 +60,27 @@
 
 <script id="age-template" type="text/x-handlebars-template">
 	<div class="timer-container">
-    {{#if white}}
-		<div class="timer" id="white-timer-age">{{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
-    {{/if}}
-    {{#if black}}
-    <div class="timer" id="black-timer-age">{{year}} {{month}} {{day}} {{hour}} {{minute}} {{second}} {{ms}}</div>
-    {{/if}}
+    {{#if white}}<span id="white-timer-age" class="timer" >{{/if}}
+    {{#if black}}<span id="black-timer-age" class="timer" >{{/if}}
+      {{#if year}}<span id='year-number'>{{year}}</span>{{/if}}
+      {{#if month}}<span id='month-number'>{{month}}</span>{{/if}}
+      {{#if day}}<span id='day-number'>{{day}}</span>{{/if}}
+      {{#if hour}}<span id='hour-number'>{{hour}}</span>{{/if}}
+      {{#if minute}}<span id='minute-number'>{{minute}}</span>{{/if}}
+      {{#if second}}<span id='second-number'>{{second}}</span>{{/if}}
+      {{#if ms}}<span number='milli-number'>{{ms}}</span>{{/if}}
+    </span>
 
-    {{#if white}}
-    <span id="white-timer-labels" class="timer-labels">
-    {{/if}}
-    {{#if black}}
-    <span id="black-timer-labels" class="timer-labels">
-    {{/if}}
-      {{#if year}}
-	     <span class='timer-label'>YEARS</span>
-      {{/if}}
-      {{#if month}}
-	     <span class='timer-label'>MONTHS</span>
-      {{/if}}
-      {{#if day}}
-        <span class='timer-label' style='margin-left:.2vw'>DAYS</span>
-      {{/if}}
-      {{#if hour}}
-        <span class='timer-label' style='margin-left:-.2vw'>HOURS</span>
-      {{/if}}
-      {{#if minute}}
-        <span class='timer-label'>MINUTES</span>
-      {{/if}}
-      {{#if second}}
-        <span class='timer-label'>SECONDS</span>
-      {{/if}}
-      {{#if ms}}
-        <span class='timer-label'>MS</span>
-      {{/if}}
-    {{#if white}}
-      </span>
-    {{/if}}
-    {{#if black}}
-      </span>
-    {{/if}}
+    {{#if white}}<span id="white-timer-labels" class="timer-labels">{{/if}}
+    {{#if black}}<span id="black-timer-labels" class="timer-labels">{{/if}}
+      {{#if year}}<span class='timer-label'>YEARS</span>{{/if}}
+      {{#if month}}<span class='timer-label' id='seconds-label'>MONTHS</span>{{/if}}
+      {{#if day}}<span class='timer-label' style='margin-left:.2vw'>DAYS</span>{{/if}}
+      {{#if hour}}<span class='timer-label' style='margin-left:-.2vw'>HOURS</span>{{/if}}
+      {{#if minute}}<span class='timer-label'>MINUTES</span>{{/if}}
+      {{#if second}}<span class='timer-label' id='seconds-label'>SECONDS</span>{{/if}}
+      {{#if ms}}<span class='timer-label'>MS</span>{{/if}}
+    </span>
 	</div>
 </script>
 

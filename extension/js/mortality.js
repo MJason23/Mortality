@@ -38,7 +38,7 @@
         }
         else if(savedPrecision == "ms" || savedPrecision === null)
         {
-          interval = 115;
+          interval = 1000;
         }
         this.renderAge();
         setInterval(this.renderAge.bind(this),interval);
@@ -47,6 +47,74 @@
         this.renderTime();
         setInterval(this.renderTime.bind(this),1000);
       }
+
+      var savedTheme = localStorage.getItem("colorTheme");
+      if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
+        var whiteFlag = "YES";
+      }
+      else {
+        var blackFlag = "YES";
+      }
+
+      var now = new Date();
+      var timezoneOffset = now.getTimezoneOffset() * minuteMS;
+      var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
+
+      var savedPrecision = localStorage.getItem("precision");
+      while(true) {
+        var years = Math.floor(duration / yearMS);
+        var yearString = zeroFill(years.toString(), 2);
+        if (savedPrecision == "year") {
+          break;
+        }
+        duration -= (years * yearMS);
+        var months = Math.floor(duration / monthMS);
+        var monthString = zeroFill(months.toString(), 2);
+        if (savedPrecision == "month") {
+          break;
+        }
+        duration -= (months * monthMS);
+        var days = Math.floor(duration / dayMS);
+        var dayString = zeroFill(days.toString(), 2);
+        if (savedPrecision == "day") {
+          break;
+        }
+        duration -= (days * dayMS);
+        var hours = Math.floor(duration / hourMS);
+        var hourString = zeroFill(hours.toString(), 2);
+        if (savedPrecision == "hour") {
+          break;
+        }
+        duration -= (hours * hourMS);
+        var minutes = Math.floor(duration / minuteMS);
+        var minuteString = zeroFill(minutes.toString(), 2);
+        if (savedPrecision == "min") {
+          break;
+        }
+        duration -= (minutes * minuteMS);
+        var seconds = Math.floor(duration / secondMS);
+        var secondString = zeroFill(seconds.toString(), 2);
+        if (savedPrecision == "sec") {
+          break;
+        }
+        duration -= (seconds * secondMS);
+        var milliseconds = Math.floor(duration / 10);
+        var msString = zeroFill(milliseconds.toString(), 2);
+        break;
+      }
+
+      this.setAppElementHTML(this.getTemplateScript('age')(
+      {
+        white: whiteFlag,
+        black: blackFlag,
+        year: yearString,
+        month: monthString,
+        day: dayString,
+        hour: hourString,
+        minute: minuteString,
+        second: secondString,
+        ms: msString
+      }));
     }
   };
 
@@ -174,6 +242,8 @@
     shapeSquareChecked ? localStorage.setItem("shape", "square") : localStorage.removeItem("shape");
   };
 
+
+
   App.fn.renderAge = function()
   {
     var now = new Date();
@@ -222,31 +292,87 @@
       var msString = zeroFill(milliseconds.toString(), 2);
       break;
     }
+    var notBubbled = true;
 
-    var savedTheme = localStorage.getItem("colorTheme");
-    if(savedTheme == "light" || savedTheme == "rainbowl" || savedTheme == "sky") {
-      var whiteFlag = "YES";
+    var year = $('year-number');
+    if(year) {
+      var yearFlag = year.innerHTML != yearString;
     }
-    else {
-      var blackFlag = "YES";
+    if(yearFlag) {
+      year.innerHTML = yearString;
+      this.bubbleNumber(year, 2.1);
+      notBubbled = false;
     }
 
+    var month = $('month-number');
+    if(month) {
+      var monthFlag = month.innerHTML != monthString;
+    }
+    if(monthFlag) {
+      month.innerHTML = monthString;
+      if(notBubbled) {
+        this.bubbleNumber(month, 1.9);
+        notBubbled = false;
+      }
+    }
+
+    var day = $('day-number');
+    if(day) {
+      var dayFlag = day.innerHTML != dayString;
+    }
+    if(dayFlag) {
+      day.innerHTML = dayString;
+      if(notBubbled) {
+        this.bubbleNumber(day, 1.7);
+        notBubbled = false;
+      }
+    }
+
+    var hour = $('hour-number');
+    if(hour) {
+      var hourFlag = hour.innerHTML != hourString;
+    }
+    if(hourFlag) {
+      hour.innerHTML = hourString;
+      if(notBubbled) {
+        this.bubbleNumber(hour, 1.5);
+        notBubbled = false;
+      }
+    }
+
+    var minute = $('minute-number');
+    if(minute) {
+      var minuteFlag = minute.innerHTML != minuteString;
+    }
+    if(minuteFlag) {
+      minute.innerHTML = minuteString;
+      if(notBubbled) {
+        this.bubbleNumber(minute, 1.3);
+        notBubbled = false;
+      }
+    }
+
+    var second = $('second-number');
+    if(second) {
+      second.innerHTML = secondString
+    }
+
+  };
+
+
+  App.fn.bubbleNumber = function(numberElement, scale)
+  {
     requestAnimationFrame(function()
     {
-      this.setAppElementHTML(this.getTemplateScript('age')(
-      {
-        white: whiteFlag,
-        black: blackFlag,
-        year: yearString,
-        month: monthString,
-        day: dayString,
-        hour: hourString,
-        minute: minuteString,
-        second: secondString,
-        ms: msString
-      }));
+      numberElement.style.webkitTransition=".1s ease-in-out";
+      numberElement.style.webkitTransform="scale("+scale.toString()+")";
+      setTimeout(function(){
+        numberElement.style.webkitTransition=".8s ease-in-out";
+        numberElement.style.webkitTransform="scale(1)";
+      }, 100);
     }.bind(this));
-  };
+  }
+
 
   App.fn.renderTime = function()
   {
@@ -299,6 +425,20 @@
 
 })();
 
+
+
+
+
+
+
+
+
+
+
+
+/*********************
+// Window Functions
+**********************/
 
 function animate(theta, radius) {
   var path = document.getElementById('path');
