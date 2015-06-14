@@ -72,8 +72,6 @@ ul {
   -webkit-user-select: none;
   position: relative;
   left:-50%;
-  margin-left: .7vw;
-  margin-right: .7vw;
   margin-bottom: .4vw;
   font-size: 6vw;
   font-weight: 400;
@@ -100,6 +98,8 @@ ul {
   position: relative;
   margin: 0;
   left:-50%;
+  margin-left:-1vw;
+  margin-right:.5vw;
   font-size: 1.5vw;
   font-weight: 400;
   line-height: 1;
