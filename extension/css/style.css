@@ -64,14 +64,13 @@ ul {
 
 .timer-container {
   position: absolute;
-  left: 50%;
   top: 42%;
+  left: 21%;
 }
 
 .timer, .clock {
   -webkit-user-select: none;
   position: relative;
-  left:-50%;
   margin-bottom: .4vw;
   font-size: 6vw;
   font-weight: 400;
@@ -97,7 +96,6 @@ ul {
   display:flex;
   position: relative;
   margin: 0;
-  left:-50%;
   margin-left:-1vw;
   margin-right:.5vw;
   font-size: 1.5vw;
