@@ -63,9 +63,10 @@ ul {
 /*******************/
 
 .timer-container {
-  position: absolute;
-  top: 42%;
-  left: 21%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .timer, .clock {
