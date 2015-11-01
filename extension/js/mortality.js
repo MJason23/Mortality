@@ -374,7 +374,7 @@
       setTimeout(function(){
         numberElement.style.webkitTransition=".8s ease-in-out";
         numberElement.style.webkitTransform="scale(1)";
-      }, 100);
+      }, 80);
     }.bind(this));
   }
 
