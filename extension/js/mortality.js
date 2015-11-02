@@ -38,7 +38,7 @@
         }
         else if(savedPrecision == "ms" || savedPrecision === null)
         {
-          interval = 1000;
+          interval = 113;
         }
         this.renderAge();
         setInterval(this.renderAge.bind(this),interval);
@@ -354,7 +354,12 @@
 
     var second = $('second-number');
     if(second) {
-      second.innerHTML = secondString
+      second.innerHTML = secondString;
+    }
+
+    var millisecond = $('milli-number');
+    if(millisecond) {
+      millisecond.innerHTML = msString;
     }
 
   };
