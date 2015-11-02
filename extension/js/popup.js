@@ -6,7 +6,7 @@ $('#inline-popup').magnificPopup({
     }
   },
   closeBtnInside: false,
-  modal: false,
+  focus: 'link-input',
   midClick: true
 });
 
@@ -15,7 +15,6 @@ function infoButtonPressed()
 {
   if(localStorage.getItem("dob")===null)
   {
-    setModalPopup();
     setButtonPressed(2);
   }
   //UPDATE WHEN REVVING VERSIONS
@@ -38,21 +37,6 @@ function infoButtonPressed()
   {
     document.getElementById("info-img").src = "assets/infoBlack.png"
   }
-}
-
-function setModalPopup()
-{
-  $('#inline-popup').magnificPopup({
-    removalDelay: 800,
-    callbacks: {
-      beforeOpen: function() {
-         this.st.mainClass = this.st.el.attr('data-effect');
-      }
-    },
-    closeBtnInside: false,
-    modal: true,
-    midClick: true
-  });
 }
 
 $('#info-button').click(function()
