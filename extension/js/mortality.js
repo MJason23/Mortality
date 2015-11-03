@@ -208,7 +208,7 @@
     if( !dateInput.valueAsDate ) return;
 
     this.dob = dateInput.valueAsDate;
-    localStorage.setItem("dob", this.dob.getTime()+((this.dob.getTimezoneOffset()-60) * 60000));
+    localStorage.setItem("dob", this.dob.getTime()+(this.dob.getTimezoneOffset() * 60000));
 
     var timeChecked = document.querySelector('input[id=time-checkbox]').checked;
     if( timeChecked )
