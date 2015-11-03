@@ -41,14 +41,21 @@ function getChapters(monthBorn) {
    educationStartOffset = (7-monthBorn);
   }
   firstChapter += educationStartOffset;
+  if( firstChapter > 945 ) firstChapter = 945;
   var secondChapter = firstChapter + (savedChapterLengths[1]);
+  if( secondChapter > 945 ) secondChapter = 945;
   var thirdChapter = secondChapter + (savedChapterLengths[2]);
+  if( thirdChapter > 945 ) thirdChapter = 945;
   var fourthChapter = thirdChapter + (savedChapterLengths[3]);
+  if( fourthChapter > 945 ) fourthChapter = 945;
   var fifthChapter = fourthChapter + (savedChapterLengths[4]);
+  if( fifthChapter > 945 ) fifthChapter = 945;
   //540
   var sixthChapter = fifthChapter + (savedChapterLengths[5]);
+  if( sixthChapter > 945 ) sixthChapter = 945;
   //141
   var seventhChapter = sixthChapter + (savedChapterLengths[6]);
+  if( seventhChapter > 945 ) seventhChapter = 945;
   var eighthChapter = 945;
 
   return [[beginningChapter, firstChapter], [firstChapter, secondChapter], [secondChapter, thirdChapter]
