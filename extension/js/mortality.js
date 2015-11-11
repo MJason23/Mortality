@@ -57,8 +57,8 @@
       }
 
       var now = new Date();
-      var timezoneOffset = now.getTimezoneOffset() * minuteMS;
-      var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
+      var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
+      var temp = duration;
 
       var savedPrecision = localStorage.getItem("precision");
       while(true) {
@@ -67,37 +67,38 @@
         if (savedPrecision == "year") {
           break;
         }
-        duration -= (years * yearMS);
+        duration = (duration % yearMS);
         var months = Math.floor(duration / monthMS);
         var monthString = zeroFill(months.toString(), 2);
         if (savedPrecision == "month") {
           break;
         }
-        duration -= (months * monthMS);
+        duration = (duration % monthMS);
         var days = Math.floor(duration / dayMS);
         var dayString = zeroFill(days.toString(), 2);
         if (savedPrecision == "day") {
           break;
         }
-        duration -= (days * dayMS);
+        duration = temp;
+        duration = (duration % dayMS);
         var hours = Math.floor(duration / hourMS);
         var hourString = zeroFill(hours.toString(), 2);
         if (savedPrecision == "hour") {
           break;
         }
-        duration -= (hours * hourMS);
+        duration = (duration % hourMS);
         var minutes = Math.floor(duration / minuteMS);
         var minuteString = zeroFill(minutes.toString(), 2);
         if (savedPrecision == "min") {
           break;
         }
-        duration -= (minutes * minuteMS);
+        duration = (duration % minuteMS);
         var seconds = Math.floor(duration / secondMS);
         var secondString = zeroFill(seconds.toString(), 2);
         if (savedPrecision == "sec") {
           break;
         }
-        duration -= (seconds * secondMS);
+        duration = (duration % secondMS);
         var milliseconds = Math.floor(duration / 10);
         var msString = zeroFill(milliseconds.toString(), 2);
         break;
@@ -247,8 +248,8 @@
   App.fn.renderAge = function()
   {
     var now = new Date();
-    var timezoneOffset = now.getTimezoneOffset() * minuteMS;
-    var duration  = now - this.dob + timezoneOffset - (parseInt(this.dobMinutes)*minuteMS);
+    var duration  = now - this.dob + (parseInt(this.dobMinutes)*minuteMS);
+    var temp = duration;
 
     var savedPrecision = localStorage.getItem("precision");
     while(true) {
@@ -257,37 +258,38 @@
       if (savedPrecision == "year") {
         break;
       }
-      duration -= (years * yearMS);
+      duration = (duration % yearMS);
       var months = Math.floor(duration / monthMS);
       var monthString = zeroFill(months.toString(), 2);
       if (savedPrecision == "month") {
         break;
       }
-      duration -= (months * monthMS);
+      duration = (duration % monthMS);
       var days = Math.floor(duration / dayMS);
       var dayString = zeroFill(days.toString(), 2);
       if (savedPrecision == "day") {
         break;
       }
-      duration -= (days * dayMS);
+      duration = temp;
+      duration = (duration % dayMS);
       var hours = Math.floor(duration / hourMS);
       var hourString = zeroFill(hours.toString(), 2);
       if (savedPrecision == "hour") {
         break;
       }
-      duration -= (hours * hourMS);
+      duration = (duration % hourMS);
       var minutes = Math.floor(duration / minuteMS);
       var minuteString = zeroFill(minutes.toString(), 2);
       if (savedPrecision == "min") {
         break;
       }
-      duration -= (minutes * minuteMS);
+      duration = (duration % minuteMS);
       var seconds = Math.floor(duration / secondMS);
       var secondString = zeroFill(seconds.toString(), 2);
       if (savedPrecision == "sec") {
         break;
       }
-      duration -= (seconds * secondMS);
+      duration = (duration % secondMS);
       var milliseconds = Math.floor(duration / 10);
       var msString = zeroFill(milliseconds.toString(), 2);
       break;
