@@ -68,13 +68,16 @@
           break;
         }
         duration = (duration % yearMS);
-        var months = Math.floor(duration / monthMS);
+        var monthsdays = this.dob.getMonthsDaysPassed();
+        var months = monthsdays[0];
+        var days = monthsdays[1];
+        //var months = Math.floor(duration / monthMS);
         var monthString = zeroFill(months.toString(), 2);
         if (savedPrecision == "month") {
           break;
         }
         duration = (duration % monthMS);
-        var days = Math.floor(duration / dayMS);
+        //var days = Math.floor(duration / dayMS);
         var dayString = zeroFill(days.toString(), 2);
         if (savedPrecision == "day") {
           break;
@@ -259,13 +262,16 @@
         break;
       }
       duration = (duration % yearMS);
-      var months = Math.floor(duration / monthMS);
+      var monthsdays = this.dob.getMonthsDaysPassed();
+      var months = monthsdays[0];
+      var days = monthsdays[1];
+      //var months = Math.floor(duration / monthMS);
       var monthString = zeroFill(months.toString(), 2);
       if (savedPrecision == "month") {
         break;
       }
       duration = (duration % monthMS);
-      var days = Math.floor(duration / dayMS);
+      //var days = Math.floor(duration / dayMS);
       var dayString = zeroFill(days.toString(), 2);
       if (savedPrecision == "day") {
         break;
