@@ -13,10 +13,7 @@ Date.prototype.getMonthsDaysPassed = function() {
   var currentDate = new Date();
 
   var monthDifference = currentDate.getMonth() - this.getMonth();
-  if( monthDifference < 0 )
-  {
-    monthDifference += 12;
-  }
+
   //var numLeapDaysPassed =  Math.floor(currentDate.getFullYear()/4)- Math.floor(this.getFullYear()/4);
   //if( this.getMonth() <= 1 )
   //{
@@ -25,13 +22,26 @@ Date.prototype.getMonthsDaysPassed = function() {
 
   var msDifference = currentDate - this;
   var dayDifference = Math.floor((msDifference % 31556952000)/86400000);
-
+  if( dayDifference >= 365 )
+  {
+    dayDifference -= 365;
+  }
   //dayDifference -= numLeapDaysPassed;
-
   var i = this.getMonth();
   var year = this.getYear();
   var end = currentDate.getMonth();
-  while( i != end )
+
+  var loop = 0;
+  if( i == end && currentDate.getDate() > this.getDate() )
+  {
+    dayDifference = currentDate.getDate() - this.getDate();
+  }
+  if( i == end && currentDate.getDate() < this.getDate() )
+  {
+    var loop = 12;
+  }
+
+  while( i != end || loop > 0 )
   {
     dayDifference -= daysInMonth(year, i);
     i += 1;
@@ -40,12 +50,18 @@ Date.prototype.getMonthsDaysPassed = function() {
       i = 0;
       year += 1;
     }
+    loop-=1;
   }
 
   if( dayDifference < 0 )
   {
-    dayDifference += daysInMonth(year, i-1);
+    dayDifference = daysInMonth(year, i-1) + dayDifference;
     monthDifference -= 1;
+  }
+
+  if( monthDifference < 0 )
+  {
+    monthDifference += 12;
   }
   return [monthDifference, dayDifference];
 };
