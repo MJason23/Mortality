@@ -57,7 +57,7 @@
       }
 
       var now = new Date();
-      var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
+      var duration  = now - this.dob + (parseInt(this.dobMinutes)*minuteMS);
       var temp = duration;
 
       var savedPrecision = localStorage.getItem("precision");
@@ -124,6 +124,11 @@
 
   App.fn.load = function() {
 	  this.dob = getDOB();
+    if(this.dob.dst())
+    {
+      this.dob.setHours(this.dob.getHours()+1);
+    }
+    console.log(this.dob);
 	  this.dobMinutes = localStorage.dobMinutes || 0;
 
 	  if (localStorage.getItem("hideCircles") === null)
