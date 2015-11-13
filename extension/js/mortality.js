@@ -128,7 +128,6 @@
     {
       this.dob.setHours(this.dob.getHours()+1);
     }
-    console.log(this.dob);
 	  this.dobMinutes = localStorage.dobMinutes || 0;
 
 	  if (localStorage.getItem("hideCircles") === null)
