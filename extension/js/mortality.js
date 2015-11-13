@@ -2,7 +2,7 @@
 
   var $  = document.getElementById.bind(document);
 
-  var yearMS = 31556952000;
+  var yearMS = 31536000000;
   var monthMS = 2628000000;
   var dayMS = 86400000;
   var hourMS = 3600000;

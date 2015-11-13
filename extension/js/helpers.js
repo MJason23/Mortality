@@ -21,7 +21,7 @@ Date.prototype.getMonthsDaysPassed = function() {
   //}
 
   var msDifference = currentDate - this;
-  var dayDifference = Math.floor((msDifference % 31556952000)/86400000);
+  var dayDifference = Math.floor((msDifference % 31536000000)/86400000);
   if( dayDifference >= 365 )
   {
     dayDifference -= 365;
