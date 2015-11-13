@@ -28,7 +28,7 @@ Date.prototype.getMonthsDaysPassed = function() {
   var end = currentDate.getMonth();
 
   var loop = 0;
-  if( i == end && currentDate.getDate() > this.getDate() )
+  if( i == end && currentDate.getDate() >= this.getDate() )
   {
     dayDifference = currentDate.getDate() - this.getDate();
   }
@@ -58,6 +58,15 @@ Date.prototype.getMonthsDaysPassed = function() {
   if( monthDifference < 0 )
   {
     monthDifference += 12;
+  }
+
+  if( dayDifference > 31 )
+  {
+    dayDifference = dayDifference % 31;
+  }
+  else if( dayDifference < 0 )
+  {
+    dayDifference = (-1*dayDifference) % 31;
   }
   return [monthDifference, dayDifference];
 };
