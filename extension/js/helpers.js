@@ -14,11 +14,11 @@ Date.prototype.getMonthsDaysPassed = function() {
 
   var monthDifference = currentDate.getMonth() - this.getMonth();
 
-  //var numLeapDaysPassed =  Math.floor(currentDate.getFullYear()/4)- Math.floor(this.getFullYear()/4);
-  //if( this.getMonth() <= 1 )
-  //{
-  //  numLeapDaysPassed += 1;
-  //}
+  var numLeapDaysPassed =  Math.floor(currentDate.getFullYear()/4)- Math.floor(this.getFullYear()/4);
+  if( this.getMonth() <= 1 )
+  {
+    numLeapDaysPassed += 1;
+  }
 
   var msDifference = currentDate - this;
   var dayDifference = Math.floor((msDifference % 31536000000)/86400000);
@@ -26,7 +26,7 @@ Date.prototype.getMonthsDaysPassed = function() {
   {
     dayDifference -= 365;
   }
-  //dayDifference -= numLeapDaysPassed;
+  dayDifference -= numLeapDaysPassed;
   var i = this.getMonth();
   var year = this.getYear();
   var end = currentDate.getMonth();
