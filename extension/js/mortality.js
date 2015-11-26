@@ -57,7 +57,7 @@
       }
 
       var now = new Date();
-      var duration  = now - this.dob + (parseInt(this.dobMinutes)*minuteMS);
+      var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
       var temp = duration;
 
       var savedPrecision = localStorage.getItem("precision");
@@ -255,7 +255,7 @@
   App.fn.renderAge = function()
   {
     var now = new Date();
-    var duration  = now - this.dob + (parseInt(this.dobMinutes)*minuteMS);
+    var duration  = now - this.dob - (parseInt(this.dobMinutes)*minuteMS);
     var temp = duration;
 
     var savedPrecision = localStorage.getItem("precision");
