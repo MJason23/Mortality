@@ -66,7 +66,7 @@ a:visited {
 #link-label {
 	position: absolute;
 	right: 1.4vw;
-	bottom: 3.0vw;
+	bottom: 2.0vw;
   font-size: .8vw;
   cursor:default;
 }
@@ -74,7 +74,7 @@ a:visited {
 #link-input {
 	position: absolute;
 	right: 0.7vw;
-	bottom: 1vw;
+	bottom: 0.6vw;
 	width:9vw;
   font-size: 0.9vw;
   cursor:text;
@@ -146,7 +146,7 @@ a:visited {
 
 #twitter-button {
 	position:absolute;
-	top:20vw;
+	top:22.3vw;
 	right:1.5vw;
 	font-size: 1vw;
 	background: #1976D2;
@@ -173,7 +173,7 @@ a:visited {
 
 #feedback-button {
 	position:absolute;
-	top:22.7vw;
+	top:25vw;
 	right:1.5vw;
 	font-size: 1vw;
 	background: #D32F2F;
