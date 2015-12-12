@@ -106,6 +106,8 @@ function setButtonPressed(button)
     updatesButton.className = "default-button";
     settingsButton.className = "default-button";
     countdownButton.className = "countdown-pressed-button";
+
+    setupCountdown();
   }
   else
   {
@@ -121,6 +123,11 @@ function setButtonPressed(button)
   {
     $("#cancel-button").toggle();
   }
+}
+
+function setupCountdown()
+{
+
 }
 
 function setupSettings(dob, dobMinutes)
