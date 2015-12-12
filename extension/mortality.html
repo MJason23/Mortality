@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/magnific-popup.css">
   <link rel="stylesheet" href="css/popup.css">
   <link rel="stylesheet" href="css/settings.css">
+  <link rel="stylesheet" href="css/countdown.css">
 </head>
 <body>
 
@@ -294,8 +295,9 @@
 
     <div id="gender-container">
       <div>
-        <label id="gender-text" class="label-text" for="gender-dropdown">Gender?</label>
-        <select id="gender-dropdown" class="input-textfield">
+        <label id="gender-label" class="label-text" for="gender-dropdown">Gender?</label>
+        <select id="gender-dropdown" class="countdown-dropdown">
+          <option value=""></option>
           <option value="female">Female</option>
           <option value="male">Male</option>
         </select>
@@ -304,8 +306,9 @@
 
     <div id="drinking-container">
       <div>
-        <label id="drinking-text" class="label-text" for="precision-dropdown">How much do you drink?</label>
-        <select id="drinking-dropdown" class="input-textfield">
+        <label id="drinking-label" class="label-text" for="precision-dropdown">How much do you drink?</label>
+        <select id="drinking-dropdown" class="countdown-dropdown">
+          <option value=""></option>
           <option value="ms">~1 Month</option>
           <option value="sec">~1 Week</option>
           <option value="min">~1 Day</option>
@@ -316,8 +319,9 @@
 
     <div id="smoking-container">
       <div>
-        <label id="smoking-text" class="label-text" for="precision-dropdown">How much do you smoke?</label>
-        <select id="smoking-dropdown" class="input-textfield">
+        <label id="smoking-label" class="label-text" for="precision-dropdown">How much do you smoke?</label>
+        <select id="smoking-dropdown" class="countdown-dropdown">
+          <option value=""></option>
           <option value="ms">~1 Month</option>
           <option value="sec">~1 Week</option>
           <option value="min">~1 Day</option>
@@ -334,8 +338,9 @@
 
     <div id="heightFeet-container">
       <div>
-        <label id="heightFeet-text" class="label-text" for="heightFeet-dropdown">Feet</label>
-        <select id="heightFeet-dropdown" class="input-textfield">
+        <label id="heightFeet-label" class="label-text" for="heightFeet-dropdown">Feet</label>
+        <select id="heightFeet-dropdown" class="integer-dropdown">
+          <option value=""></option>
           <option value="ms">2</option>
           <option value="sec">3</option>
           <option value="min">4</option>
@@ -349,8 +354,9 @@
 
     <div id="heightInches-container">
       <div>
-        <label id="heightInches-text" class="label-text" for="heightInches-dropdown">Inches</label>
-        <select id="heightInches-dropdown" class="input-textfield">
+        <label id="heightInches-label" class="label-text" for="heightInches-dropdown">Inches</label>
+        <select id="heightInches-dropdown" class="integer-dropdown">
+          <option value=""></option>
           <option value="ms">0</option>
           <option value="sec">1</option>
           <option value="min">2</option>
@@ -372,17 +378,17 @@
 
     <div class="checkbox">
       <input id="heartDisease-checkbox" type="checkbox">
-      <label for="heartDisease-checkbox" id="heartDisease-label">Does your family have a history of heart disease?</label>
+      <label for="heartDisease-checkbox" id="heartDisease-label">Family have a history of heart disease?</label>
     </div>
 
     <div class="checkbox">
       <input id="clumsiness-checkbox" type="checkbox">
-      <label for="clumsiness-checkbox" id="clumsiness-label">Would you consider yourself clumsy?</label>
+      <label for="clumsiness-checkbox" id="clumsiness-label">Clumsy?</label>
     </div>
 
     <div class="checkbox">
       <input id="wildAnimals-checkbox" type="checkbox">
-      <label for="wildAnimals-checkbox" id="wildAnimals-label">Would you say you enjoy playing with wild animals?</label>
+      <label for="wildAnimals-checkbox" id="wildAnimals-label">Enjoy playing with wild animals?</label>
     </div>
 
     <span class="button-container">

@@ -1,0 +1,138 @@
+.countdown-dropdown {
+  width: 11vw;
+  font-size: 1vw;
+  border-radius: .25vw;
+}
+
+.integer-dropdown {
+  width: 3vw;
+  font-size: 1vw;
+  border-radius: .25vw;
+}
+
+#toggleCountdown-label {
+   position:absolute;
+   left:5vw;
+   top:11vw;
+ }
+
+#specifyCountdown-label {
+  position:absolute;
+  left:18vw;
+  top:11vw;
+}
+
+/*CONTROLS*/
+
+#gender-label {
+  position:absolute;
+  left:2.5vw;
+  top:12vw;
+}
+
+#gender-dropdown {
+  position:absolute;
+  left:6.7vw;
+  top:12.8vw;
+}
+
+
+#drinking-label {
+  position:absolute;
+  left:2.5vw;
+  top:13.7vw;
+}
+
+#drinking-dropdown {
+  position:absolute;
+  left:14.1vw;
+  top:14.5vw;
+}
+
+#smoking-label {
+  position:absolute;
+  left:2.5vw;
+  top:15.4vw;
+}
+
+#smoking-dropdown {
+  position:absolute;
+  left:14.7vw;
+  top:16.2vw;
+}
+
+
+
+
+#height-label {
+  position:absolute;
+  left:2.5vw;
+  top:17.1vw;
+}
+
+#heightFeet-label {
+  position:absolute;
+  left:2.5vw;
+  top:18.8vw;
+}
+
+#heightFeet-dropdown {
+  position:absolute;
+  left:5vw;
+  top:19.6vw;
+}
+
+#heightInches-label {
+  position:absolute;
+  left:9.7vw;
+  top:18.8vw;
+}
+
+#heightInches-dropdown {
+  position:absolute;
+  left:12.9vw;
+  top:19.6vw;
+}
+
+#weight-label {
+  position:absolute;
+  left:2.5vw;
+  top:21.4vw;
+}
+
+#weight-input {
+  -webkit-text-security: disc;
+  position:absolute;
+  left:15vw;
+  top:21.3vw;
+  border-radius: .25vw;
+  -webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  -moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  box-shadow: inset 2px 2px 2px 0px #dddddd;
+  padding: .2vw .2vw;
+  border: 1px solid #aaa;
+}
+
+#weight-input::-webkit-outer-spin-button,
+#weight-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#heartDisease-label {
+  position:absolute;
+  left:4vw;
+  top:23vw;
+}
+
+#clumsiness-label {
+  position:absolute;
+  left:4vw;
+  top:24.7vw;
+}
+
+#wildAnimals-label {
+  position:absolute;
+  left:4vw;
+  top:26.4vw;
+}
