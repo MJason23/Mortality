@@ -46,26 +46,12 @@ $('#info-button').click(function()
 
 $("#about-button").click(function()
 {
-  if(localStorage.getItem("dob")===null)
-  {
-    setButtonPressed(2);
-  }
-  else
-  {
-    setButtonPressed(0);
-  }
+  unlessDOBMissingGoToButtonNumber(0);
 });
 
 $("#updates-button").click(function()
 {
-  if(localStorage.getItem("dob")===null)
-  {
-    setButtonPressed(2);
-  }
-  else
-  {
-    setButtonPressed(1);
-  }
+  unlessDOBMissingGoToButtonNumber(1);
 });
 
 $("#settings-button").click(function()
@@ -73,11 +59,29 @@ $("#settings-button").click(function()
   setButtonPressed(2);
 });
 
+$("#countdown-button").click(function()
+{
+  unlessDOBMissingGoToButtonNumber(3);
+});
+
+function unlessDOBMissingGoToButtonNumber(button)
+{
+  if(localStorage.getItem("dob")===null)
+  {
+    setButtonPressed(2);
+  }
+  else
+  {
+    setButtonPressed(button);
+  }
+}
+
 function setButtonPressed(button)
 {
   var updatesButton = document.querySelector("#updates-button");
   var aboutButton = document.querySelector("#about-button");
   var settingsButton = document.querySelector("#settings-button");
+  var countdownButton = document.querySelector("#countdown-button");
   var popupBody = document.querySelector('#popup-body');
   if (button == 0)
   {
@@ -85,6 +89,7 @@ function setButtonPressed(button)
     aboutButton.className = "pressed-button";
     updatesButton.className = "default-button";
     settingsButton.className = "default-button";
+    countdownButton.className = "countdown-default-button";
   }
   else if (button == 1)
   {
@@ -92,6 +97,15 @@ function setButtonPressed(button)
     aboutButton.className = "default-button";
     updatesButton.className = "pressed-button";
     settingsButton.className = "default-button";
+    countdownButton.className = "countdown-default-button";
+  }
+  else if (button == 3)
+  {
+    popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
+    aboutButton.className = "default-button";
+    updatesButton.className = "default-button";
+    settingsButton.className = "default-button";
+    countdownButton.className = "countdown-pressed-button";
   }
   else
   {
@@ -99,6 +113,7 @@ function setButtonPressed(button)
     aboutButton.className = "default-button";
     updatesButton.className = "default-button";
     settingsButton.className = "pressed-button";
+    countdownButton.className = "countdown-default-button";
 
     setupSettings(window.app.dob, window.app.dobMinutes);
   }

@@ -42,7 +42,7 @@ hr {
 #button-hr {
   width:8vw;
   right:1.5vw;
-  top:19vw;
+  top:21.6vw;
 }
 
 a:visited {
@@ -106,12 +106,38 @@ a:visited {
 	background: #1B5E20;
 }
 
-.default-button {
+.countdown-pressed-button {
+  position:absolute;
+  right:1.5vw;
+  font-size: 1vw;
+  background: #B25709;
+  border-bottom: 2px solid #B25709;
+  border-top:0;
+  border-left:0;
+  border-right:0;
+  color: #9E9E9E;
+  width: 8vw;
+  height: 2.2vw;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.countdown-pressed-button:hover {
+  background: #B25709;
+  color: #9E9E9E;
+}
+
+.countdown-pressed-button:active {
+  border: 0;
+  background: #B25709;
+}
+
+.countdown-default-button {
 	position:absolute;
 	right:1.5vw;
 	font-size: 1vw;
-	background: #43A047;
-	border-bottom: 2px solid #388E3C;
+	background: #CC6914;
+	border-bottom: 2px solid #B25709;
 	border-top:0;
 	border-left:0;
 	border-right:0;
@@ -122,15 +148,42 @@ a:visited {
 	vertical-align: middle;
 }
 
-.default-button:hover {
-	background: #4CAF50;
+.countdown-default-button:hover {
+	background: #FF7600;
 	color: #FFFFFF;
 }
 
-.default-button:active {
+.countdown-default-button:active {
 	border:0;
-	background: #1B5E20;
+	background: #B25709;
 }
+
+.default-button {
+  position:absolute;
+  right:1.5vw;
+  font-size: 1vw;
+  background: #43A047;
+  border-bottom: 2px solid #388E3C;
+  border-top:0;
+  border-left:0;
+  border-right:0;
+  color: #F5F5F5;
+  width: 8vw;
+  height: 2.2vw;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.default-button:hover {
+  background: #4CAF50;
+  color: #FFFFFF;
+}
+
+.default-button:active {
+  border:0;
+  background: #1B5E20;
+}
+
 
 #about-button {
   top:11.3vw;
@@ -142,6 +195,10 @@ a:visited {
 
 #settings-button {
 	top:16.7vw;
+}
+
+#countdown-button {
+	top:19.4vw;
 }
 
 #twitter-button {
