@@ -101,7 +101,7 @@ function setButtonPressed(button)
   }
   else if (button == 3)
   {
-    popupBody.innerHTML = window.app.getTemplateScript('updates-popup')();
+    popupBody.innerHTML = window.app.getTemplateScript('countdown-popup')();
     aboutButton.className = "default-button";
     updatesButton.className = "default-button";
     settingsButton.className = "default-button";
