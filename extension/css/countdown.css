@@ -10,6 +10,33 @@
   border-radius: .25vw;
 }
 
+
+#countdown-label-text {
+  position:absolute;
+  left:10.2vw;
+  top:14.2vw;
+}
+
+#countdownDate-input {
+  position:absolute;
+  left:10vw;
+  top:16.5vw;
+}
+
+#countdown-addTime-label {
+  position:absolute;
+  left:12vw;
+  top:19.4vw;
+}
+
+#countdownTime-input {
+  position:absolute;
+  left:10vw;
+  top:21.3vw;
+}
+
+
+
 #toggleCountdown-label {
    position:absolute;
    left:5vw;
