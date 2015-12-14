@@ -127,7 +127,7 @@ function setButtonPressed(button)
 
 function setupCountdown()
 {
-
+  loadCountdownCheckboxes();
 }
 
 function setupSettings(dob, dobMinutes)
@@ -169,6 +169,39 @@ function setupSettings(dob, dobMinutes)
 
   $("#cancel-button").click(function(){
     $("#info-popup").magnificPopup('close');
+  });
+}
+
+function loadCountdownCheckboxes()
+{
+  var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
+  if (localStorage.getItem("countdownEnabled") == "YES") {
+    toggleCountdownCheckbox.checked = true;
+  }
+  showCountdownIf(toggleCountdownCheckbox.checked);
+
+  toggleCountdownCheckbox.addEventListener('change', function () {
+    showCountdownIf(toggleCountdownCheckbox.checked);
+  });
+
+  var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+  if (localStorage.getItem("countdownTimeSet") == "YES") {
+    countdownTimeCheckbox.checked = true;
+  }
+  showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
+
+  countdownTimeCheckbox.addEventListener('change', function () {
+    showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
+  });
+
+  var specificTimeCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+  if (localStorage.getItem("specificTimeSet") == "YES") {
+    specificTimeCheckbox.checked = true;
+  }
+  showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
+
+  specificTimeCheckbox.addEventListener('change', function () {
+    showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
   });
 }
 
@@ -302,11 +335,42 @@ function loadDarkOrLightTheme()
     }
 }
 
-function showTimeSelectorIf(isChecked) {
+function showTimeSelectorIf(isChecked)
+{
   if (isChecked) {
       document.getElementById("time-input").style.display = "block";
   } else {
       document.getElementById("time-input").style.display = "none";
+  }
+}
+
+function showCountdownIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("countdown-container").style.display = "block";
+  } else {
+      document.getElementById("countdown-container").style.display = "none";
+  }
+}
+
+function showCountdownTimeSelectorIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("countdownTime-input").style.display = "block";
+  } else {
+      document.getElementById("countdownTime-input").style.display = "none";
+  }
+}
+
+function showSpecificTimeSettingsIf(isChecked)
+{
+  if (isChecked) {
+      document.getElementById("specific-container").style.display = "block";
+      document.getElementById("survey-container").style.display = "none";
+
+  } else {
+      document.getElementById("specific-container").style.display = "none";
+      document.getElementById("survey-container").style.display = "block";
   }
 }
 
