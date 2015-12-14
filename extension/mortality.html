@@ -292,16 +292,109 @@
       <label for="specifyCountdown-checkbox" id="specifyCountdown-label">Specify Final Date</label>
     </div>
 
-    <label id="countdown-label-text" class="label-text" for="countdownDate-input">When is your deadline?</label>
-    <input type="date" id="countdownDate-input" class="input-textfield">
+
+    <div id="gender-container">
+      <div>
+        <label id="gender-label" class="label-text" for="gender-dropdown">Gender?</label>
+        <select id="gender-dropdown" class="countdown-dropdown">
+          <option value=""></option>
+          <option value="female">Female</option>
+          <option value="male">Male</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="drinking-container">
+      <div>
+        <label id="drinking-label" class="label-text" for="precision-dropdown">How much do you drink?</label>
+        <select id="drinking-dropdown" class="countdown-dropdown">
+          <option value=""></option>
+          <option value="ms">~1 Month</option>
+          <option value="sec">~1 Week</option>
+          <option value="min">~1 Day</option>
+          <option value="hour">Never</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="smoking-container">
+      <div>
+        <label id="smoking-label" class="label-text" for="precision-dropdown">How much do you smoke?</label>
+        <select id="smoking-dropdown" class="countdown-dropdown">
+          <option value=""></option>
+          <option value="ms">~1 Month</option>
+          <option value="sec">~1 Week</option>
+          <option value="min">~1 Day</option>
+          <option value="hour">Never</option>
+          <option value="day">When drunk</option>
+          <option value="month">81 blunts a day x 7</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="height-label" class="label-text">
+      How tall are you?:
+    </div>
+
+    <div id="heightFeet-container">
+      <div>
+        <label id="heightFeet-label" class="label-text" for="heightFeet-dropdown">Feet</label>
+        <select id="heightFeet-dropdown" class="integer-dropdown">
+          <option value=""></option>
+          <option value="ms">2</option>
+          <option value="sec">3</option>
+          <option value="min">4</option>
+          <option value="hour">5</option>
+          <option value="day">6</option>
+          <option value="month">7</option>
+          <option value="year">8</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="heightInches-container">
+      <div>
+        <label id="heightInches-label" class="label-text" for="heightInches-dropdown">Inches</label>
+        <select id="heightInches-dropdown" class="integer-dropdown">
+          <option value=""></option>
+          <option value="ms">0</option>
+          <option value="sec">1</option>
+          <option value="min">2</option>
+          <option value="hour">3</option>
+          <option value="day">4</option>
+          <option value="month">5</option>
+          <option value="year">6</option>
+          <option value="sec">7</option>
+          <option value="min">8</option>
+          <option value="hour">9</option>
+          <option value="day">10</option>
+          <option value="month">11</option>
+        </select>
+      </div>
+    </div>
+
+    <label for="weight-input" id="weight-label" class="">How much do you weigh?</label>
+    <input type="number" id="weight-input" class="" min="0" max="500">
 
     <div class="checkbox">
-      <input id="countdown-addTime-checkbox" type="checkbox">
-      <label for="countdown-addTime-checkbox" id="countdown-addTime-label">Add Time</label>
+      <input id="heartDisease-checkbox" type="checkbox">
+      <label for="heartDisease-checkbox" id="heartDisease-label">Family have a history of heart disease?</label>
     </div>
-    <label for="countdownTime-input"></label>
-    <input type="time" id="countdownTime-input" class="input-textfield">
 
+    <div class="checkbox">
+      <input id="clumsiness-checkbox" type="checkbox">
+      <label for="clumsiness-checkbox" id="clumsiness-label">Clumsy?</label>
+    </div>
+
+    <div class="checkbox">
+      <input id="wildAnimals-checkbox" type="checkbox">
+      <label for="wildAnimals-checkbox" id="wildAnimals-label">Enjoy playing with wild animals?</label>
+    </div>
+
+    <span class="button-container">
+      <button id="countdown-submit-button" class="submitButtonClass">Submit</button>
+      <a id="countdown-cancel-button" class="cancelButtonClass">cancel</a>
+    </span>
   </form>
 </script>
 
