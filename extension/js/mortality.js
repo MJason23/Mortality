@@ -232,7 +232,7 @@
     {
       this.dobMinutes = 0;
       localStorage.removeItem("dobTimeSet");
-      localStorage.removeItem("dobMinutes")
+      localStorage.removeItem("dobMinutes");
     }
     var hideAgeChecked = document.querySelector('input[id=hideAge-checkbox').checked;
     hideAgeChecked ? localStorage.setItem("hideAge", "YES") : localStorage.removeItem("hideAge");

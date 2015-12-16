@@ -128,6 +128,53 @@ function setButtonPressed(button)
 function setupCountdown()
 {
   loadCountdownCheckboxes();
+
+  $("#countdown-submit-button").click(function(){
+    var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
+    if( toggleCountdownCheckbox.checked )
+    {
+      localStorage.setItem("countdownEnabled", "YES");
+      var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+      if( specifyCountdownCheckbox.checked )
+      {
+        localStorage.setItem("specificTimeSet", "YES");
+        var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+        if( countdownTimeCheckbox.checked )
+        {
+          localStorage.setItem("countdownTimeSet", "YES");
+        }
+        else
+        {
+          localStorage.removeItem("countdownTimeSet");
+        }
+      }
+      else
+      {
+        localStorage.removeItem("specificTimeSet");
+      }
+    }
+    else
+    {
+      localStorage.removeItem("countdownEnabled");
+    }
+
+    // var deathInput = $('countdownDate-input');
+
+    // if( !deathInput.valueAsDate ) return;
+
+    // this.deathDate = deathInput.valueAsDate;
+    // window.app.saveDeath();
+
+    // saveTheme();
+    // savePrecision();
+    // saveChapterLengths();
+    $("#info-popup").magnificPopup('close');
+  });
+
+  $("#countdown-cancel-button").click(function(){
+    $("#info-popup").magnificPopup('close');
+  });
+
 }
 
 function setupSettings(dob, dobMinutes)
@@ -184,16 +231,6 @@ function loadCountdownCheckboxes()
     showCountdownIf(toggleCountdownCheckbox.checked);
   });
 
-  var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
-  if (localStorage.getItem("countdownTimeSet") == "YES") {
-    countdownTimeCheckbox.checked = true;
-  }
-  showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
-
-  countdownTimeCheckbox.addEventListener('change', function () {
-    showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
-  });
-
   var specificTimeCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
   if (localStorage.getItem("specificTimeSet") == "YES") {
     specificTimeCheckbox.checked = true;
@@ -202,6 +239,16 @@ function loadCountdownCheckboxes()
 
   specificTimeCheckbox.addEventListener('change', function () {
     showSpecificTimeSettingsIf(specificTimeCheckbox.checked);
+  });
+
+  var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+  if (localStorage.getItem("countdownTimeSet") == "YES") {
+    countdownTimeCheckbox.checked = true;
+  }
+  showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
+
+  countdownTimeCheckbox.addEventListener('change', function () {
+    showCountdownTimeSelectorIf(countdownTimeCheckbox.checked);
   });
 }
 
