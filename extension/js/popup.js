@@ -135,6 +135,25 @@ function setButtonPressed(button)
 function setupCountdown()
 {
   loadCountdownCheckboxes();
+  var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
+  if( toggleCountdownCheckbox.checked )
+  {
+    var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
+    if( specifyCountdownCheckbox.checked )
+    {
+      loadCountdownDate();
+
+      var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
+      if( countdownTimeCheckbox.checked )
+      {
+        loadCountdownTime();
+      }
+    }
+    else
+    {
+      loadSurveyAnswers();
+    }
+  }
 
   $("#countdown-submit-button").click(function(){
     var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
@@ -144,6 +163,7 @@ function setupCountdown()
       var specifyCountdownCheckbox = document.querySelector('input[id=specifyCountdown-checkbox]');
       if( specifyCountdownCheckbox.checked )
       {
+        saveCountdownDeath();
         localStorage.setItem("specificTimeSet", "YES");
         var countdownTimeCheckbox = document.querySelector('input[id=countdown-addTime-checkbox]');
         if( countdownTimeCheckbox.checked )
@@ -158,23 +178,13 @@ function setupCountdown()
       else
       {
         localStorage.removeItem("specificTimeSet");
+        saveSurveyAnswers();
       }
     }
     else
     {
       localStorage.removeItem("countdownEnabled");
     }
-
-    // var deathInput = $('countdownDate-input');
-
-    // if( !deathInput.valueAsDate ) return;
-
-    // this.deathDate = deathInput.valueAsDate;
-    // window.app.saveDeath();
-
-    // saveTheme();
-    // savePrecision();
-    // saveChapterLengths();
     $("#info-popup").magnificPopup('close');
   });
 
@@ -224,6 +234,50 @@ function setupSettings(dob, dobMinutes)
   $("#cancel-button").click(function(){
     $("#info-popup").magnificPopup('close');
   });
+}
+
+
+function loadCountdownTime()
+{
+  var deathTime = localStorage.getItem("deathTime");
+  if( deathTime === null )
+  {
+    document.getElementById('countdownTime-input').value = "00:00";
+  }
+  else
+  {
+    document.getElementById('countdownTime-input').value = getTimeStringFromMinutes(deathTime);
+  }
+
+
+}
+
+function saveCountdownDeath()
+{
+  window.app.saveDeath();
+}
+
+function loadCountdownDate()
+{
+  var deathDate = localStorage.getItem("deathDate");
+  if( deathDate === null )
+  {
+    document.getElementById('countdownDate-input').value = new Date();
+  }
+  else
+  {
+    document.getElementById('countdownDate-input').value = new Date(parseInt(deathDate)).yyyymmdd();
+  }
+}
+
+function saveSurveyAnswers()
+{
+
+
+}
+function loadSurveyAnswers()
+{
+
 }
 
 function loadCountdownCheckboxes()
@@ -421,6 +475,8 @@ function showSpecificTimeSettingsIf(isChecked)
   if (isChecked) {
       document.getElementById("specific-container").style.display = "block";
       document.getElementById("survey-container").style.display = "none";
+      loadCountdownDate();
+      loadCountdownTime();
 
   } else {
       document.getElementById("specific-container").style.display = "none";
