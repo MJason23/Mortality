@@ -270,11 +270,6 @@ function loadCountdownDate()
   }
 }
 
-function loadSurveyAnswers()
-{
-
-}
-
 function loadCountdownCheckboxes()
 {
   var toggleCountdownCheckbox = document.querySelector('input[id=toggleCountdown-checkbox]');
@@ -476,6 +471,7 @@ function showSpecificTimeSettingsIf(isChecked)
   } else {
       document.getElementById("specific-container").style.display = "none";
       document.getElementById("survey-container").style.display = "block";
+      loadSurveyAnswers();
   }
 }
 

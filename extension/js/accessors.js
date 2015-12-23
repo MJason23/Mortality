@@ -149,6 +149,47 @@ function savePrecision()
   localStorage.setItem("precision", selectedPrecision);
 }
 
+function loadSurveyAnswers()
+{
+  var surveyGender = localStorage.getItem("surveyGender");
+  if (surveyGender != null) {
+    document.getElementById("gender-dropdown").value = surveyGender;
+  }
+  var surveyDrinking = localStorage.getItem("surveyDrinking");
+  if (surveyDrinking != null) {
+    document.getElementById("drinking-dropdown").value = surveyDrinking;
+  }
+  var surveySmoking = localStorage.getItem("surveySmoking");
+  if (surveySmoking != null) {
+    document.getElementById("smoking-dropdown").value = surveySmoking;
+  }
+  var surveyHeightFeet = localStorage.getItem("surveyHeightFeet");
+  if (surveyHeightFeet != null) {
+    document.getElementById("heightFeet-dropdown").value = surveyHeightFeet;
+  }
+  var surveyHeightInches = localStorage.getItem("surveyHeightInches");
+  if (surveyHeightInches != null) {
+    document.getElementById("heightInches-dropdown").value = surveyHeightInches;
+  }
+  var surveyWeight = localStorage.getItem("surveyWeight");
+  if (surveyWeight != null) {
+    document.getElementById("weight-input").value = surveyWeight;
+  }
+  var surveyHeartDisease = localStorage.getItem("surveyHeartDisease");
+  if (surveyHeartDisease == "true") {
+    document.getElementById("heartDisease-checkbox").checked = true;
+  }
+  var surveyClumsiness = localStorage.getItem("surveyClumsiness");
+  if (surveyClumsiness == "true") {
+    document.getElementById("clumsiness-checkbox").checked = true;
+  }
+  var surveyWildAnimals = localStorage.getItem("surveyWildAnimals");
+  if (surveyWildAnimals == "true") {
+    document.getElementById("wildAnimals-checkbox").checked = true;
+  }
+}
+
+
 function saveSurveyAnswers()
 {
   var surveyGender = document.getElementById("gender-dropdown").value;
