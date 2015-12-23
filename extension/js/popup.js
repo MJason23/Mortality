@@ -20,7 +20,12 @@ function infoButtonPressed()
   //UPDATE WHEN REVVING VERSIONS
   else if(localStorage.getItem("version")=="3.4.2")
   {
-    setButtonPressed(0);
+    var lastOptionView = localStorage.getItem("lastOptionView");
+    if( lastOptionView === null )
+    {
+      lastOptionView = 0;
+    }
+    setButtonPressed(lastOptionView);
   }
   else
   {
@@ -56,7 +61,7 @@ $("#updates-button").click(function()
 
 $("#settings-button").click(function()
 {
-  setButtonPressed(2);
+  unlessDOBMissingGoToButtonNumber(2);
 });
 
 $("#countdown-button").click(function()
@@ -66,6 +71,8 @@ $("#countdown-button").click(function()
 
 function unlessDOBMissingGoToButtonNumber(button)
 {
+  localStorage.setItem("lastOptionView", button);
+
   if(localStorage.getItem("dob")===null)
   {
     setButtonPressed(2);
