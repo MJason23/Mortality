@@ -270,11 +270,6 @@ function loadCountdownDate()
   }
 }
 
-function saveSurveyAnswers()
-{
-
-
-}
 function loadSurveyAnswers()
 {
 
