@@ -228,22 +228,22 @@
         var timeInput = $('countdownTime-input');
         if( !timeInput.valueAsDate ) return;
         var timeArray = timeInput.value.split(":");
-        this.deathMinutes = timeArray[0]*60 + timeArray[1]*1;
+        this.deathTime = timeArray[0]*60 + timeArray[1]*1;
         localStorage.deathTimeSet = "YES";
-        localStorage.deathMinutes = this.deathMinutes;
+        localStorage.deathTime = this.deathTime;
       }
       else
       {
-        this.deathMinutes = 0;
+        this.deathTime = 0;
         localStorage.removeItem("deathTimeSet");
-        localStorage.removeItem("deathMinutes");
+        localStorage.removeItem("deathTime");
       }
     }
     else
     {
-      this.deathMinutes = 0;
+      this.deathTime = 0;
       localStorage.removeItem("deathTimeSet");
-      localStorage.removeItem("deathMinutes");
+      localStorage.removeItem("deathTime");
     }
   };
 
